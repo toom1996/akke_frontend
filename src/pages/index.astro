@@ -1,117 +1,65 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import MainHeader from '../components/MainHeader.astro';
+import Icon from 'astro-icon';
+const panelSearchNav = [
+'项目',
+'资源',
+'图像',
+'原型',
+'直播',
+'人物',
+'情绪板',
+];
 ---
+<style>
+	.search-bar-wrapper {
+		/* background-color: #f9f9f9; */
+		border: 1px solid #ccc;
+	}
 
+	.panel-search-header {
+		background-color: #fff;
+		border-bottom: 1px solid #f2f2f2;
+		padding: 24px;
+		padding-bottom: 21px;
+		position: fixed;
+		top: 55px;
+		width: 100%;
+		z-index: 3;
+	}
+</style>
 <MainLayout title="Welcome to Akke.">
 	<MainHeader></MainHeader>
 	<div class="panel">
 		<main>
-			<header>
-				<div class="search-bar">
-					<div class="search-container">
-						<div class="search-input-wrapper">
-							<div class="search-icon"></div>
-							<div class="search-form">
-								<input type="search" name="search" autocomplete="off" autocapitalize="off" class="search-input" placeholder="搜索工作中的创意世界" tabindex="0" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
+			<header class="panel-search-header">
+				<div class="search-bar-wrapper relative flex rounded-full">
+					<div class="search-bar flex relative justify-center flex-col grow">
+						<div class="search-container">
+							<div class="search-input-wrapper flex">
+								<div class="search-icon w-12 flex justify-center">
+									<Icon class="h-6 w-6" name="ion:ios-search-strong" />
+								</div>
+								<div class="search-form relative flex-1">
+									<input type="search" name="search" autocomplete="off" autocapitalize="off" class="search-input h-full w-full absolute top-0 outline-none" placeholder="搜索工作中的创意世界" tabindex="0" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
+								</div>
 							</div>
 						</div>
 					</div>
+					<nav>
+						<ul class="flex py-2 px-4">
+							{
+								panelSearchNav.map(item => (
+									<li class="pr-2">
+										<button class="btn-dark px-3 py-2  lg:px-4 text-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">{item}</button>
+									</li>
+								))
+							}
+						</ul>
+					</nav>
 				</div>
 			</header>
-			<nav aria-label="搜索" class="SearchLegacy-tabNavigation-YPk">
-				<ul class="SearchLegacy-tabList-SVr">
-					<li class="SearchLegacy-tabItem-i5z">
-						<button class="btn-dark px-3 py-2  lg:px-4 text-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">项目</button>
-					</li>
-					<li class="SearchLegacy-tabItem-i5z">
-						<a href="/search/assets" class="SearchLegacy-tabLink-Ttb e2e-Search-assets-tab">资源</a>
-					</li>
-					<li class="SearchLegacy-tabItem-i5z SearchLegacy-tabActive-ZpC">
-						<a href="/search/images" class="router-link-active router-link-exact-active SearchLegacy-tabLink-Ttb e2e-Search-images-tab" aria-current="page">图像</a>
-					</li>
-					<li class="SearchLegacy-tabItem-i5z">
-						<a href="/search/prototypes" class="SearchLegacy-tabLink-Ttb e2e-Search-prototypes-tab">原型</a>
-					</li>
-					<li class="SearchLegacy-tabItem-i5z">
-						<a href="/search/streams" class="SearchLegacy-tabLink-Ttb e2e-Search-streams-tab">直播</a>
-					</li>
-					<li class="SearchLegacy-tabItem-i5z">
-						<a href="/search/users" class="SearchLegacy-tabLink-Ttb e2e-Search-users-tab">人物</a>
-					</li>
-					<li class="SearchLegacy-tabItem-i5z">
-						<a href="/search/moodboards" class="SearchLegacy-tabLink-Ttb e2e-Search-moodboards-tab">情绪板</a>
-					</li>
-				</ul>
-			<select class="SearchLegacy-tabListMobile-bR1" title="Behance 选择项目按钮">
-				<option class="SearchLegacy-tabItem-i5z" value="projects" selected="">项目</option>
-				<option class="SearchLegacy-tabItem-i5z" value="assets">资源</option>
-				<option class="SearchLegacy-tabItem-i5z SearchLegacy-tabActive-ZpC" value="images">图像</option>
-				<option class="SearchLegacy-tabItem-i5z" value="prototypes">原型</option>
-				<option class="SearchLegacy-tabItem-i5z" value="streams">直播</option>
-				<option class="SearchLegacy-tabItem-i5z" value="users">人物</option>
-				<option class="SearchLegacy-tabItem-i5z" value="moodboards">情绪板</option>
-			</select>
-		</nav>
 		</main>
 	</div>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
