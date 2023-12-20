@@ -1,0 +1,20 @@
+.btn-dark {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    @apply text-black bg-white border-none;
+}
+
+/* 悬停效果 */
+.btn-dark:hover {
+    @apply text-white bg-slate-900
+}
+
+.btn-sm {
+    @apply px-2 py-1 text-sm text-center;
+}
