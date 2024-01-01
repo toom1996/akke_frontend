@@ -2,6 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import MainHeader from '../components/MainHeader.astro';
 import MainFooter from '../components/MainFooter.astro';
+import Content from '../components/pages/MainContent.vue'
 import Icon from 'astro-icon';
 
 const panelSearchNav = [
@@ -25,9 +26,9 @@ const panelSearchNav = [
 		border-bottom: 1px solid #f2f2f2;
 		padding: 24px;
 		padding-bottom: 21px;
-		position: fixed;
-		/* top: 55px; */
+		/* position: fixed; */
 		z-index: 3;
+		@apply top-14;
 	}
 
 	nav {
@@ -38,7 +39,7 @@ const panelSearchNav = [
 	<MainHeader></MainHeader>
 	<div class="panel">
 		<main>
-			<header class="panel-search-header w-full">
+			<header class="fixed panel-search-header w-full">
 				<div class="search-bar-wrapper relative flex rounded-full">
 					<div class="search-bar flex relative justify-center flex-col grow">
 						<div class="search-container relative flex-1">
@@ -68,7 +69,9 @@ const panelSearchNav = [
 					</nav>
 				</div>
 			</header>
-			<content></content>
+			<content>
+				<Content client:only="vue"/>
+			</content>
 			<MainFooter></MainFooter>
 		</main>
 	</div>

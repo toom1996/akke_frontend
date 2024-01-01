@@ -6,14 +6,22 @@ footer a {
   @apply px-4 font-bold text-xs text-slate-600 cursor-pointer;
 }
 
+.wrapper {
+  @apply pt-1;
+}
+
+.tooltip {
+  @apply absolute bottom-[calc(100%)] border border-slate-950 py-2 pr-2 bg-white z-50 hidden;
+}
+
 .footer-other a:hover {
   @apply text-blue-500 no-underline;
 }
+
 footer .link:hover {
   color: #0057ff;
   text-decoration: none;
 }
-
 
 .footer-more-btn::after {
   content: "";
@@ -49,18 +57,8 @@ footer .link:hover {
   @apply rotate-180;
 }
 
-/* .footer-more-wrapper:hover .footer-more-tooltip {
-  display:block;
-} */
-
-.Tooltip-topPositionHitBox-Q8Z {
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-}
-
 .arrow {
+  @apply border-l border-b top-px z-50 w-2 h-2 absolute rotate-45 border-slate-950;
   box-sizing: border-box;
   --tw-skew-x: 0;
   --tw-skew-y: 0;
@@ -74,18 +72,26 @@ footer .link:hover {
   background-color: rgba(255,255,255,var(--tw-bg-opacity));
   border-color: rgba(0,0,0,var(--tw-border-opacity));
 }
+
+.wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent; /* 需要设置透明背景色以便看到底部的内容 */
+  z-index: -1; /* 将伪元素置于元素的底层，以便触发:hover */
+}
 </style>
 <footer>
   <div class="flex fixed bottom-1 border-t border-slate-950 w-full">
-    <div class="footer-more group/more pt-1">
-      <div class="group/more footer-more-wrapper">
-        <span class="footer-more relative">
-          <a class="footer-more-btn">
-            更多 Behance
-          </a>
-        </span>
-        <!-- <div class="Tooltip-topPositionHitBox-Q8Z" style="height: calc(100% + .75rem);"></div> -->
-        <div class="footer-more-tooltip group-hover/more:block absolute bottom-[calc(100%)] border border-slate-950 py-2 pr-2 left-5 bg-white z-50 hidden">
+    <div class="wrapper footer-more group/mor">
+      <div class="group/more border-r border-slate-950">
+        <a class="footer-more-btn">
+          更多 Behance
+        </a>
+        <div class="tooltip footer-more-tooltip group-hover/more:block left-3">
           <div class="absolute bottom-0 left-3">
             <div class="arrow border-l border-b top-px z-50 w-2 h-2 absolute rotate-45 border-slate-950"></div>
           </div>
@@ -119,20 +125,16 @@ footer .link:hover {
         </div>
       </div>
     </div>
-    <div class="footer-languages pt-1">
-      <div class="Tooltip-wrapper-Uzv Tooltip-responsive-XDl group/languages">
-        <span class="Tooltip-trigger-eZ_">
-          <a class="footer-language-btn relative" aria-expanded="false" aria-label="当前选择的语言：中文(简体)">
-            中文(简体)
-          </a>
-        </span>
-        <!-- <div class="Tooltip-topPositionHitBox-Q8Z" style="height: calc(100% + 5px + 6px)">
-        </div> -->
-        <div class="hidden group-hover/languages:block absolute drop-shadow bottom-[calc(100%+12px)] border py-2 pr-2 rounded-md z-50 bg-white">
-          <div class="absolute bottom-0 left-3">
-            <div class="absolute border-8 border-transparent border-t-[#fff]"></div>
+    <div class="wrapper footer-language">
+      <div class="group/languages border-r border-slate-950">
+        <a class="footer-language-btn relative" aria-expanded="false" aria-label="当前选择的语言：中文(简体)">
+          中文(简体)
+        </a>
+        <div class="tooltip group-hover/languages:block ">
+          <div class="absolute bottom-0 left-6">
+            <div class="arrow"></div>
           </div>
-          <ul class="LanguageSelector-tooltipContainer-cBd" role="menu" aria-label="语言选项">
+          <ul class="flex flex-col-reverse">
             {
               language.map(item => (
                 <li class="LanguageSelector-footerSelectorItem-m2u" role="menuitem">
@@ -149,7 +151,7 @@ footer .link:hover {
         </div>
       </div>
     </div>
-    <div class="footer-other pt-1">
+    <div class="wrapper footer-other">
       <ul class="flex items-center">
         <li class="">
           <a href="http://www.adobe.com/legal/terms.html" target="_blank">
