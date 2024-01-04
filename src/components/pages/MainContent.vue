@@ -10,34 +10,10 @@
               </div>
               <div class="">
                 <picture class="ProjectCoverNeue-picture-NuE h-full w-full absolute top-0">
-                  <source
-                    srcset="
-                    https://aliyun-img.hypebeast.cn/https%3A%2F%2Fhbx.hypebeast.com%2Ffiles%2F2023%2F08%2FLB_3x2_01.jpg?q=85 808w,
-                      https://mir-s3-cdn-cf.behance.net/projects/404_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 404w,
-                      https://mir-s3-cdn-cf.behance.net/projects/202_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 202w,
-                      https://mir-s3-cdn-cf.behance.net/projects/230_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 230w,
-                      https://mir-s3-cdn-cf.behance.net/projects/115_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 115w
-                    "
-                    type="image/webp"
-                  />
-                  <source
-                    srcset="
-                    https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg 115w,
-                      https://mir-s3-cdn-cf.behance.net/projects/202/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 202w,
-                      https://mir-s3-cdn-cf.behance.net/projects/230/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 230w,
-                      https://mir-s3-cdn-cf.behance.net/projects/404/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 404w,
-                      https://aliyun-img.hypebeast.cn/https%3A%2F%2Fhbx.hypebeast.com%2Ffiles%2F2023%2F08%2FLB_3x2_01.jpg?q=85 808w
-                    "
-                    type="image/jpeg"
-                  />
-                  <img
-                    sizes="404px"
-                    :src="item.cover"
-                    class="h-full w-full object-cover"
-                    :alt="item.title"
-                    loading="lazy"
-                    @error="handleError(index)"
-                  />
+                  <source media="(min-width: 1200px)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" />
+                  <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" />
+                  <!-- <source media="(min-width: 800px)" :srcset="getJpgScrSet(item.cover)" type="image/jpeg" /> -->
+                  <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
                 </picture>
               </div>
             </div>
@@ -45,29 +21,11 @@
           <div class="ProjectCover-details-ute flex justify-between">
             <div class="ProjectCover-info-sxd">
               <span class="TitleOwner-limitHeight-_cX">
-                <a
-                  href="https://www.behance.net/gallery/184704669/Social-Media-Designfor-OpusClip-Social-Media-Post?tracking_source=search_projects"
-                  class="text-sm font-bold"
-                  tabindex="0"
-                  >{{ item.title }} | Social Media
-                  </a>
-                <div
-                  class="Owners-root-qU7 Owners-dark-BYv Owners-overflowText-C9U TitleOwner-owner-I52 TitleOwner-mediumOwner-eDx"
-                >
-                  <div class="Owners-miniprofileActivatorContainer-k0t">
-                    <div aria-haspopup="true">
-                      <div
-                        aria-describedby="f2fcc371-ad91-4dfe-a1b3-7426b3b1952a"
-                        class="Popover-activator-M8N Owners-miniprofileActivator-dc_ Miniprofile-activator-dDq"
-                      >
-                        <span>
-                          <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects" class="text-xs">
-                            Mahdy Hasan Hridoy
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <a :href="item.src" class="text-sm font-bold">{{ item.title }} | Social Media</a>
+                <div aria-describedby="f2fcc371-ad91-4dfe-a1b3-7426b3b1952a" class="Popover-activator-M8N Owners-miniprofileActivator-dc_ Miniprofile-activator-dDq" >
+                    <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects" class="text-xs">
+                      Mahdy Hasan Hridoy
+                    </a>
                 </div>
               </span>
             </div>
@@ -85,6 +43,73 @@
     </ul>
   </div>
 </template>
+<script setup lang="ts">
+import { ref, onMounted, reactive, computed } from "vue";
+import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
+import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
+const dataProvider = reactive([
+  {
+    title: "内衣--女装12月TOP热榜sadfsdafsadfsdafsdf",
+    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "家居服--女装12月TOP热榜",
+    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122910/ANAREPORT_658e2c9e6d46b_8866.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "T恤/卫衣--男装TOP热榜",
+    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122816/ANAREPORT_658d2be0a5cb7_9978.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "大衣--女装TOP热榜",
+    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122117/ANAREPORT_658406dfb15bb_7724.png',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "棉羽绒--男女装TOP热榜",
+    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122218/ANAREPORT_658567ef48384_2384.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+]);
+
+const computedWrapperStyle = () => {
+  return {
+    color: "blue",
+  };
+};
+
+const handleError = (index:number) => {
+  document.getElementsByClassName(`cover-mask${index}`)[0].innerHTML = '<span>This image is temporary unavailable</span>'
+};
+
+const getWebpSrcSet = (src:string):string => {
+  // https://aliyun-img.hypebeast.cn/https%3A%2F%2Fhbx.hypebeast.com%2Ffiles%2F2023%2F08%2FLB_3x2_01.jpg?q=85 808w,
+  // https://aliyun-img.hypebeast.cn/https%3A%2F%2Fhbx.hypebeast.com%2Ffiles%2F2023%2F08%2FLB_3x2_01.jpg?q=85 404w,
+  //                     https://mir-s3-cdn-cf.behance.net/projects/202_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 202w,
+  //                     https://mir-s3-cdn-cf.behance.net/projects/230_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 230w,
+  //                     https://mir-s3-cdn-cf.behance.net/projects/115_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 115w
+  //                   "
+
+  // http://toomhub.image.23cm.cn/005PuN3Egy1go4g3gmnjlj30a00f0gp0.jpg_1614762182619_0.4770089478803292 808w
+  // imageView2/0/format/webp/q/75
+  return `http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/50 808w,
+  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/60 404w,
+  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/70 202w,
+  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/75 230w,
+  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/75 115w`
+}
+
+const getJpgScrSet = (src:string):string => {
+//imageView2/0/format/jpg/q/75
+return `http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/jpg/q/2 808w,`
+}
+
+onMounted(() => {
+});
+</script>
 <style>
 .cover-container {
   @apply mb-1;
@@ -106,42 +131,3 @@
   
 }
 </style>
-<script setup lang="ts">
-import { ref, onMounted, reactive, computed } from "vue";
-import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
-import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
-const dataProvider = reactive([
-  {
-    title: "内衣--女装12月TOP热榜sadfsdafsadfsdafsdf",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg',
-  },
-  {
-    title: "家居服--女装12月TOP热榜",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122910/ANAREPORT_658e2c9e6d46b_8866.jpg'
-  },
-  {
-    title: "T恤/卫衣--男装TOP热榜",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122816/ANAREPORT_658d2be0a5cb7_9978.jpg'
-  },
-  {
-    title: "大衣--女装TOP热榜",
-    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122117/ANAREPORT_658406dfb15bb_7724.png'
-  },
-  {
-    title: "棉羽绒--男女装TOP热榜",
-    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122218/ANAREPORT_658567ef48384_2384.jpg'
-  },
-]);
-
-const computedWrapperStyle = () => {
-  return {
-    color: "blue",
-  };
-};
-
-const handleError = (index:number) => {
-  document.getElementsByClassName(`cover-mask${index}`)[0].innerHTML = '<span>loading...</span>'
-    };
-onMounted(() => {
-});
-</script>
