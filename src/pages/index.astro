@@ -37,42 +37,60 @@ const panelSearchNav = [
 </style>
 <MainLayout title="Welcome to Akke.">
 	<MainHeader></MainHeader>
-	<div class="panel">
-		<main>
-			<header class="fixed panel-search-header w-full">
-				<div class="search-bar-wrapper relative flex rounded-full">
-					<div class="search-bar flex relative justify-center flex-col grow">
-						<div class="search-container relative flex-1">
-							<div class="search-input-wrapper flex h-full">
-								<div class="search-icon w-12 flex justify-center items-center">
-									<Icon class="h-6 w-6" name="ion:search" />
-								</div>
-								<div class="search-form flex-1 relative">
-									<input type="search" name="text" autocomplete="off" autocapitalize="off" class="search-input h-full w-full absolute top-0 outline-none" placeholder="搜索工作中的创意世界" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
-								</div>
-								<div class="search-icon w-12 flex justify-center items-center">
-									<Icon class="h-4 w-4" name="ion:close-round" />
-								</div>
+	<div class="panel fixed panel-search-header w-full">
+		<header class="">
+			<div class="search-bar-wrapper relative flex rounded-full">
+				<div class="search-bar flex relative justify-center flex-col grow">
+					<div class="search-container relative flex-1">
+						<div class="search-input-wrapper flex h-full">
+							<div class="search-icon w-12 flex justify-center items-center">
+								<Icon class="h-6 w-6" name="ion:search" />
+							</div>
+							<div class="search-form flex-1 relative">
+								<input type="search" name="text" autocomplete="off" autocapitalize="off" class="search-input h-full w-full absolute top-0 outline-none" placeholder="搜索工作中的创意世界" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
+							</div>
+							<div class="search-icon w-12 flex justify-center items-center">
+								<Icon class="h-4 w-4" name="ion:close-round" />
 							</div>
 						</div>
 					</div>
-					<nav>
-						<ul class="flex py-2 px-4">
-							{
-								panelSearchNav.map(item => (
-									<li class="pr-2">
-										<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">{item}</a>
-									</li>
-								))
-							}
-						</ul>
-					</nav>
 				</div>
-			</header>
-			<content>
-				<Content client:only="vue"/>
-			</content>
-			<MainFooter></MainFooter>
-		</main>
+				<nav>
+					<ul class="flex py-2 px-4">
+						{
+							panelSearchNav.map(item => (
+								<li class="pr-2">
+									<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">{item}</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<filter class="">
+			<div>
+				<button type="button" class="text-black hover:bg-[#050708]/90 focus:outline-none font-medium rounded text-sm pe-2 py-0 border lg:pe-3 text-center inline-flex items-center mb-2">
+					<span class=" w-8 h-8 text-center me-2 rounded">
+						<Icon class="h-6 w-6" name="ion:search" />
+					</span>
+					领域
+				</button>
+				<div class="filter-dropdown-wrapper flex">
+					<div>nav</div>
+					<div>item</div>
+				</div>
+			</div>
+			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">工具</a>
+			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">颜色</a>
+			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">位置</a>
+			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">学校</a>
+			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">资源</a>
+			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">订阅</a>
+		</filter>
 	</div>
+	<content>
+		<Content client:visible/>
+	</content>
+	<MainFooter></MainFooter>
 </Layout>

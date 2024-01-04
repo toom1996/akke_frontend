@@ -32,7 +32,7 @@
             <div class="detail-wrapper">
               <div class="detail-content">
                 <MdiLightEye class="eye" />
-                <span title="89">89</span>
+                <span title="89" @click="test">{{ count }}</span>
                 <MaterialSymbolsAddPhotoAlternateOutline class="img" />
                 <span title="647">647</span>
               </div>
@@ -47,38 +47,18 @@
 import { ref, onMounted, reactive, computed } from "vue";
 import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
-const dataProvider = reactive([
-  {
-    title: "内衣--女装12月TOP热榜sadfsdafsadfsdafsdf",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "家居服--女装12月TOP热榜",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122910/ANAREPORT_658e2c9e6d46b_8866.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "T恤/卫衣--男装TOP热榜",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122816/ANAREPORT_658d2be0a5cb7_9978.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "大衣--女装TOP热榜",
-    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122117/ANAREPORT_658406dfb15bb_7724.png',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "棉羽绒--男女装TOP热榜",
-    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122218/ANAREPORT_658567ef48384_2384.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-]);
+const count = ref(0)
 
-const computedWrapperStyle = () => {
-  return {
-    color: "blue",
-  };
+interface Response {
+  title: string,
+  cover: string,
+  src: string,
+}
+const dataProvider = ref<Response[]>([]);
+
+const test = () => {
+  count.value++;
+  alert('count++')
 };
 
 const handleError = (index:number) => {
@@ -108,6 +88,34 @@ return `http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageV
 }
 
 onMounted(() => {
+  dataProvider.value = [
+  {
+    title: "内衣--女装12月TOP热榜sadfsdafsadfsdafsdf",
+    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "家居服--女装12月TOP热榜",
+    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122910/ANAREPORT_658e2c9e6d46b_8866.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "T恤/卫衣--男装TOP热榜",
+    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122816/ANAREPORT_658d2be0a5cb7_9978.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "大衣--女装TOP热榜",
+    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122117/ANAREPORT_658406dfb15bb_7724.png',
+    src: '/ddsfsdfsdaf'
+  },
+  {
+    title: "棉羽绒--男女装TOP热榜",
+    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122218/ANAREPORT_658567ef48384_2384.jpg',
+    src: '/ddsfsdfsdaf'
+  },
+]
+  alert('onMounted')
 });
 </script>
 <style>
