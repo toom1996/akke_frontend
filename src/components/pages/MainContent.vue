@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
     <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <li v-for="(item, index) in dataProvider">
+      <li v-for="(item, index) in state.dataProvider">
         <div class="cover-wrapper">
           <div class="cover-container relative">
             <div class="cover-content ">
-              <div :class="['flex items-center justify-center absolute w-full bottom-0 left-0 top-0 right-0', `cover-mask${index}`]">
+              <div :class="['flex items-center justify-center absolute w-full bottom-0 left-0 top-0 right-0 animate-pulse', `cover-mask${index}`]">
                 <span>loading...</span>
               </div>
-              <div class="">
+              <div v-show="state.isInit" class="">
                 <picture class="ProjectCoverNeue-picture-NuE h-full w-full absolute top-0">
                   <source media="(min-width: 1200px)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" />
                   <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" />
@@ -47,14 +47,21 @@
 import { ref, onMounted, reactive, computed } from "vue";
 import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
-const count = ref(0)
-
-interface Response {
+interface IDataProvider {
   title: string,
   cover: string,
   src: string,
 }
-const dataProvider = ref<Response[]>([]);
+const count = ref(0)
+
+interface State {
+  isInit: boolean,
+  dataProvider: IDataProvider[]
+}
+const state = reactive<State>({
+  isInit: false,
+  dataProvider: Array.from({ length: 20 }, (_, i) => genIDataProvider(i)),
+})
 
 const test = () => {
   count.value++;
@@ -87,8 +94,19 @@ const getJpgScrSet = (src:string):string => {
 return `http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/jpg/q/2 808w,`
 }
 
+
+function genIDataProvider(id: number): IDataProvider {
+  return {
+    title: '',
+    cover: '',
+    src: '',
+  };
+}
+
+
 onMounted(() => {
-  dataProvider.value = [
+  setTimeout(() => {
+    state.dataProvider = [
   {
     title: "内衣--女装12月TOP热榜sadfsdafsadfsdafsdf",
     cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg',
@@ -115,7 +133,9 @@ onMounted(() => {
     src: '/ddsfsdfsdaf'
   },
 ]
-  alert('onMounted')
+state.isInit = true
+    }, 5000);
+
 });
 </script>
 <style>
