@@ -39,7 +39,7 @@ const panelSearchNav = [
 	<MainHeader></MainHeader>
 	<div class="panel fixed panel-search-header w-full">
 		<header class="">
-			<div class="search-bar-wrapper relative flex rounded-full">
+			<!-- <div class="search-bar-wrapper relative flex rounded-full">
 				<div class="search-bar flex relative justify-center flex-col grow">
 					<div class="search-container relative flex-1">
 						<div class="search-input-wrapper flex h-full">
@@ -66,28 +66,8 @@ const panelSearchNav = [
 						}
 					</ul>
 				</nav>
-			</div>
+			</div> -->
 		</header>
-		<filter class="">
-			<div>
-				<button type="button" class="text-black hover:bg-[#050708]/90 focus:outline-none font-medium rounded text-sm pe-2 py-0 border lg:pe-3 text-center inline-flex items-center mb-2">
-					<span class=" w-8 h-8 text-center me-2 rounded">
-						<Icon class="h-6 w-6" name="ion:search" />
-					</span>
-					领域
-				</button>
-				<div class="filter-dropdown-wrapper flex">
-					<div>nav</div>
-					<div>item</div>
-				</div>
-			</div>
-			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">工具</a>
-			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">颜色</a>
-			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">位置</a>
-			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">学校</a>
-			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">资源</a>
-			<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">订阅</a>
-		</filter>
 	</div>
 	<content>
 		<Content client:visible/>

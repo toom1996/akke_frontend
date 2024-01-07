@@ -10,9 +10,8 @@
               </div>
               <div v-show="state.isInit" class="">
                 <picture class="ProjectCoverNeue-picture-NuE h-full w-full absolute top-0">
-                  <source media="(min-width: 1200px)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" />
-                  <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" />
-                  <!-- <source media="(min-width: 800px)" :srcset="getJpgScrSet(item.cover)" type="image/jpeg" /> -->
+                  <source media="(min-width: 1200px)" :srcset="getSrcSet(item.cover)"/>
+                  <!-- <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" /> -->
                   <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
                 </picture>
               </div>
@@ -31,10 +30,8 @@
             </div>
             <div class="detail-wrapper">
               <div class="detail-content">
-                <MdiLightEye class="eye" />
-                <span title="89" @click="test">{{ count }}</span>
                 <MaterialSymbolsAddPhotoAlternateOutline class="img" />
-                <span title="647">647</span>
+                <span title="647">{{ item.img_count }}</span>
               </div>
             </div>
           </div>
@@ -46,11 +43,13 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive, computed } from "vue";
 import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
+import { mainSearch } from '@/api/v1';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
 interface IDataProvider {
   title: string,
   cover: string,
   src: string,
+  img_count: number
 }
 const count = ref(0)
 
@@ -60,7 +59,7 @@ interface State {
 }
 const state = reactive<State>({
   isInit: false,
-  dataProvider: Array.from({ length: 20 }, (_, i) => genIDataProvider(i)),
+  dataProvider: [],
 })
 
 const test = () => {
@@ -72,7 +71,7 @@ const handleError = (index:number) => {
   document.getElementsByClassName(`cover-mask${index}`)[0].innerHTML = '<span>This image is temporary unavailable</span>'
 };
 
-const getWebpSrcSet = (src:string):string => {
+const getSrcSet = (src:string):string => {
   // https://aliyun-img.hypebeast.cn/https%3A%2F%2Fhbx.hypebeast.com%2Ffiles%2F2023%2F08%2FLB_3x2_01.jpg?q=85 808w,
   // https://aliyun-img.hypebeast.cn/https%3A%2F%2Fhbx.hypebeast.com%2Ffiles%2F2023%2F08%2FLB_3x2_01.jpg?q=85 404w,
   //                     https://mir-s3-cdn-cf.behance.net/projects/202_webp/dde47c184704669.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png 202w,
@@ -82,11 +81,11 @@ const getWebpSrcSet = (src:string):string => {
 
   // http://toomhub.image.23cm.cn/005PuN3Egy1go4g3gmnjlj30a00f0gp0.jpg_1614762182619_0.4770089478803292 808w
   // imageView2/0/format/webp/q/75
-  return `http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/50 808w,
-  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/60 404w,
-  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/70 202w,
-  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/75 230w,
-  http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/webp/q/75 115w`
+  return `${src} 808w,
+  ${src} 404w,
+  ${src} 202w,
+  ${src} 230w,
+  ${src} 115w`
 }
 
 const getJpgScrSet = (src:string):string => {
@@ -94,48 +93,12 @@ const getJpgScrSet = (src:string):string => {
 return `http://toomhub.image.23cm.cn/dc4de67e7ce75764cde1208fb49c2454.jpg?imageView2/0/format/jpg/q/2 808w,`
 }
 
-
-function genIDataProvider(id: number): IDataProvider {
-  return {
-    title: '',
-    cover: '',
-    src: '',
-  };
-}
-
-
 onMounted(() => {
-  setTimeout(() => {
-    state.dataProvider = [
-  {
-    title: "内衣--女装12月TOP热榜sadfsdafsadfsdafsdf",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122810/ANAREPORT_658cda073b90c_9728.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "家居服--女装12月TOP热榜",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122910/ANAREPORT_658e2c9e6d46b_8866.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "T恤/卫衣--男装TOP热榜",
-    cover: 'https://imgwf2.pop-fashion.com/upload/flash_report/2023/2023122816/ANAREPORT_658d2be0a5cb7_9978.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "大衣--女装TOP热榜",
-    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122117/ANAREPORT_658406dfb15bb_7724.png',
-    src: '/ddsfsdfsdaf'
-  },
-  {
-    title: "棉羽绒--男女装TOP热榜",
-    cover: 'https://imgwf1.pop-fashion.com/upload/flash_report/2023/2023122218/ANAREPORT_658567ef48384_2384.jpg',
-    src: '/ddsfsdfsdaf'
-  },
-]
-state.isInit = true
-    }, 5000);
-
+  mainSearch({}).then(e => {
+    state.isInit = true
+    console.log(e.list)
+    state.dataProvider = e.list
+  })
 });
 </script>
 <style>
