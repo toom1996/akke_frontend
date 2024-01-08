@@ -30,3 +30,11 @@
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     @apply text-white bg-black border;
 }
+
+body {
+    --font-family-body: nimbus-sans-d,Arial,sans-serif,Microsoft Yahei;
+    --font-family-heading: nimbus-sans-d,Arial,sans-serif,Microsoft Yahei;
+    --font-size-base: 14px;
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-base);
+}
