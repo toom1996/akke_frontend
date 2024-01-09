@@ -23,7 +23,7 @@ export function mainSearch (params:object) {
             'img_count|+1':100,//整数'
             'cover': '@image(200x200)',
             'brand_srt': '@word(5, 20)',
-            'src': '/gallary/' + '@domain'
+            'src': '/gallary?id=' + '@domain'
           }]
     }) : get('/api/v1/frontend/main/search', params)
 }
