@@ -1,31 +1,10 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import MainGallary from '@/components/MainGallary.vue';
+import MainHeader from '@/components/MainHeader.astro';
 ---
 
 <MainLayout title="Gallary">
-  <MainGallary />
+    <MainHeader></MainHeader>
+    <MainGallary client:visible />
 </MainLayout>
-<style>
-.container {
-    grid-template-rows: 1fr 144px;
-}
-.container {
-    background-color: transparent;
-    border: 1px solid #3c3c3c;
-    border-radius: 4px;
-    -moz-column-gap: 0;
-    column-gap: 0;
-    display: grid;
-    grid-template-areas:
-        "moduleContent moduleSidebar"
-        "moduleActions moduleSidebar";
-    grid-template-columns: minmax(100px, 1fr) 320px;
-    grid-template-rows: calc( 100vh - 55px - 144px - 40px ) 144px;
-    max-height: calc( 100vh - 55px - 144px - 40px );
-    overflow: hidden;
-    pointer-events: all;
-    row-gap: 0;
-    width: 100%;
-}
-</style>

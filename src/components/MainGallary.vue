@@ -1,46 +1,50 @@
 <template>
-    <div class="gallary-wrapper bg-black">
-        <div class="container">
-            <div class="moduleContent">
-                <div class="ModuleContent-imageWrap-RnZ">
-                    <div class="e2e-ModuleOverlay-contentContainer ModuleContent-imageContainer-rts">
-                        <img class="e2e-ImageModuleContent-img ImageModuleContent-mainImage-IG1" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/4e0136187314319.658589aa35729.jpg" srcset="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4e0136187314319.658589aa35729.jpg 600w, https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4e0136187314319.658589aa35729.jpg 1200w, https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/4e0136187314319.658589aa35729.jpg 1400w, https://mir-s3-cdn-cf.behance.net/project_modules/fs/4e0136187314319.658589aa35729.jpg 1920w, https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/4e0136187314319.658589aa35729.jpg 2800w" sizes="(max-width: 2800px) 100vw, 2800px" alt="Fonda Europa" shouldblockrightclickevents="true">
+    <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
+        <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <li v-for="(item, index) in state.dataProvider">
+                <div class="img-container relative">
+                    <div class="img-content top-0 absolute w-full h-full">
+                        <img class="w-full h-full" :src="item.src">
+                        <!-- sdfsdfsdf -->
                     </div>
                 </div>
-            </div>
-            <div class="moduleActions bg-red-700 h-5">12312313131</div>
-            <div class="moduleSidebar"><div class="ModuleContent-actionBarWrapper-t0b"><div class="ModuleContent-projectSummaryWrapper-KhZ"><a class="ProjectSummary-projectLink-cly ProjectSummary-dark-bg5" href="https://www.behance.net/gallery/187314319/Fonda-Europa" target="_blank"><div class="ProjectSummary-overlay-kUd"><img class="ProjectSummary-projectCoverThumbnail-PWt" src="https://mir-s3-cdn-cf.behance.net/projects/404/638f54187314319.Y3JvcCw5MDcsNzA5LDE0NiwyMTc.jpg" srcset="https://mir-s3-cdn-cf.behance.net/projects/115/638f54187314319.Y3JvcCw5MDcsNzA5LDE0NiwyMTc.jpg 115w, https://mir-s3-cdn-cf.behance.net/projects/202/638f54187314319.Y3JvcCw5MDcsNzA5LDE0NiwyMTc.jpg 202w, https://mir-s3-cdn-cf.behance.net/projects/230/638f54187314319.Y3JvcCw5MDcsNzA5LDE0NiwyMTc.jpg 230w, https://mir-s3-cdn-cf.behance.net/projects/404/638f54187314319.Y3JvcCw5MDcsNzA5LDE0NiwyMTc.jpg 404w, https://mir-s3-cdn-cf.behance.net/projects/max_808/638f54187314319.Y3JvcCw5MDcsNzA5LDE0NiwyMTc.jpg 808w"></div><div class="ProjectSummary-projectInformation-o6Q"><h6 class="ProjectSummary-projectTitle-R2n">Fonda Europa</h6><div class="ProjectSummary-fullProjectLink-BMx"><p class="ProjectSummary-viewFullProject-i2z">查看完整项目</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.125 15.194" aria-labelledby="IconBase-title-a414f1f9-6a4c-47c1-822a-8a845015eb27 IconBase-description-a414f1f9-6a4c-47c1-822a-8a845015eb27" role="graphics-symbol img" width="100%" height="100%" class="ProjectSummary-linkIcon-giz" fill="none"><title id="IconBase-title-a414f1f9-6a4c-47c1-822a-8a845015eb27">LinkOut</title><desc id="IconBase-description-a414f1f9-6a4c-47c1-822a-8a845015eb27">在新标签页或新窗口中打开</desc><g><path d="M12.657 3.475H7.501A1.875 1.875 0 005.626 5.35v2.344 M9.844 6.288l2.813-2.812L9.844.663 M10.782 9.1v4.688a.938.938 0 01-.937.938H1.407a.938.938 0 01-.937-.937v-7.5a.938.938 0 01.938-.937h1.405"></path></g></svg></div><ul class="ProjectSummary-projectStats-rbJ"><li class="ProjectSummary-stat-ZWm ProjectSummary-appreciations-MJf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0.5 0.5 16 16" class="Appreciations-icon-Z4i ProjectSummary-icon-Cpx"><path fill="none" d="M.5.5h16v16H.5z"></path><path d="M.5 7.5h3v8h-3zM7.207 15.207c.193.19.425.29.677.293H12c.256 0 .512-.098.707-.293l2.5-2.5c.19-.19.288-.457.293-.707V8.5c0-.553-.445-1-1-1h-5L11 5s.5-.792.5-1.5v-1c0-.553-.447-1-1-1l-1 2-4 4v6l1.707 1.707z"></path></svg>865</li><li class="ProjectSummary-stat-ZWm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="ProjectSummary-icon-Cpx"><path d="M8.5 3.5c-5 0-8 5-8 5s3 5 8 5 8-5 8-5-3-5-8-5zm0 7c-1.105 0-2-.896-2-2 0-1.106.895-2 2-2 1.104 0 2 .894 2 2 0 1.104-.896 2-2 2z"></path></svg>5.5k</li><li class="ProjectSummary-stat-ZWm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="ProjectSummary-icon-Cpx"><rect width="16" height="16" fill="none"></rect><path d="M13 3H2C1.4 3 1 3.4 1 4v6l0 0c0 0.6 0.5 1 1 1h3v4h1l4-4h3c0.6 0 1-0.4 1-1l0 0V4C14 3.4 13.6 3 13 3z"></path></svg>155</li></ul></div></a></div><div class="ModuleContent-actionButtons-Scg"><div class="ModuleContent-actionButtonWrapper-Va8"><div class="e2e-Appreciate-appreciate-button AppreciationActionButton-appreciateButton-iPF"><div class="Tooltip-wrapper-Uzv Tooltip-responsive-XDl Appreciate-tooltip-IT8 js-adobe-analytics" data-adobe-analytics="AppreciateClick" style="cursor: pointer;"><span class="Tooltip-trigger-eZ_"><div role="button" class="Appreciate-wrapper-REw AppreciationActionButton-appreciateCircle-a4G" tabindex="0" aria-label="欣赏"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0.5 0.5 16 16" class="Appreciations-icon-Z4i Appreciate-icon-jRA AppreciationActionButton-appreciateThumbIcon-Za_"><path fill="none" d="M.5.5h16v16H.5z"></path><path d="M.5 7.5h3v8h-3zM7.207 15.207c.193.19.425.29.677.293H12c.256 0 .512-.098.707-.293l2.5-2.5c.19-.19.288-.457.293-.707V8.5c0-.553-.445-1-1-1h-5L11 5s.5-.792.5-1.5v-1c0-.553-.447-1-1-1l-1 2-4 4v6l1.707 1.707z"></path></svg><!----></div></span><div class="Tooltip-topPositionHitBox-Q8Z" style="height: calc(100% + 13px);"></div><div class="Tooltip-container-DIF Tooltip-position-top-FZF Tooltip-center-krh" style="cursor: initial; padding: 0px; bottom: calc(100% + 13px); display: none;"><div class="Tooltip-triangleContainer-r5D"><div class="Tooltip-triangle-Qw9"></div><div class="Tooltip-mask-mwQ"></div></div><div class="Appreciate-tooltipStyle-Ywy"><div role="button" aria-labelledby="appreciate-eb9c734c-95d1-4737-9b2d-9d83e8723394" tabindex="-1"><span id="appreciate-eb9c734c-95d1-4737-9b2d-9d83e8723394" class="Appreciate-tooltipContent-sJa">欣赏</span></div></div><!----></div></div></div><div class="ModuleContent-actionName-QBr">欣赏</div></div><div class="ActionButtonWithTooltip-actionButtonWrapper-n0A"><div class="Tooltip-wrapper-Uzv Tooltip-responsive-XDl" style="cursor: pointer;"><span class="Tooltip-trigger-eZ_"><a class="ActionButtonWithTooltip-actionButton-TjC" tabindex="0"><svg class="Collection-icon-mXx ModuleContent-ctaButtonIcon-ABk" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"><path d="M5.69,3.395,7.97,5.487h6.217V7.579H2.858V3.743a.351.351,0,0,1,.354-.349ZM5.69,2H3.212a1.757,1.757,0,0,0-1.77,1.743V7.579h-1a.356.356,0,0,0-.27.123A.345.345,0,0,0,.1,7.985L1.336,14.68a.705.705,0,0,0,.7.572H15.012a.705.705,0,0,0,.7-.572L16.95,7.985a.345.345,0,0,0-.079-.283.356.356,0,0,0-.27-.123h-1V4.789a.7.7,0,0,0-.708-.7H8.523L6.859,2.514A1.657,1.657,0,0,0,5.69,2Z" transform="translate(-0.023 -0.5)"></path></svg></a></span><div class="Tooltip-topPositionHitBox-Q8Z" style="height: calc(100% + 13px);"></div><div class="Tooltip-container-DIF Tooltip-position-top-FZF Tooltip-center-krh" style="cursor: initial; padding: 10px; bottom: calc(100% + 13px); display: none;"><div class="Tooltip-triangleContainer-r5D"><div class="Tooltip-triangle-Qw9"></div><div class="Tooltip-mask-mwQ"></div></div><div class="ActionButtonWithTooltip-tooltipContent-elg">添加到情绪板</div><!----></div></div><div class="ActionButtonWithTooltip-actionName-ZHN">保存</div></div><div class="ActionButtonWithTooltip-actionButtonWrapper-n0A"><div class="Tooltip-wrapper-Uzv Tooltip-responsive-XDl" style="cursor: pointer;"><span class="Tooltip-trigger-eZ_"><a class="ActionButtonWithTooltip-actionButton-TjC" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="ModuleContent-ctaButtonIcon-ABk"><path d="M16 2.5a.534.534 0 00-.563-.5H.563A.534.534 0 000 2.5v11a.534.534 0 00.563.5H1V3h15z"></path><path d="M17.5 4h-15a.5.5 0 00-.5.5v11a.5.5 0 00.5.5h15a.5.5 0 00.5-.5v-11a.5.5 0 00-.5-.5zm-.5 9.687l-2.636-2.637a1 1 0 00-1.414 0l-1.536 1.536-3.778-3.779a1 1 0 00-1.414 0L3 12.03V5h14z"></path><circle cx="14.5" cy="7.5" r="1.25"></circle></svg></a></span><div class="Tooltip-topPositionHitBox-Q8Z" style="height: calc(100% + 13px);"></div><div class="Tooltip-container-DIF Tooltip-position-top-FZF Tooltip-center-krh" style="cursor: initial; padding: 10px; bottom: calc(100% + 13px); display: none;"><div class="Tooltip-triangleContainer-r5D"><div class="Tooltip-triangle-Qw9"></div><div class="Tooltip-mask-mwQ"></div></div><div class="ActionButtonWithTooltip-tooltipContent-elg">更多此类内容</div><!----></div></div><div class="ActionButtonWithTooltip-actionName-ZHN">选取相似</div></div><div class="ActionButtonWithTooltip-actionButtonWrapper-n0A"><div class="Tooltip-wrapper-Uzv Tooltip-responsive-XDl" style="cursor: pointer;"><span class="Tooltip-trigger-eZ_"><a class="ActionButtonWithTooltip-actionButton-TjC" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" class="CopyLink-linkIcon-C4s"><path fill="none" d="M0 0v16h16V0H0zm11.5 10.5l-4 4-.5.5H4l-3-3V9l.5-.5L3 7v4l2 2h1l3.5-3.5v-1L8 7l.5-.5 1-1 2 2v3zM15 7l-.5.5L13 9V5l-2-2h-1L6.5 6.5v1L8 9l-.5.5-1 1-2-2v-3l4-4L9 1h3l3 3v3z"></path><path d="M9 1L4.5 5.5v3l2 2 1-1L8 9 6.5 7.5v-1L10 3h1l2 2v4l2-2V4l-3-3z"></path><path d="M8 7l1.5 1.5v1L6 13H5l-2-2V7L1 9v3l3 3h3l4.5-4.5v-3l-2-2z"></path></svg></a></span><div class="Tooltip-topPositionHitBox-Q8Z" style="height: calc(100% + 13px);"></div><div class="Tooltip-container-DIF Tooltip-position-top-FZF Tooltip-center-krh" style="cursor: initial; padding: 10px; bottom: calc(100% + 13px); display: none;"><div class="Tooltip-triangleContainer-r5D"><div class="Tooltip-triangle-Qw9"></div><div class="Tooltip-mask-mwQ"></div></div><div class="ActionButtonWithTooltip-tooltipContent-elg">复制链接</div><!----></div></div><div class="ActionButtonWithTooltip-actionName-ZHN">链接</div></div></div></div></div>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
+<script setup lang="ts">
+import { onMounted, reactive } from 'vue';
+import { gallaryIndex } from '@/api/v1';
+
+interface IDataProvider {
+    src: string
+}
+
+interface State {
+    dataProvider: IDataProvider[]
+}
+const state = reactive<State>({
+    dataProvider: []
+})
+
+onMounted(() => {
+    gallaryIndex({}).then(e => {
+        state.dataProvider = e.list
+    })
+})
+</script>
 <style>
-.container {
-    grid-template-rows: 1fr 144px;
-}
-.container {
-    background-color: transparent;
-    border: 1px solid #3c3c3c;
-    border-radius: 4px;
-    -moz-column-gap: 0;
-    column-gap: 0;
-    display: grid;
-    grid-template-areas:
-        "moduleContent moduleSidebar"
-        "moduleActions moduleSidebar";
-    grid-template-columns: minmax(100px, 1fr) 320px;
-    /* grid-template-rows: calc( 100vh - 55px - 144px - 40px ) 144px; */
-    max-height: calc( 100vh - 55px - 144px - 40px );
-    /* overflow: hidden; */
-    pointer-events: all;
-    row-gap: 0;
+.img-body {
+    @apply absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
 }
 
-.moduleActions {
-    border-top: 1px solid #3c3c3c;
-    grid-area: moduleActions;
-    height: 144px;
-    justify-content: space-between;
+.img-container {
+    margin-bottom: 16px;
+    padding-top: 150%;
+    background: #f7f7f7;
 }
-
 </style>

@@ -15,7 +15,6 @@ function generateMockData(mockRules:Object = {}) {
 }
 
 export function mainSearch (params:object) {
-    console.log(isDevMode)
     return isDevMode ? generateMockData({
         'list|10-20': [{
             'id|+1': 1,
@@ -24,6 +23,16 @@ export function mainSearch (params:object) {
             'cover': '@image(200x200)',
             'brand_srt': '@word(5, 20)',
             'src': '/gallary?id=' + '@domain'
+          }]
+    }) : get('/api/v1/frontend/main/search', params)
+}
+
+
+export function gallaryIndex (params:object) {
+    return isDevMode ? generateMockData({
+        'list|10-20': [{
+            'id|+1': 1,
+            'src': '@image(200x200)',
           }]
     }) : get('/api/v1/frontend/main/search', params)
 }
