@@ -43,6 +43,8 @@ import { ref, onMounted, reactive, computed } from "vue";
 import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
 import { mainSearch } from '@/api/v1';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
+import { navigate } from 'astro:transitions/client';
+
 interface IDataProvider {
   title: string,
   cover: string,
