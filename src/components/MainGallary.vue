@@ -1,10 +1,14 @@
 <template>
+    <View @close="close" ref="componentView" v-if="state.isView" />
     <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
         <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
-                <div class="img-container relative">
-                    <div class="img-content top-0 absolute w-full h-full">
-                        <img class="w-full h-full" :src="item.src">
+                <div class="img-container relative cursor-pointer" @click="view">
+                    <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
+                        <span>图片加载中...</span>
+                    </div>
+                    <div class='top-0 absolute w-full h-full' :id="`img-content-${index}`">
+                        <img class="w-full h-full" :src="item.src" @error="handleError(index)">
                         <!-- sdfsdfsdf -->
                     </div>
                 </div>
@@ -13,25 +17,45 @@
     </div>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { gallaryIndex } from '@/api/v1';
+import View from '@/components/GallaryView.vue'
 
 interface IDataProvider {
     src: string
 }
 
 interface State {
-    dataProvider: IDataProvider[]
+    dataProvider: IDataProvider[],
+    isView: boolean
 }
 const state = reactive<State>({
-    dataProvider: []
+    dataProvider: [],
+    isView: false,
 })
+const componentView = ref(null)
+const view = async () => {
+    state.isView = true
+    console.log(componentView)
+}
+
+const close = () => {
+    state.isView = false
+}
 
 onMounted(() => {
     gallaryIndex({}).then(e => {
         state.dataProvider = e.list
     })
 })
+
+const handleError = (index:number) => {
+  var elementToRemove = document.getElementById(`img-content-${index}`); // 获取要删除的元素
+  document.getElementsByClassName
+  elementToRemove?.remove(); // 直接移除该元素
+  document.getElementsByClassName(`image-mask${index}`)[0].innerHTML = '<span>This image is temporary unavailable</span>'
+};
+
 </script>
 <style>
 .img-body {

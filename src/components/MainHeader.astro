@@ -9,7 +9,6 @@ const nav = ["为您呈现", "发现", "聘请", "资源", "职位"];
     }
 
     .main-nav::before {
-        @apply border-slate-200;
         background-color: #ececec;
         bottom: 0;
         content: "";
@@ -21,7 +20,7 @@ const nav = ["为您呈现", "发现", "聘请", "资源", "职位"];
         right: 0;
     }
 </style>
-<nav class="z-50 bg-white fixed w-full">
+<nav class="z-50 bg-white fixed w-full border-b border-slate-950">
     <div class="main-nav flex px-6">
         <ul class="flex h-full items-center mr-auto">
             {

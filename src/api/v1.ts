@@ -32,7 +32,8 @@ export function gallaryIndex (params:object) {
     return isDevMode ? generateMockData({
         'list|10-20': [{
             'id|+1': 1,
-            'src': '@image(200x200)',
+            // https://assets.vogue.com/photos/5ba66fd82d53962db47f091a/master/w_1280,c_limit/_ARC0085.jpg
+            'src': 'https://img01.sxxl.com/adption/2024/0109/0910/Thom_Browne_2024早秋_纽约_大衣_人字纹_-_-20240109104553877074_c_720_1080_75.jpg', // '@image(200x200)',
           }]
     }) : get('/api/v1/frontend/main/search', params)
 }
