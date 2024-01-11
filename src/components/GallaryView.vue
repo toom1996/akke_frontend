@@ -1,15 +1,24 @@
 <template>
-    <div @click="close" class="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 overflow-x-auto">
-        1231231231312
+    <div @click="close" class="fixed top-0 left-0 h-screen w-screen bg-black overflow-x-auto z-50">
+        <div class="container">
+          <img :src="src">
+        </div>
     </div>
 </template>
-<script setup>
-import { onMounted } from 'vue';
+<script setup lang="ts">
+import { onMounted, reactive, type Ref } from 'vue';
+
 
 const emit = defineEmits(["close"])
 
+
+interface stateInterface {
+  src: string
+}
+defineProps<stateInterface>()
+
 const close = () => {
-    var mo = function (e) {
+    var mo = function (e: any) {
     e.preventDefault()
   }
   document.body.style.overflow = '' //出现滚动条
@@ -23,7 +32,7 @@ const test = () => {
 
 onMounted(() => {
     console.log('11111111')
-    var mo = function (e) {
+    var mo = function (e: any) {
     e.preventDefault()
   }
     document.body.style.overflow = 'hidden'

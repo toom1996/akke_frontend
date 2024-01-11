@@ -1,9 +1,9 @@
 <template>
-    <View @close="close" ref="componentView" v-if="state.isView" />
+    <View :src="state.viewSrc" @close="close" ref="viewComponent" v-if="state.isView" />
     <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
         <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
-                <div class="img-container relative cursor-pointer" @click="view">
+                <div class="img-container relative cursor-pointer" @click="eventView(item.src)">
                     <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
                         <span>图片加载中...</span>
                     </div>
@@ -17,7 +17,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue';
+import { nextTick, onMounted, reactive, ref, type Ref } from 'vue';
 import { gallaryIndex } from '@/api/v1';
 import View from '@/components/GallaryView.vue'
 
@@ -27,16 +27,21 @@ interface IDataProvider {
 
 interface State {
     dataProvider: IDataProvider[],
-    isView: boolean
+    isView: boolean,
+    viewSrc: string
 }
 const state = reactive<State>({
     dataProvider: [],
     isView: false,
+    viewSrc: ''
 })
-const componentView = ref(null)
-const view = async () => {
+
+const viewComponent = ref(null)
+
+const eventView = async (src:string) => {
+    console.log(src)
     state.isView = true
-    console.log(componentView)
+    state.viewSrc = src
 }
 
 const close = () => {
