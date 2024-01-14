@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import MainHeader from '../components/MainHeader.astro';
-import MainFooter from '../components/MainFooter.astro';
+import MainFooter from '@/components/common/MainFooter.vue';
 import Content from '../components/pages/MainContent.vue'
 import Icon from 'astro-icon';
 
@@ -38,39 +38,9 @@ const panelSearchNav = [
 <MainLayout title="Welcome to Akke.">
 	<MainHeader></MainHeader>
 	<div class="panel fixed panel-search-header w-full">
-		<header class="">
-			<!-- <div class="search-bar-wrapper relative flex rounded-full">
-				<div class="search-bar flex relative justify-center flex-col grow">
-					<div class="search-container relative flex-1">
-						<div class="search-input-wrapper flex h-full">
-							<div class="search-icon w-12 flex justify-center items-center">
-								<Icon class="h-6 w-6" name="ion:search" />
-							</div>
-							<div class="search-form flex-1 relative">
-								<input type="search" name="text" autocomplete="off" autocapitalize="off" class="search-input h-full w-full absolute top-0 outline-none" placeholder="搜索工作中的创意世界" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
-							</div>
-							<div class="search-icon w-12 flex justify-center items-center">
-								<Icon class="h-4 w-4" name="ion:close-round" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<nav>
-					<ul class="flex py-2 px-4">
-						{
-							panelSearchNav.map(item => (
-								<li class="pr-2">
-									<a class="font-bold btn-dark btn-sm rounded-full transition hover:bg-slate-800 border border-slate-900 font-medium mr-2">{item}</a>
-								</li>
-							))
-						}
-					</ul>
-				</nav>
-			</div> -->
-		</header>
 	</div>
 	<content>
 		<Content client:visible transition:persist/>
 	</content>
-	<MainFooter></MainFooter>
+	<MainFooter client:visible></MainFooter>
 </Layout>

@@ -1,7 +1,16 @@
 ---
-const language = ['English'];
+const language = [
+  {
+    'language': '简体中文',
+    'icon': '<FlagChina />'
+  },
+  {
+    'language': 'English',
+    'icon': 'FlagUSA'
+  }
+];
 import FlagChina from "@/assets/icons/FlagChina.vue";
-import Icon from "astro-icon";
+import Icon from '@/assets/icons/Icon.vue';
 ---
 <style>
 footer a {
@@ -139,15 +148,14 @@ footer .link:hover {
           </div>
           <ul class="flex flex-col-reverse">
             {
-              language.map(item => (
-                <li class="LanguageSelector-footerSelectorItem-m2u" role="menuitem">
-                  <a
-                    class="LanguageSelector-resetButton-qrR LanguageSelector-footerSelectorLinks-h87 e2e-LanguageSelector-en_US"
-                    data-language-locale="en_US"
-                    lang="en-US">
-                    English
-                  </a>
-                </li>
+              language.map((item, index) => (
+                index == 0 ? '' : <li class="LanguageSelector-footerSelectorItem-m2u" role="menuitem">
+                    <a class="inline-flex items-center">
+                      <Icon name='FlagChina'></Icon>
+                      <FlagChina></FlagChina>
+                      {item.language}
+                    </a>
+                  </li>
               ))
             }
           </ul>
