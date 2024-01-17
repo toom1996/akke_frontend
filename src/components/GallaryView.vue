@@ -1,7 +1,8 @@
 <template>
-    <div @click="close" class="fixed top-0 left-0 h-screen w-screen bg-black overflow-x-auto z-50">
-        <div class="container">
-          <img :src="src">
+    <div @click="close" class="fixed top-0 left-0 h-screen w-screen bg-black overflow-x-auto z-50 ">
+        <div class="h-full flex">
+          <img class="h-full mx-auto" :src="src">
+          
         </div>
     </div>
 </template>

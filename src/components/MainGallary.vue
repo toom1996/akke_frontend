@@ -1,7 +1,24 @@
 <template>
     <View :src="state.viewSrc" @close="close" ref="viewComponent" v-if="state.isView" />
     <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-        <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <span class="text-4xl font-bold">2024/25秋冬米兰(Fear of God)男女装发布会</span>
+        <div>
+            Fear of god
+        </div>
+        <div>
+            Ermanno Scervino米兰
+        </div>
+        <div class="flex flex-wrap content-between mt-4">
+            <div class="flex -space-x-2">
+                <div class="w-8 h-8 bg-red-600 rounded-full dark:border-gray-800 hover:z-10" src="../assets/images/users/avatar.png" alt=""></div>
+                <div class="w-8 h-8 bg-red-600 rounded-full dark:border-gray-800 hover:z-10 hover:bg-black" alt=""></div>
+                <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
+                <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
+                <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
+                <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
+            </div>
+         </div>
+         <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
                 <div class="img-container relative cursor-pointer" @click="eventView(item.src)">
                     <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
