@@ -31,6 +31,13 @@
     @apply text-white bg-black border;
 }
 
+input {
+    height: 46px;
+    line-height: 1.5;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 body {
     
     --font-family-body: nimbus-sans-d,Arial,sans-serif,Microsoft Yahei;
