@@ -1,3 +1,21 @@
+<style scoped>
+.cover-container {
+  @apply mb-1;
+}
+
+.detail-content {
+  @apply font-bold flex items-center text-xs leading-7;
+}
+
+.cover-content::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+  background-color: rgb(241, 241, 241)
+}
+
+</style>
 <template>
   <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
     <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -8,7 +26,7 @@
                 <span>loading...</span>
               </div>
               <div v-show="state.isInit" :id="`cover-${index}`">
-                <picture class="ProjectCoverNeue-picture-NuE h-full w-full absolute top-0">
+                <picture class="h-full w-full absolute top-0">
                   <source media="(min-width: 1200px)" :srcset="getSrcSet(item.cover)"/>
                   <!-- <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" /> -->
                   <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
@@ -94,24 +112,3 @@ onMounted(() => {
   })
 });
 </script>
-<style>
-.cover-container {
-  @apply mb-1;
-}
-
-.detail-content {
-  @apply font-bold flex items-center text-xs leading-7;
-}
-
-.cover-content::before {
-  display: block;
-  content: "";
-  width: 100%;
-  padding-top: 56.25%;
-  background-color: rgb(241, 241, 241)
-}
-
-@media screen {
-  
-}
-</style>

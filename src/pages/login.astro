@@ -2,42 +2,73 @@
 import Layout from "src/layouts/Layout.astro";
 ---
 <Layout title="登入">
-    <div class="theme-hbx bg-light flex justify-center">
+    <div class="bg-light flex justify-center">
         <div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
-            <div class="container p-md sm:p-lg w-full m-auto bg-white rounded shadow-lg ring-2 ring-slate-300/50" >
+            <div class="container p-8 sm:p-lg w-full m-auto bg-white rounded shadow-lg ring-t-2 ring-slate-300/50" >
               <div class="text-center p-6 rounded-t">
-                <a href="index.html"
-                  ><img
-                    src="assets/images/logo-sm.png"
-                    alt=""
-                    class="w-14 h-14 mx-auto mb-2"
-                  /></a
-                >
-                <h3 class="font-semibold text-black text-xl mb-1 ">
-                  欢迎来到AKKE
-                </h3>
+                <a href="index.html">
+                  <img src="assets/images/logo-sm.png" alt="" class="w-14 h-14 mx-auto mb-2"/>
+                </a>
+                <h3 class="font-semibold text-black text-xl mb-1">欢迎来到AKKE</h3>
                 <p class="text-xs text-slate-900">在此登录，以确保不会错失AKKE的奖励及福利。</p>
               </div>
               <form>
                 <div class="mb-2">
-                  <label for="email" class="font-medium text-sm text-slate-600 dark:text-slate-400">Your email</label>
-                  <input type="email" id="email" class="form-input w-full rounded-md mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-1 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700" placeholder="name@t-wind.com" required>
+                  <label for="email" class="font-medium text-sm text-slate-600 dark:text-slate-400">邮箱/手机</label>
+                  <input type="email" id="email" class="form-input w-full mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-1 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700" placeholder="name@t-wind.com" required>
                 </div>
                 <div class="mb-2">
-                  <label for="password" class="font-medium text-sm text-slate-600 dark:text-slate-400">Your password</label>
-                  <input type="password" id="password" class="form-input w-full rounded-md mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-1 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700" required>
+                  <label for="password" class="font-medium text-sm text-slate-600 dark:text-slate-400">密码</label>
+                  <input type="password" id="password" class="form-input w-full mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-1 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700" required>
                 </div>
+                <a href="#" class="text-xs font-medium text-brand-500 underline ">忘记密码?</a>
             </form>
-            <button class="w-full btn-light px-3 py-2  lg:px-4 bg-slate-900  text-white text-sm transition hover:bg-slate-800 border border-slate-900 font-mediummr-2">注册</button>
-              <p class="mb-5 text-sm font-medium text-center text-slate-500">
-                Don't have an account? <a
-                  href="auth-register.html"
-                  class="font-medium text-brand-500 hover:underline">Sign up</a
-                >
-              </p>
+            <button class="w-full btn-light px-3 py-2  lg:px-4 bg-slate-900  text-white text-sm transition hover:bg-slate-800 border border-slate-900 font-mediummr-2">登录</button>
+            <span class="separator block text-center my-lg uppercase text-muted text-xs py-xs">
+              或
+            </span>
+            <div class="text-muted text-xs leading-tight pb-xs">
+              透过登录，则表示您同意我们的<a href="https://hbx.com/cn/terms" class="hyperlink">使用条款</a>及<a href="https://hbx.com/cn/privacy" class="hyperlink">隐私政策</a>。
             </div>
+            <button class="w-full btn-light px-3 py-2  lg:px-4">通过微信登录</button>
+            <hr class="mt-xl mb-lg -mx-md sm:-mx-xl">
+            <a class="mb-5 text-sm font-medium text-center text-slate-500">
+              <p>还未拥有账号?</p>
+            </a>
+              <button class="w-full btn-light px-3 py-2  lg:px-4 bg-slate-900  text-white text-sm transition hover:bg-slate-800 border border-slate-900 font-mediummr-2">注册</button>
+            </div>
+            <div class="mt-lg text-center">
+              <div class="mb-md flex space-x-xs justify-center items-center">
+                  <svg class="icon icon-base">
+                      <use xlink:href="/icomoon/symbol-defs.svg#icon-global-region"></use>
+                  </svg>
+                      
+      
+      <select class="text-select text-center" data-controller="unified-account-locale" style="width: 76px;" cursorshover="true">
+                      <option value="https://hbx.com/login">
+                  English
+              </option>
+                      <option value="https://hbx.com/tc/login">
+                  繁體中文
+              </option>
+                      <option selected="" value="https://hbx.com/cn/login">
+                  简体中文
+              </option>
+                      <option value="https://hbx.com/jp/login">
+                  日本語
+              </option>
+                      <option value="https://hbx.com/kr/login">
+                  한국어
+              </option>
+              </select>
+  
+              </div>
+              <div class="flex flex-row flex-wrap justify-center text-muted text-xs leading-tight">
+                  <span class="pr-xs">2024 <a href="https://hypebeast.ltd/">Hypebeast Limited</a> 版权所有</span>
+                  <a href="https://hbx.com/cn/terms" target="_blank" class="pr-xs">网站声明</a>
+                  <a href="https://hbx.com/cn/privacy" target="_blank" class="pr-xs">隐私政策</a>
+              </div>
           </div>
-          
+          </div>
     </div>
-    
 </Layout>
