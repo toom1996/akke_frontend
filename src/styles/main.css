@@ -1,9 +1,9 @@
 .btn-dark {
-    display: inline-block;
+    /* display: inline-block; */
     padding: 10px 20px;
     text-decoration: none;
     font-size: 16px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
@@ -15,16 +15,24 @@
     @apply text-white bg-slate-900
 }
 
+.btn-light:hover {
+    @apply opacity-70
+}
+
+.form-button:not([disabled]):hover {
+    opacity: .7
+}
+
 .btn-sm {
     @apply px-2 py-1 text-sm text-center;
 }
 
 .btn-light {
-    display: inline-block;
+    /* display: inline-block; */
     padding: 10px 20px;
     text-decoration: none;
     font-size: 16px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;

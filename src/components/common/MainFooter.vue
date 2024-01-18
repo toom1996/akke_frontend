@@ -192,7 +192,7 @@ footer .link:hover {
         </li>
         <li class="">
           <a href="https://www.adobe.com/privacy/us-rights.html" target="_blank">
-            不得出售或共享我的个人信息
+            意见反馈
           </a>
         </li>
       </ul>
