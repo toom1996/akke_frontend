@@ -37,7 +37,7 @@
           <div class=" flex justify-between">
             <div class="">
               <span>
-                <a target="_blank" :href="item.src" class="text-xs font-bold">{{ item.brand_srt }} - {{ item.title }} | Social Media</a>
+                <a target="_blank" :href="item.src" class="text-xs font-bold">{{ item.brand_str }} - {{ item.title }} | Social Media</a>
                 <div class="text-xs" >
                     <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects">
                       Mahdy Hasan Hridoy
@@ -68,7 +68,7 @@ interface IDataProvider {
   cover: string,
   src: string,
   img_count: number,
-  brand_srt: string
+  brand_str: string
 }
 
 interface State {

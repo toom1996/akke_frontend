@@ -25,15 +25,17 @@ button {
     width: calc(50% - 2em)
 }
 </style>
-<Layout title="登入">
-    <div class="bg-light flex justify-center">
-        <div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
-            <div class="container p-8 sm:p-lg w-full m-auto bg-white rounded shadow-lg ring-t-2 ring-slate-300/50" >
+<Layout title="登入 GogoEx">
+    <div class="bg-light">
+        <div class="mx-auto max-w-[400px] flex flex-col justify-center min-h-screen">
+            <a href="index.html">
+                <IconLogo />
+              </a>
+            <div class="p-8 sm:p-lg w-full m-auto bg-white rounded shadow-lg ring-t-2 ring-slate-300/50" >
+                
               <div class="text-center p-6 rounded-t">
-                <a href="index.html">
-                  <IconLogo />
-                </a>
-                <h3 class="font-semibold text-black text-xl mb-1">欢迎来到AKKE</h3>
+                
+                <h3 class="font-semibold text-black text-xl mb-1">欢迎来到GogoEx</h3>
                 <p class="text-xs text-slate-900">在此登录，以确保获得更好的浏览体验。</p>
               </div>
               <form>
@@ -56,13 +58,13 @@ button {
               或
             </span>
             <div class="text-muted text-xs leading-tight pb-xs">
-              通过登录，则表示您同意我们的<a href="https://hbx.com/cn/terms" class="hyperlink">使用条款</a>及<a href="https://hbx.com/cn/privacy" class="hyperlink">隐私政策</a>。
+              通过登录，则表示您同意我们的<a href="https://hbx.com/cn/terms" class=" underline">使用条款</a>及<a href="https://hbx.com/cn/privacy" class="underline ">隐私政策</a>。
             </div>
             <button class="w-full btn-dark border hover:bg-white px-3 py-2 lg:px-4 flex justify-center items-center">
                 <IconWechat class="mr-2 text-lime-500" />
                 通过微信登录
             </button>
-            <hr class="mt-xl mb-lg -mx-md sm:-mx-xl mb-4">
+            <hr class="mt-8 mb-6">
             <p class="text-center">还未拥有账号?</p>
                 <a href="/register" class="w-full btn-light my-4 bg-slate-900 text-sm block">
                     注册
