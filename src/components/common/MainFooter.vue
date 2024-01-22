@@ -145,7 +145,7 @@ footer .link:hover {
     <div class="wrapper footer-language group/languages">
       <div class="border-r border-slate-950 flex items-center justify-center">
         <button type="button" class="text-black px-2 text-center inline-flex items-center">
-          <icon :class="state.currentLanguage.flag"></icon>
+          <div :class="state.currentLanguage.flag"></div>
           {{ state.currentLanguage.lang_str }}
         </button>
         <div class="tooltip group-hover/languages:block">
@@ -155,7 +155,7 @@ footer .link:hover {
           <ul class="flex flex-col-reverse">
             <li v-for="item in state.dataProvider.languages">
                 <a :class="['inline-flex items-center justify-center', item.lang_str == state.currentLanguage.lang_str ? 'bg-black text-white' : '']">
-                  <icon :class="item.flag"></icon>
+                  <div :class="item.flag"></div>
                     {{ item.lang_str }}
                 </a>
             </li>

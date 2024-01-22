@@ -3,7 +3,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 import MainHeader from '../components/MainHeader.astro';
 import MainFooter from '@/components/common/MainFooter.vue';
 import Content from '../components/pages/MainContent.vue'
-import Icon from 'astro-icon';
 
 const panelSearchNav = [
 '项目',
@@ -40,7 +39,7 @@ const panelSearchNav = [
 	<div class="panel fixed panel-search-header w-full">
 	</div>
 	<content>
-		<Content client:visible transition:persist/>
+		<Content client:visible />
 	</content>
 	<MainFooter client:visible></MainFooter>
 </Layout>

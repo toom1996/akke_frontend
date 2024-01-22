@@ -15,10 +15,45 @@
   background-color: rgb(241, 241, 241)
 }
 
+	.panel-search-header {
+		background-color: #fff;
+		border-bottom: 1px solid #f2f2f2;
+		padding: 24px;
+		padding-bottom: 21px;
+		/* position: fixed; */
+		z-index: 3;
+		@apply top-14;
+	}
+
+	nav {
+		border-left: 1px solid #ccc;
+	}
+
 </style>
 <template>
   <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-    <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <div class="search-bar-wrapper flex">
+      <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium" @click="handleClickFlilter"><IconFilter></IconFilter>筛选</a>
+      <div class="search-bar flex relative justify-center flex-col grow rounded-full border">
+        <div class="search-container relative flex-1">
+          <div class="search-input-wrapper flex h-full">
+            <div class="search-icon w-12 flex justify-center items-center">
+              <IconSearch class="h-6 w-6"></IconSearch>
+            </div>
+            <div class="search-form flex-1 relative">
+              <input type="search" name="text" autocomplete="off" autocapitalize="off" class="search-input h-full w-full absolute top-0 outline-none" placeholder="搜索工作中的创意世界" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
+            </div>
+            <div class="search-icon w-12 flex justify-center items-center">
+              <IconClose class="h-6 w-6"></IconClose>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium"><IconFilter></IconFilter>推荐</a>
+    </div>
+    <div class="flex">
+      <LeftMenu v-show="state.isShowLeftMenu"></LeftMenu>
+      <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 ', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
       <li v-for="(item, index) in state.dataProvider">
         <div class="cover-container relative">
             <div class="cover-content">
@@ -54,15 +89,17 @@
           </div>
       </li>
     </ul>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, reactive, computed } from "vue";
-import MdiLightEye from '@/assets/icons/MdiLightEye.vue';
 import { mainSearch } from '@/api/v1';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
-import { navigate } from 'astro:transitions/client';
-
+import IconSearch from "@/assets/icons/IconSearch.vue";
+import IconClose from '@/assets/icons/IconClose.vue';
+import IconFilter from '@/assets/icons/IconFilter.vue'
+import LeftMenu from '@/components/common/LeftMenu.vue'
 interface IDataProvider {
   title: string,
   cover: string,
@@ -73,12 +110,18 @@ interface IDataProvider {
 
 interface State {
   isInit: boolean,
-  dataProvider: IDataProvider[]
+  dataProvider: IDataProvider[],
+  isShowLeftMenu: boolean
 }
 const state = reactive<State>({
   isInit: false,
   dataProvider: [],
+  isShowLeftMenu: false
 })
+
+const handleClickFlilter = () => {
+  state.isShowLeftMenu = !state.isShowLeftMenu
+}
 
 const handleError = (index:number) => {
   var elementToRemove = document.getElementById(`cover-${index}`); // 获取要删除的元素
