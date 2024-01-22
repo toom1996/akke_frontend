@@ -53,42 +53,42 @@
     </div>
     <div class="flex">
       <LeftMenu v-show="state.isShowLeftMenu"></LeftMenu>
-      <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 ', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
-      <li v-for="(item, index) in state.dataProvider">
-        <div class="cover-container relative">
-            <div class="cover-content">
-              <div :class="['flex items-center justify-center absolute w-full bottom-0 left-0 top-0 right-0 text-xs', `cover-mask${index}`, state.isInit == false ? 'animate-pulse' : '']">
-                <span>loading...</span>
-              </div>
-              <div v-show="state.isInit" :id="`cover-${index}`">
-                <picture class="h-full w-full absolute top-0">
-                  <source media="(min-width: 1200px)" :srcset="getSrcSet(item.cover)"/>
-                  <!-- <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" /> -->
-                  <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
-                </picture>
-              </div>
-            </div>
-          </div>
-          <div class=" flex justify-between">
-            <div class="">
-              <span>
-                <a target="_blank" :href="item.src" class="text-xs font-bold">{{ item.brand_str }} - {{ item.title }} | Social Media</a>
-                <div class="text-xs" >
-                    <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects">
-                      Mahdy Hasan Hridoy
-                    </a>
+      <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 mx-4', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
+        <li v-for="(item, index) in state.dataProvider">
+          <div class="cover-container relative">
+              <div class="cover-content">
+                <div :class="['flex items-center justify-center absolute w-full bottom-0 left-0 top-0 right-0 text-xs', `cover-mask${index}`, state.isInit == false ? 'animate-pulse' : '']">
+                  <span>loading...</span>
                 </div>
-              </span>
-            </div>
-            <div class="detail-wrapper">
-              <div class="detail-content">
-                <MaterialSymbolsAddPhotoAlternateOutline class="img" />
-                <span title="647">{{ item.img_count }}</span>
+                <div v-show="state.isInit" :id="`cover-${index}`">
+                  <picture class="h-full w-full absolute top-0">
+                    <source media="(min-width: 1200px)" :srcset="getSrcSet(item.cover)"/>
+                    <!-- <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" /> -->
+                    <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
+                  </picture>
+                </div>
               </div>
             </div>
-          </div>
-      </li>
-    </ul>
+            <div class=" flex justify-between">
+              <div class="">
+                <span>
+                  <a target="_blank" :href="item.src" class="text-xs font-bold">{{ item.brand_str }} - {{ item.title }} | Social Media</a>
+                  <div class="text-xs" >
+                      <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects">
+                        Mahdy Hasan Hridoy
+                      </a>
+                  </div>
+                </span>
+              </div>
+              <div class="detail-wrapper">
+                <div class="detail-content">
+                  <MaterialSymbolsAddPhotoAlternateOutline class="img" />
+                  <span title="647">{{ item.img_count }}</span>
+                </div>
+              </div>
+            </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
