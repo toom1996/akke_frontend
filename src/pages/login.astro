@@ -7,13 +7,17 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
 button {
     @apply my-4;
 }
- .separator:after,.separator:before {
-    right: 0;
-    border-top-width: 1px;
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: calc(50% - 2em);
+
+input:focus {
+    @apply border border-gray-950;
+}
+.separator:after,.separator:before {
+  right: 0;
+  border-top-width: 1px;
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 2em);
 }
 
 .separator:before {

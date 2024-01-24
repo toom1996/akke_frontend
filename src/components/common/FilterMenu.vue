@@ -10,24 +10,32 @@
   top: calc(55px - 1px);
   /* width: 330px; */
 }
+
+.filter-tag {
+  @apply py-1 text-gray-500 font-bold
+}
+
+.filter-options {
+  @apply px-2 text-gray-900
+}
 </style>
 <template>
   <div :class="['wrapper duration-300 overflow-hidden']">
     <div data-fc-type="accordion" class="min-w-[250px]">
-      <h2 v-for="item, index in state.dataProvider" id="accordion-collapse-heading-1" class="bg-white" data-fc-type="collapse">
-        <button @click="handleCollapseOpen(index)" type="button" class="icon fc-collapse-open:text-primary flex justify-between items-center p-5 w-full font-medium text-left text-gray-500 rounded-t-xl border-b">
-          <span class="font-bold">{{ item.title }}</span>
+      <h2 v-for="item, index in state.dataProvider" class="bg-white">
+        <button @click="handleCollapseOpen(index)" type="button" class="icon flex justify-between items-center px-2 py-4 w-full font-medium text-left text-gray-900 border-t">
+          <span class="font-bold text-sm">{{ item.title }}</span>
           <IconArrow :id="`arrow-${index}`" class="arrow transition-transform duration-300" />
         </button>
         <div>
           <fieldset v-if="item.params == 'area'">
-            <legend>搜索区域</legend>
-            <Select></Select>
+            <legend class="filter-tag">搜索区域</legend>
+            <Select placeholder="输入要搜索的城市"></Select>
           </fieldset>
           <fieldset>
-            <legend>热门区域</legend>
-            <div v-for="city in item.items">
-              {{ city.label }}
+            <legend class="filter-tag">热门区域</legend>
+            <div class="filter-options" v-for="city in item.items">
+              <span class="hover:text-cyan-600 cursor-pointer">{{ city.label }}</span>
             </div>
           </fieldset>
         </div>

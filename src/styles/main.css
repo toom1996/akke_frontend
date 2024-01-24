@@ -50,9 +50,9 @@ input {
     @apply border border-green-200;
 } */
 
-input:focus {
+/* input:focus {
     @apply border border-gray-950;
-}
+} */
 
 body {
     
