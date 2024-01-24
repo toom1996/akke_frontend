@@ -52,8 +52,9 @@
       <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium"><IconFilter></IconFilter>推荐</a>
     </div>
     <div class="flex">
-      <LeftMenu v-show="state.isShowLeftMenu"></LeftMenu>
-      <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 mx-4', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
+      <FilterMenu :class="[state.isShowLeftMenu === true ? 'w-[330px] p-4' : 'w-0']"></FilterMenu>
+      <div :class="[state.isShowLeftMenu === true ? 'w-[calc(100%-330px)]' : '']">
+        <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 mx-4', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
         <li v-for="(item, index) in state.dataProvider">
           <div class="cover-container relative">
               <div class="cover-content">
@@ -89,6 +90,7 @@
             </div>
         </li>
       </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -99,7 +101,7 @@ import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/Material
 import IconSearch from "@/assets/icons/IconSearch.vue";
 import IconClose from '@/assets/icons/IconClose.vue';
 import IconFilter from '@/assets/icons/IconFilter.vue'
-import LeftMenu from '@/components/common/LeftMenu.vue'
+import FilterMenu from '@/components/common/FilterMenu.vue'
 interface IDataProvider {
   title: string,
   cover: string,
