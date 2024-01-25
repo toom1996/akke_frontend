@@ -32,63 +32,46 @@
 </style>
 <template>
   <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-    <div class="search-bar-wrapper flex">
-      <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium" @click="handleClickFlilter"><IconFilter></IconFilter>筛选</a>
-      <div class="search-bar flex relative justify-center flex-col grow rounded-full border">
-        <div class="search-container relative flex-1">
-          <div class="search-input-wrapper flex h-full">
-            <div class="search-icon w-12 flex justify-center items-center">
-              <IconSearch class="h-6 w-6"></IconSearch>
-            </div>
-            <div class="search-form flex-1 relative">
-              <input type="search" name="text" autocomplete="off" autocapitalize="off" class="search-input h-full w-full absolute top-0 outline-none" placeholder="搜索工作中的创意世界" aria-label="搜索 Behance" aria-expanded="false" role="combobox" maxlength="100">
-            </div>
-            <div class="search-icon w-12 flex justify-center items-center">
-              <IconClose class="h-6 w-6"></IconClose>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium"><IconFilter></IconFilter>推荐</a>
-    </div>
+    <ToolBar></ToolBar>
     <div class="flex">
+      <!-- 筛选菜单 -->
       <FilterMenu :class="[state.isShowLeftMenu === true ? 'w-[330px] p-4' : 'w-0']"></FilterMenu>
       <div :class="[state.isShowLeftMenu === true ? 'w-[calc(100%-330px)]' : '']">
         <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 mx-4', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
-        <li v-for="(item, index) in state.dataProvider">
-          <div class="cover-container relative">
-              <div class="cover-content">
-                <div :class="['flex items-center justify-center absolute w-full bottom-0 left-0 top-0 right-0 text-xs', `cover-mask${index}`, state.isInit == false ? 'animate-pulse' : '']">
-                  <span>loading...</span>
-                </div>
-                <div v-show="state.isInit" :id="`cover-${index}`">
-                  <picture class="h-full w-full absolute top-0">
-                    <source media="(min-width: 1200px)" :srcset="getSrcSet(item.cover)"/>
-                    <!-- <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" /> -->
-                    <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
-                  </picture>
-                </div>
-              </div>
-            </div>
-            <div class=" flex justify-between">
-              <div class="">
-                <span>
-                  <a target="_blank" :href="item.src" class="text-xs font-bold">{{ item.brand_str }} - {{ item.title }} | Social Media</a>
-                  <div class="text-xs" >
-                      <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects">
-                        Mahdy Hasan Hridoy
-                      </a>
+          <li v-for="(item, index) in state.dataProvider">
+            <div class="cover-container relative">
+                <div class="cover-content">
+                  <div :class="['flex items-center justify-center absolute w-full bottom-0 left-0 top-0 right-0 text-xs', `cover-mask${index}`, state.isInit == false ? 'animate-pulse' : '']">
+                    <span>loading...</span>
                   </div>
-                </span>
-              </div>
-              <div class="detail-wrapper">
-                <div class="detail-content">
-                  <MaterialSymbolsAddPhotoAlternateOutline class="img" />
-                  <span title="647">{{ item.img_count }}</span>
+                  <div v-show="state.isInit" :id="`cover-${index}`">
+                    <picture class="h-full w-full absolute top-0">
+                      <source media="(min-width: 1200px)" :srcset="getSrcSet(item.cover)"/>
+                      <!-- <source media="(min-width: 800)" :srcset="getWebpSrcSet(item.cover)" type="image/webp" /> -->
+                      <img :src="item.cover" class="h-full w-full object-cover" :alt="item.title" @error="handleError(index)" loading="lazy"/>
+                    </picture>
+                  </div>
                 </div>
               </div>
-            </div>
-        </li>
+              <div class=" flex justify-between">
+                <div class="">
+                  <span>
+                    <a target="_blank" :href="item.src" class="text-xs font-bold">{{ item.brand_str }} - {{ item.title }} | Social Media</a>
+                    <div class="text-xs" >
+                        <a href="https://www.behance.net/mahdyhasanhridoy?tracking_source=search_projects">
+                          Mahdy Hasan Hridoy
+                        </a>
+                    </div>
+                  </span>
+                </div>
+                <div class="detail-wrapper">
+                  <div class="detail-content">
+                    <MaterialSymbolsAddPhotoAlternateOutline class="img" />
+                    <span title="647">{{ item.img_count }}</span>
+                  </div>
+                </div>
+              </div>
+          </li>
       </ul>
       </div>
     </div>
@@ -99,9 +82,9 @@ import { ref, onMounted, reactive, computed } from "vue";
 import { mainSearch } from '@/api/v1';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
 import IconSearch from "@/assets/icons/IconSearch.vue";
-import IconClose from '@/assets/icons/IconClose.vue';
 import IconFilter from '@/assets/icons/IconFilter.vue'
 import FilterMenu from '@/components/common/FilterMenu.vue'
+import ToolBar from "../ToolBar.vue";
 interface IDataProvider {
   title: string,
   cover: string,
@@ -120,6 +103,8 @@ const state = reactive<State>({
   dataProvider: [],
   isShowLeftMenu: false
 })
+
+const toolBarWrapper = ref(null)
 
 const handleClickFlilter = () => {
   state.isShowLeftMenu = !state.isShowLeftMenu
@@ -149,6 +134,28 @@ const getSrcSet = (src:string):string => {
   ${src}123 115w`
 }
 
+const handleToolbarScroll = (event: any) => {
+  console.log('滚动高度', window.pageYOffset)
+  console.log('距离顶部高度', toolBarWrapper?.value?.getBoundingClientRect()?.top)
+  // 获取根元素的字体大小
+const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+// 定义一个rem单位的值
+const remValue = 3.5; // 例如，1rem等于根元素字体大小的两倍
+
+// 计算对应的像素值
+const pixelValue = remValue * rootFontSize;
+
+const toolBarWrapperTopInstance = toolBarWrapper?.value?.getBoundingClientRect()?.top
+
+if (toolBarWrapperTopInstance <= pixelValue) {
+  toolBarWrapper.value.classList.value = toolBarWrapper.value.classList.value + 'fixed'
+  console.log('fixed')
+}
+
+console.log(`${remValue}rem 等于 ${pixelValue}px`);
+
+}
 onMounted(() => {
   mainSearch({}).then(e => {
     state.isInit = true
