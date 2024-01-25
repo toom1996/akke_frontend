@@ -32,12 +32,12 @@
 </style>
 <template>
   <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-    <ToolBar></ToolBar>
+    <slot name="toolbar" @test="showFilterMenu"></slot>
     <div class="flex">
       <!-- 筛选菜单 -->
-      <FilterMenu :class="[state.isShowLeftMenu === true ? 'w-[330px] p-4' : 'w-0']"></FilterMenu>
-      <div :class="[state.isShowLeftMenu === true ? 'w-[calc(100%-330px)]' : '']">
-        <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 mx-4', state.isShowLeftMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
+      <FilterMenu :class="[state.isShowFilterMenu === true ? 'w-[330px] p-4' : 'w-0']"></FilterMenu>
+      <div :class="[state.isShowFilterMenu === true ? 'w-[calc(100%-330px)]' : '']">
+        <ul :class="['grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 mx-4', state.isShowFilterMenu === true ? 'xl:grid-cols-4' : 'xl:grid-cols-5']">
           <li v-for="(item, index) in state.dataProvider">
             <div class="cover-container relative">
                 <div class="cover-content">
@@ -81,7 +81,6 @@
 import { ref, onMounted, reactive, computed } from "vue";
 import { mainSearch } from '@/api/v1';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
-import IconSearch from "@/assets/icons/IconSearch.vue";
 import IconFilter from '@/assets/icons/IconFilter.vue'
 import FilterMenu from '@/components/common/FilterMenu.vue'
 import ToolBar from "../ToolBar.vue";
@@ -96,18 +95,19 @@ interface IDataProvider {
 interface State {
   isInit: boolean,
   dataProvider: IDataProvider[],
-  isShowLeftMenu: boolean
+  isShowFilterMenu: boolean
 }
 const state = reactive<State>({
   isInit: false,
   dataProvider: [],
-  isShowLeftMenu: false
+  isShowFilterMenu: false
 })
 
 const toolBarWrapper = ref(null)
 
-const handleClickFlilter = () => {
-  state.isShowLeftMenu = !state.isShowLeftMenu
+const showFilterMenu = () => {
+  console.log(1111111111111)
+  state.isShowFilterMenu = !state.isShowFilterMenu
 }
 
 const handleError = (index:number) => {

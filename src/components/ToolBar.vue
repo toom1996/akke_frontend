@@ -1,6 +1,6 @@
 <template>
     <div ref="toolBarWrapper" class="tool-bar-wrapper flex">
-        <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium" @click="handleClickFlilter"><IconFilter></IconFilter>筛选</a>
+        <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium" @click="showFilterMenu"><IconFilter></IconFilter>筛选</a>
         <div class="search-bar flex relative justify-center flex-col grow rounded-full border">
         <div class="search-container relative flex-1">
             <div class="search-input-wrapper flex h-full">
@@ -22,8 +22,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import IconClose from '@/assets/icons/IconClose.vue';
-
+import IconSearch from "@/assets/icons/IconSearch.vue";
 const toolBarWrapper = ref(null)
+const emit = defineEmits(["test"])
+const showFilterMenu = () => {
+    console.log('showFilterMenu')
+    emit('test', false);
+}
+
 onMounted(() => {
     window.addEventListener('scroll', () => {
         console.log('滚动高度', window.pageYOffset)

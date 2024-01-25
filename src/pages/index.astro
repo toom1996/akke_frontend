@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import MainHeader from '../components/MainHeader.astro';
 import MainFooter from '@/components/common/MainFooter.vue';
 import Content from '../components/pages/MainContent.vue'
+import ToolBar from '@/components/ToolBar.vue';
 
 const panelSearchNav = [
 '项目',
@@ -38,8 +39,10 @@ const panelSearchNav = [
 	<MainHeader></MainHeader>
 	<!-- <div class="panel fixed panel-search-header w-full">
 	</div> -->
-	<content>
-		<Content client:visible />
-	</content>
+	<!-- <content> -->
+		<Content client:visible>
+			<ToolBar slot="toolbar" client:visible @test="showFilterMenu"></ToolBar>
+		</Content>
+	<!-- </content> -->
 	<MainFooter client:visible></MainFooter>
 </Layout>
