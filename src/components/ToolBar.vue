@@ -1,6 +1,6 @@
 <template>
     <div ref="toolBarWrapper" class="tool-bar-wrapper flex">
-        <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium" @click="showFilterMenu"><IconFilter></IconFilter>筛选</a>
+        <a class="btn-dark border rounded-full text-center inline-flex items-center font-medium" @click="close"><IconFilter></IconFilter>筛选</a>
         <div class="search-bar flex relative justify-center flex-col grow rounded-full border">
         <div class="search-container relative flex-1">
             <div class="search-input-wrapper flex h-full">
@@ -23,11 +23,12 @@
 import { onMounted, ref } from 'vue';
 import IconClose from '@/assets/icons/IconClose.vue';
 import IconSearch from "@/assets/icons/IconSearch.vue";
+import IconFilter from '@/assets/icons/IconFilter.vue'
 const toolBarWrapper = ref(null)
-const emit = defineEmits(["test"])
-const showFilterMenu = () => {
-    console.log('showFilterMenu')
-    emit('test', false);
+const emit = defineEmits(["close"])
+const close = () => {
+    console.log('emitTestEvent')
+    emit('close', false)
 }
 
 onMounted(() => {

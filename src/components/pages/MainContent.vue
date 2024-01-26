@@ -32,7 +32,7 @@
 </style>
 <template>
   <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-    <slot name="toolbar" @test="showFilterMenu"></slot>
+    <ToolBar @close="close"></ToolBar>
     <div class="flex">
       <!-- 筛选菜单 -->
       <FilterMenu :class="[state.isShowFilterMenu === true ? 'w-[330px] p-4' : 'w-0']"></FilterMenu>
@@ -81,9 +81,9 @@
 import { ref, onMounted, reactive, computed } from "vue";
 import { mainSearch } from '@/api/v1';
 import MaterialSymbolsAddPhotoAlternateOutline from '../../assets/icons/MaterialSymbolsAddPhotoAlternateOutline.vue'
-import IconFilter from '@/assets/icons/IconFilter.vue'
 import FilterMenu from '@/components/common/FilterMenu.vue'
 import ToolBar from "../ToolBar.vue";
+
 interface IDataProvider {
   title: string,
   cover: string,
@@ -104,9 +104,11 @@ const state = reactive<State>({
 })
 
 const toolBarWrapper = ref(null)
+const emit = defineEmits(['emitToolBar'])
 
-const showFilterMenu = () => {
-  console.log(1111111111111)
+
+const close = () => {
+  console.log(123123123)
   state.isShowFilterMenu = !state.isShowFilterMenu
 }
 

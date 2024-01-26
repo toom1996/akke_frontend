@@ -7,7 +7,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive, type Ref } from 'vue';
+import { onMounted, reactive } from 'vue';
 
 
 const emit = defineEmits(["close"])
@@ -27,9 +27,7 @@ const close = () => {
     emit("close", false)
 }
 
-const test = () => {
-    console.log('test')
-}
+
 
 onMounted(() => {
     console.log('11111111')
@@ -40,7 +38,5 @@ onMounted(() => {
   document.addEventListener('touchmove', mo, false) //禁止页面滑动
 })
 
-defineExpose({
-    test
-})
+
 </script>

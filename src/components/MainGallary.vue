@@ -34,7 +34,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { nextTick, onMounted, reactive, ref, type Ref } from 'vue';
+import { nextTick, onMounted, reactive, ref} from 'vue';
 import { gallaryIndex } from '@/api/v1';
 import View from '@/components/GallaryView.vue'
 

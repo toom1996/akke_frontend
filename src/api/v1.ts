@@ -1,7 +1,7 @@
 import { post, get } from '@/utils/request'
 // import Mock from 'mockjs'
 
-let isDevMode = import.meta.env.MODE === 'development';
+let isDevMode = true//import.meta.env.MODE === 'development';
 
 function generateMockData(mockRules:Object = {}) {
     return new Promise((resolve, reject) => {

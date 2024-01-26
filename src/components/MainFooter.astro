@@ -10,7 +10,6 @@ const language = [
   }
 ];
 import FlagChina from "@/assets/icons/FlagChina.vue";
-import Icon from '@/assets/icons/Icon.vue';
 ---
 <style>
 footer a {
@@ -151,7 +150,6 @@ footer .link:hover {
               language.map((item, index) => (
                 index == 0 ? '' : <li class="LanguageSelector-footerSelectorItem-m2u" role="menuitem">
                     <a class="inline-flex items-center">
-                      <Icon name='FlagChina'></Icon>
                       <FlagChina></FlagChina>
                       {item.language}
                     </a>
