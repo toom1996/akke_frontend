@@ -39,3 +39,16 @@ export function gallaryIndex (params:object) {
           }]
     }) : get('/api/v1/frontend/main/search', params)
 }
+
+export function buildIndex (params:object) {
+    return isDevMode ? generateMockData({
+        'list|20-40': [{
+            'id|+1': 1,
+            'title': '@ctitle(5, 20)',
+            'img_count|+1':100,//整数'
+            'cover': '@image(200x200)',
+            'brand_str': '@word(5, 20)',
+            'src': '/gallary?id=' + '@domain'
+          }]
+    }) : get('/api/v1/build', params)
+}

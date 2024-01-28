@@ -1,27 +1,26 @@
 .btn-dark {
     /* display: inline-block; */
+    --background-color:hsl(0 0% 6%);
     padding: 10px 20px;
     text-decoration: none;
     font-size: 16px;
     /* font-weight: bold; */
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    @apply text-black bg-white;
+    /* transition: background-color 0.3s, color 0.3s, border-color 0.3s; */
+    background-color: var(--background-color);
+    @apply text-white rounded-lg;
 }
 
 /* 悬停效果 */
 .btn-dark:hover {
-    @apply text-white bg-slate-900
+    --background-color: hsl(0, 0, 30%);
+    /* @apply text-white */
 }
 
-.btn-light:hover {
-    @apply opacity-70
-}
-
-.form-button:not([disabled]):hover {
+/* .form-button:not([disabled]):hover {
     opacity: .7
-}
+} */
 
 .btn-sm {
     @apply px-2 py-1 text-sm text-center;
@@ -36,7 +35,11 @@
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    @apply text-white bg-black border;
+    @apply text-black bg-transparent rounded-lg;
+}
+
+.btn-light:hover {
+    background-color: hsl(0 0% 96%);
 }
 
 input {
