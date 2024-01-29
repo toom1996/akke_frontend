@@ -1,34 +1,58 @@
----
-import { gsap } from 'gsap';
----
 <script>
   import { gsap } from 'gsap';
-    // 使用 Astro 的客户端：可见指令来确保代码仅在客户端执行
-  // if (Astro.isPage) {
-    // gsap.to('#track', { x: 100, duration: 1 });
-//     gsap.fromTo('.sdk', {
-//   xPercent: 100
+//   gsap.fromTo('.sdk', {
+//     opacity: [0, 1]
 // }, {
-//   xPercent: -200,
-//   stagger: 0.5,
-//   duration: 1,
-//   repeat: -1,
-//   ease: 'none',
-// })
+//     delay: 0,
+//     repeat: 1 / 0,
+//         // defaultOptions: {
+//         //     easing: [.165, .84, .44, 1],
+//         //     allowWebkitAcceleration: !0
+//         // }
+//     })
 
-gsap.fromTo('.sdk', {opacity: 0}, {
-    opacity: 1,
-    duration: 0.25,
-    repeat: 1,
-    repeatDelay: 0.5,
-    immediateRender: false,
-    ease: 'none',
-    yoyo: true,
-  })
+var per = 100
+const button = document.querySelector('.marquee-content');
 
-  // }
+  button.addEventListener('click', function() {
+    per-=10
+console.log(per)
+        gsap.fromTo('.track ', {
+    //   x: 10,
+    }, {
+    xPercent: (100-per) * -1,
+    //   stagger: {
+    //         amount: 100, // 滚动距离
+    //         each: 1, // 每个元素之间的延迟
+    //     },
+    duration: 1,
+    //   delay:1,
+    //   repeat: -1,
+    ease: 'linear',
+    })
+  });
+
+
+gsap.to(".marquee-content", {
+    x: () => -(document.querySelector(".marquee-content").clientWidth), // 计算滚动距离
+    ease: "linear",
+    repeat: -1, // 无限次重复
+    duration: 10, // 持续时间，可以根据需要调整
+});
+
 </script>
 <style>
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    /* 额外的样式，例如字体大小、颜色等 */
+}
+
     .grid:where(.astro-KWFDDM2J) {
     display: grid;
     grid-gap: 1rem;
@@ -97,6 +121,11 @@ gsap.fromTo('.sdk', {opacity: 0}, {
     width: 4.125rem;
 }
 </style>
+<div class="marquee">
+    <div class="marquee-content">
+        这是一段要滚动的文字。这是一段要滚动的文字。这是一段要滚动的文字。
+    </div>
+</div>
 <section class="c-responsive-section u-bg-white astro-J7PV25F6 astro-WIVZ3U7F">
   <div class="c-container c-container--large astro-J7PV25F6 astro-I4TGLJLN">
     <div class="c-center u-mt-large-1 astro-J7PV25F6 astro-W2GOKGZQ">
