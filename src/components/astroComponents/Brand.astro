@@ -1,3 +1,7 @@
+---
+import Gucci from '../../assets/logo/Gucci.astro'
+import Lv from '../../assets/logo/LouisVuitton.astro'
+---
 <script>
   import { gsap } from 'gsap';
 //   gsap.fromTo('.sdk', {
@@ -14,7 +18,7 @@
 var per = 100
 const button = document.querySelector('.marquee-content');
 
-  button.addEventListener('click', function() {
+setInterval(() => {
     per-=10
 console.log(per)
         gsap.fromTo('.track ', {
@@ -30,7 +34,7 @@ console.log(per)
     //   repeat: -1,
     ease: 'linear',
     })
-  });
+}, 2000);
 
 
 gsap.to(".marquee-content", {
@@ -112,7 +116,7 @@ gsap.to(".marquee-content", {
     bottom: 0;
     box-shadow: 0 2px 10px #0000001a;
     height: 3rem;
-    left: 25.625rem;
+    /* left: 25.625rem; */
     opacity: 1;
     pointer-events: none;
     position: absolute;
@@ -123,7 +127,7 @@ gsap.to(".marquee-content", {
 </style>
 <div class="marquee">
     <div class="marquee-content">
-        这是一段要滚动的文字。这是一段要滚动的文字。这是一段要滚动的文字。
+       asdasdasda
     </div>
 </div>
 <section class="c-responsive-section u-bg-white astro-J7PV25F6 astro-WIVZ3U7F">
@@ -141,89 +145,20 @@ gsap.to(".marquee-content", {
       </span>
       <div class="p-home__hero-code-anim astro-J7PV25F6">
         <div
-          class="c-ticker astro-KWFDDM2J"
+          class="c-ticker flex items-center justify-center astro-KWFDDM2J"
           aria-hidden="true"
           style="opacity: 1;"
         >
           <div class="ticker astro-KWFDDM2J">
-            <div id="track" class="track astro-KWFDDM2J">
-              <div class="grid astro-KWFDDM2J">
+            <div id="track" class="astro-KWFDDM2J flex items-center justify-center">
+              <div class="grid astro-KWFDDM2J track">
+                <a role="button" data-link="/docs/developer-tools/android-sdk/" class="sdk android js-sdk-link astro-KWFDDM2J">
+                  <Gucci width=32 height=32/>
+                </a>
+                <a role="button" data-link="/docs/developer-tools/android-sdk/" class="sdk android js-sdk-link astro-KWFDDM2J">
+                    <Lv width=32 height=32/>
+                  </a>
                 <a
-                  role="button"
-                  data-link="/docs/developer-tools/android-sdk/"
-                  class="sdk android js-sdk-link astro-KWFDDM2J"
-                >
-                  <svg
-                    fill="none"
-                    viewBox="0 0 32 32"
-                    width="32"
-                    class="astro-KWFDDM2J"
-                    astro-icon="custom/android"
-                    ><g clip-path="url(#astroicon:custom/androida)"
-                      ><path
-                        fill="#0F0F0F"
-                        d="M12.334 18.578c.828 0 1.498.67 1.498 1.498v6.426a1.498 1.498 0 0 1-2.996 0v-6.426c0-.827.671-1.498 1.498-1.498Z"
-                      ></path><path
-                        fill="#0F0F0F"
-                        d="M8.915 10.852c-.005.056-.01.114-.01.172v9.736c0 1.047.83 1.89 1.858 1.89h9.901c1.029 0 1.858-.843 1.858-1.89v-9.736c0-.058-.002-.116-.007-.172h-13.6Z"
-                      ></path><path
-                        fill="#0F0F0F"
-                        d="M19.093 18.578c.827 0 1.498.67 1.498 1.498v6.426a1.498 1.498 0 1 1-2.996 0v-6.426c0-.827.67-1.498 1.498-1.498Zm-12.594-6.86c.827 0 1.497.67 1.497 1.498v6.426a1.498 1.498 0 0 1-2.996 0v-6.426c0-.827.671-1.498 1.499-1.498Zm18.43 0c.827 0 1.498.67 1.498 1.498v6.426a1.498 1.498 0 0 1-2.996 0v-6.426c0-.827.67-1.498 1.498-1.498ZM8.96 10.212C9 7.222 11.61 4.77 14.96 4.446h1.505c3.351.324 5.961 2.776 6.003 5.766H8.959Z"
-                      ></path><path
-                        stroke="#0F0F0F"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width=".316"
-                        d="m9.48 4.158 1.58 2.737m10.888-2.737-1.58 2.737"
-                      ></path><path
-                        fill="#fff"
-                        d="M13.701 7.532a.766.766 0 0 1-.773.76.767.767 0 0 1-.777-.756v-.004a.766.766 0 0 1 .773-.759.766.766 0 0 1 .777.755v.004Zm5.785 0a.766.766 0 0 1-.773.76.767.767 0 0 1-.777-.756v-.004a.766.766 0 0 1 .773-.759.766.766 0 0 1 .777.755v.004Z"
-                      ></path></g
-                    ><defs
-                      ><clipPath id="astroicon:custom/androida"
-                        ><path
-                          fill="#fff"
-                          d="M0 0h21.427v24H0z"
-                          transform="translate(5 4)"></path></clipPath
-                      ></defs
-                    ></svg
-                  >
-                </a><a
-                  role="button"
-                  data-link="/docs/developer-tools/apollo-graphql/"
-                  class="sdk graphql js-sdk-link astro-KWFDDM2J"
-                >
-                  <svg
-                    fill="none"
-                    viewBox="0 0 32 32"
-                    width="32"
-                    class="astro-KWFDDM2J"
-                    astro-icon="custom/graphql"
-                    ><path
-                      fill="#2B2B2B"
-                      d="m5.958 22.04.92.53 10.25-17.752-.92-.531-10.25 17.752Z"
-                    ></path><path
-                      fill="#2B2B2B"
-                      d="M26.247 20.62h-20.5v1.063h20.5v-1.062Z"></path><path
-                      fill="#2B2B2B"
-                      d="m6.153 21.218 10.253 5.92.531-.92-10.253-5.92-.531.92ZM15.06 5.789l10.254 5.92.53-.92-10.253-5.92-.531.92Z"
-                    ></path><path
-                      fill="#2B2B2B"
-                      d="m6.156 10.784.531.92 10.253-5.92-.53-.92-10.254 5.92Z"
-                    ></path><path
-                      fill="#2B2B2B"
-                      d="m14.875 4.818 10.25 17.752.92-.53-10.25-17.753-.92.531ZM7.622 10.08H6.56v11.84h1.062V10.08Z"
-                    ></path><path
-                      fill="#2B2B2B"
-                      d="M25.44 10.08h-1.062v11.84h1.062V10.08Z"></path><path
-                      fill="#2B2B2B"
-                      d="m15.762 25.884.464.804 8.917-5.149-.464-.804-8.917 5.15Z"
-                    ></path><path
-                      fill="#2B2B2B"
-                      d="M26.848 22.266a2.237 2.237 0 0 1-3.053.819 2.237 2.237 0 0 1-.819-3.053 2.237 2.237 0 0 1 3.053-.82 2.227 2.227 0 0 1 .819 3.054ZM9.018 11.968a2.237 2.237 0 0 1-3.053.82 2.237 2.237 0 0 1-.82-3.054 2.237 2.237 0 0 1 3.053-.819 2.239 2.239 0 0 1 .82 3.053ZM5.152 22.266a2.239 2.239 0 0 1 .82-3.053 2.239 2.239 0 0 1 3.052.819 2.236 2.236 0 0 1-3.872 2.234ZM22.983 11.968a2.239 2.239 0 0 1 .819-3.053 2.239 2.239 0 0 1 3.053.82 2.239 2.239 0 0 1-.82 3.052 2.237 2.237 0 0 1-3.052-.819ZM16 28.531a2.232 2.232 0 0 1-2.234-2.233c0-1.236.999-2.234 2.234-2.234 1.235 0 2.234.998 2.234 2.234A2.236 2.236 0 0 1 16 28.53ZM16 7.936a2.232 2.232 0 0 1-2.234-2.234c0-1.235.999-2.233 2.234-2.233 1.235 0 2.234.998 2.234 2.233A2.232 2.232 0 0 1 16 7.936Z"
-                    ></path></svg
-                  >
-                </a><a
                   role="button"
                   data-link="/docs/developer-tools/elixir-sdk/"
                   class="sdk elixir js-sdk-link astro-KWFDDM2J"
