@@ -1,6 +1,10 @@
 ---
 import Gucci from "../../assets/logo/Gucci.astro";
 import LV from "../../assets/logo/LouisVuitton.astro";
+const loopBrand = [
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin']
+];
 ---
 
 <style>
@@ -89,8 +93,30 @@ import LV from "../../assets/logo/LouisVuitton.astro";
   text-shadow: 5px 5px rgb(255, 255, 255), 5px 5px rgba(0, 0, 0, .1), 10px 10px rgba(0, 0, 0, .1);
 }
 
+.loop-item {
+    @apply flex gap-5 font-bold
+}
 </style>
 <script>
+import gsap from 'gsap'
+gsap.fromTo('.brand-loop-wrapper-item-left', {
+  xPercent: 0
+}, {
+  xPercent: -100,
+//   stagger: 0.5,
+  duration: 10,
+  repeat: -1,
+  ease: 'none',
+})
+gsap.fromTo('.brand-loop-wrapper-item-right', {
+  xPercent: 0
+}, {
+  xPercent: 100,
+//   stagger: 0.5,
+  duration: 10,
+  repeat: -1,
+  ease: 'none',
+})
   /*--------------------
 Vars
 --------------------*/
@@ -142,23 +168,23 @@ const animateBrandText = (el: any, params:animateBrandTextInterface) => {
   })
 }
 
-items.forEach(e => {
-  const word = e.querySelector('.loop-word')
-  console.log(word)
-  width = Math.ceil(word.clientWidth)
-  times = Math.ceil(window.innerWidth / width)
+// items.forEach(e => {
+//   const word = e.querySelector('.loop-word')
+//   console.log(word)
+//   width = Math.ceil(word.clientWidth)
+//   times = Math.ceil(window.innerWidth / width)
 
-  let direction = e.getAttribute('direction');
-  if (!direction) {
-    direction = 'left'
-  }
+//   let direction = e.getAttribute('direction');
+//   if (!direction) {
+//     direction = 'left'
+//   }
   
-  // e.style.width = `${(times + 1) * width}px`
-  animateBrandText(e, {
-    width:100,
-    direction: direction
-  })
-});
+//   // e.style.width = `${(times + 1) * width}px`
+//   animateBrandText(e, {
+//     width:100,
+//     direction: direction
+//   })
+// });
 // const word = items?.querySelectorAll('.loop-word')
 // console.log(word)
 
@@ -233,7 +259,11 @@ const animate = () => {
         超过2000个品牌 
         <span class="block"></span>
         供您挑选。
-      </h1>
+        <div class="text-sm">
+            <span class="block"></span>
+          时尚潮流, 户外运动, 居家休闲, 朋克牛仔...... 总有一个类型是您喜欢的。
+        </div>
+    </h1>
     <div
       id="home-widget-platforms"
       class="_graphic_3fli4_142"
@@ -311,12 +341,30 @@ const animate = () => {
       <div class="brand-logo-items"></div>
     </div>
   </div>
-  <div class="brand-loop-wrapper">
-    <div class="brand-loop-wrapper-item" direction="left">
-      <div class="loop-word">Super -&nbsp;</div>
+  <div class="brand-loop-wrapper text-3xl">
+    <div class="loop-item brand-loop-wrapper-item-left ">
+      {
+        loopBrand[0].map(e => (
+            <div class="loop-word">{ e }</div>
+        ))
+      }
+      {
+        loopBrand[0].map(e => (
+            <div class="loop-word">{ e }</div>
+        ))
+      }
     </div>
-    <div class="brand-loop-wrapper-item" direction="right">
-      <div class="loop-word">Super -&nbsp;</div>
+    <div class="loop-item brand-loop-wrapper-item-right">
+        {
+            loopBrand[1].map(e => (
+                <div class="loop-word">{ e }</div>
+            ))
+          }
+          {
+            loopBrand[1].map(e => (
+                <div class="loop-word">{ e }</div>
+            ))
+          }
     </div>
   </div>
 </figure>
