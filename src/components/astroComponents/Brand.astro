@@ -71,8 +71,161 @@ import LV from "../../assets/logo/LouisVuitton.astro";
 .brand-logo-items:nth-child(12) {
     background: linear-gradient(300deg,#fff0 2.55%,#ffffff8c)
 }
+/* body {
+  // font-family: 'Titillium Web', sans-serif;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  user-select: none;
+} */
+
+.menu--item {
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  text-shadow: 5px 5px rgb(255, 255, 255), 5px 5px rgba(0, 0, 0, .1), 10px 10px rgba(0, 0, 0, .1);
+}
 
 </style>
+<script>
+  /*--------------------
+Vars
+--------------------*/
+interface animateBrandTextInterface{
+  width:number,
+  direction:string
+}
+
+// 移动速度
+let speed:number = 0.1
+let acc:number = 0
+
+// 被hover
+let hover = false
+
+// 
+let width:number
+let times
+let cloned:[] = []
+
+// const item = document.querySelector('.brand-loop-wrapper-item')
+const items = document.querySelectorAll('.brand-loop-wrapper-item')
+
+const animateBrandText = (el: any, params:animateBrandTextInterface) => {
+  //Acceleration
+  acc = 1
+  if (hover) {
+    acc -= 0.35
+  }
+
+  //Min/Max accelearion
+  // acc = Math.min(13, Math.max(0, acc))
+  
+  //Add acceleration to speed
+  speed += acc
+  
+  // Text Loop
+  if (speed >= params.width) {
+    speed = 0
+  }
+
+  // console.log(el.getAttribute('direction'))
+  // CSS Text
+  el.style.transform = `translateX(${-speed}px) skewX(${-1 * acc}deg)`
+  
+  // RaF
+  requestAnimationFrame(() => {
+    animateBrandText(el, params)
+  })
+}
+
+items.forEach(e => {
+  const word = e.querySelector('.loop-word')
+  console.log(word)
+  width = Math.ceil(word.clientWidth)
+  times = Math.ceil(window.innerWidth / width)
+
+  let direction = e.getAttribute('direction');
+  if (!direction) {
+    direction = 'left'
+  }
+  
+  // e.style.width = `${(times + 1) * width}px`
+  animateBrandText(e, {
+    width:100,
+    direction: direction
+  })
+});
+// const word = items?.querySelectorAll('.loop-word')
+// console.log(word)
+
+/*--------------------
+Calculate
+--------------------*/
+const calculate = () => {
+  console.log('cloned', cloned)
+  // cloned.forEach(i => {
+  //   i.parentNode.removeChild(i)
+  // })
+  cloned = []
+  
+  width = Math.ceil(word.clientWidth)
+  times = Math.ceil(window.innerWidth / width)
+  
+  item.style.width = `${(times + 1) * width}px`
+
+  // for (let i = 0; i < times + 1; i++) {
+  //   const clone = word.cloneNode(true)
+  //   word.parentNode.appendChild(clone)
+  //   cloned.push(clone)
+  // }
+}
+
+
+/*--------------------
+Listeners
+--------------------*/
+// const handleMouse = bool => hover = bool
+// item.addEventListener('mouseenter', () => {handleMouse(true)})
+// item.addEventListener('touchstart', () => {handleMouse(true)})
+// item.addEventListener('mouseleave', () => {handleMouse(false)})
+// item.addEventListener('touchend', () => {handleMouse(false)})
+// window.addEventListener('resize', calculate)
+// window.addEventListener('load', calculate)
+
+
+/*--------------------
+Animate
+--------------------*/
+const animate = () => {
+  //Acceleration
+  acc = 1
+  if (hover) {
+    acc -= 0.35
+  }
+  
+  //Min/Max accelearion
+  acc = Math.min(13, Math.max(0, acc))
+  
+  //Add acceleration to speed
+  speed += acc
+  
+  // Text Loop
+  if (speed >= width) {
+    speed = 0
+  }
+  // CSS Text
+  item.style.transform = `translateX(${-speed}px) skewX(${-1 * acc}deg)`
+  
+  // RaF
+  requestAnimationFrame(animate)
+}
+
+// animate()
+</script>
 <figure class="wrapper rounded-lg p-10 mx-auto">
   <div class="flex justify-center items-center">
     <!-- <div class="description text-4xl">超过2000个品牌供您挑选。</div> -->
@@ -156,6 +309,14 @@ import LV from "../../assets/logo/LouisVuitton.astro";
         />
       </div>
       <div class="brand-logo-items"></div>
+    </div>
+  </div>
+  <div class="brand-loop-wrapper">
+    <div class="brand-loop-wrapper-item" direction="left">
+      <div class="loop-word">Super -&nbsp;</div>
+    </div>
+    <div class="brand-loop-wrapper-item" direction="right">
+      <div class="loop-word">Super -&nbsp;</div>
     </div>
   </div>
 </figure>
