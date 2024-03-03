@@ -7,6 +7,7 @@ import ToolBar from '@/components/ToolBar.vue';
 import DescriptionSelection from '@/components/astroComponents/Description.astro'
 import TStageSelection from '@/components/astroComponents/Tstage.astro'
 import BrandSelection from '@/components/astroComponents/Brand.astro'
+import Footer from '@/components/astroComponents/Footer.astro'
 
 const panelSearchNav = [
 '项目',
@@ -51,8 +52,9 @@ const panelSearchNav = [
 		
 	</main>
 	<footer>
-
+		<Footer></Footer>
 	</footer>
+
 	<!-- <div class="panel fixed panel-search-header w-full">
 	</div> -->
 	<!-- <content> -->
@@ -60,5 +62,5 @@ const panelSearchNav = [
 			<!-- <ToolBar client:load></ToolBar> -->
 		<!-- </Content> -->
 	<!-- </content> -->
-	<MainFooter client:visible></MainFooter>
+	<!-- <MainFooter client:visible></MainFooter> -->
 </Layout>

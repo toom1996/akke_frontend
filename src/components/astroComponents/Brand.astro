@@ -3,7 +3,16 @@ import Gucci from "../../assets/logo/Gucci.astro";
 import LV from "../../assets/logo/LouisVuitton.astro";
 const loopBrand = [
     ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin']
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
+    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
 ];
 ---
 
@@ -94,165 +103,36 @@ const loopBrand = [
 }
 
 .loop-item {
-    @apply flex gap-5 font-bold
+    @apply flex gap-5 font-bold whitespace-nowrap
 }
 </style>
 <script>
 import gsap from 'gsap'
+
+var element = document.getElementsByClassName("brand-loop-wrapper-item-right");
+console.log(element)
+var width = element[0].offsetWidth;
+console.log(width)
 gsap.fromTo('.brand-loop-wrapper-item-left', {
   xPercent: 0
 }, {
-  xPercent: -100,
+  xPercent: -90,
 //   stagger: 0.5,
-  duration: 10,
+  duration: 120,
   repeat: -1,
   ease: 'none',
 })
 gsap.fromTo('.brand-loop-wrapper-item-right', {
-  xPercent: 0
+  xPercent: -90
 }, {
-  xPercent: 100,
+  xPercent: 0,
 //   stagger: 0.5,
-  duration: 10,
+  duration: 120,
   repeat: -1,
   ease: 'none',
 })
-  /*--------------------
-Vars
---------------------*/
-interface animateBrandTextInterface{
-  width:number,
-  direction:string
-}
-
-// 移动速度
-let speed:number = 0.1
-let acc:number = 0
-
-// 被hover
-let hover = false
-
-// 
-let width:number
-let times
-let cloned:[] = []
-
-// const item = document.querySelector('.brand-loop-wrapper-item')
-const items = document.querySelectorAll('.brand-loop-wrapper-item')
-
-const animateBrandText = (el: any, params:animateBrandTextInterface) => {
-  //Acceleration
-  acc = 1
-  if (hover) {
-    acc -= 0.35
-  }
-
-  //Min/Max accelearion
-  // acc = Math.min(13, Math.max(0, acc))
-  
-  //Add acceleration to speed
-  speed += acc
-  
-  // Text Loop
-  if (speed >= params.width) {
-    speed = 0
-  }
-
-  // console.log(el.getAttribute('direction'))
-  // CSS Text
-  el.style.transform = `translateX(${-speed}px) skewX(${-1 * acc}deg)`
-  
-  // RaF
-  requestAnimationFrame(() => {
-    animateBrandText(el, params)
-  })
-}
-
-// items.forEach(e => {
-//   const word = e.querySelector('.loop-word')
-//   console.log(word)
-//   width = Math.ceil(word.clientWidth)
-//   times = Math.ceil(window.innerWidth / width)
-
-//   let direction = e.getAttribute('direction');
-//   if (!direction) {
-//     direction = 'left'
-//   }
-  
-//   // e.style.width = `${(times + 1) * width}px`
-//   animateBrandText(e, {
-//     width:100,
-//     direction: direction
-//   })
-// });
-// const word = items?.querySelectorAll('.loop-word')
-// console.log(word)
-
-/*--------------------
-Calculate
---------------------*/
-const calculate = () => {
-  console.log('cloned', cloned)
-  // cloned.forEach(i => {
-  //   i.parentNode.removeChild(i)
-  // })
-  cloned = []
-  
-  width = Math.ceil(word.clientWidth)
-  times = Math.ceil(window.innerWidth / width)
-  
-  item.style.width = `${(times + 1) * width}px`
-
-  // for (let i = 0; i < times + 1; i++) {
-  //   const clone = word.cloneNode(true)
-  //   word.parentNode.appendChild(clone)
-  //   cloned.push(clone)
-  // }
-}
-
-
-/*--------------------
-Listeners
---------------------*/
-// const handleMouse = bool => hover = bool
-// item.addEventListener('mouseenter', () => {handleMouse(true)})
-// item.addEventListener('touchstart', () => {handleMouse(true)})
-// item.addEventListener('mouseleave', () => {handleMouse(false)})
-// item.addEventListener('touchend', () => {handleMouse(false)})
-// window.addEventListener('resize', calculate)
-// window.addEventListener('load', calculate)
-
-
-/*--------------------
-Animate
---------------------*/
-const animate = () => {
-  //Acceleration
-  acc = 1
-  if (hover) {
-    acc -= 0.35
-  }
-  
-  //Min/Max accelearion
-  acc = Math.min(13, Math.max(0, acc))
-  
-  //Add acceleration to speed
-  speed += acc
-  
-  // Text Loop
-  if (speed >= width) {
-    speed = 0
-  }
-  // CSS Text
-  item.style.transform = `translateX(${-speed}px) skewX(${-1 * acc}deg)`
-  
-  // RaF
-  requestAnimationFrame(animate)
-}
-
-// animate()
 </script>
-<figure class="wrapper rounded-lg p-10 mx-auto">
+<figure class="wrapper rounded-lg p-0">
   <div class="flex justify-center items-center">
     <!-- <div class="description text-4xl">超过2000个品牌供您挑选。</div> -->
     <h1 class="text-4xl">
@@ -341,30 +221,27 @@ const animate = () => {
       <div class="brand-logo-items"></div>
     </div>
   </div>
-  <div class="brand-loop-wrapper text-3xl">
-    <div class="loop-item brand-loop-wrapper-item-left ">
-      {
-        loopBrand[0].map(e => (
-            <div class="loop-word">{ e }</div>
+  <div class="brand-loop-wrapper text-5xl w-full text-slate-200">
+    {
+      loopBrand.map((e, index) => (
+          index % 2 == 0
+          ? 
+            <div class:list={['loop-item brand-loop-wrapper-item-left']}>
+              {
+                e.map(item => (
+                 <div class="loop-word">{ item }</div>
+                ))
+              }
+            </div> 
+          :
+             <div class:list={['loop-item brand-loop-wrapper-item-right', index === 5 ? 'text-black' : '']}>
+              {
+                e.map(item => (
+                 <div class="loop-word">{ item }</div>
+                ))
+              }
+            </div> 
         ))
-      }
-      {
-        loopBrand[0].map(e => (
-            <div class="loop-word">{ e }</div>
-        ))
-      }
-    </div>
-    <div class="loop-item brand-loop-wrapper-item-right">
-        {
-            loopBrand[1].map(e => (
-                <div class="loop-word">{ e }</div>
-            ))
-          }
-          {
-            loopBrand[1].map(e => (
-                <div class="loop-word">{ e }</div>
-            ))
-          }
-    </div>
+    }
   </div>
 </figure>
