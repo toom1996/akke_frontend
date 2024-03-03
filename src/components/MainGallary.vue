@@ -20,15 +20,17 @@
          </div>
          <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
-                <div class="img-container relative cursor-pointer" @click="eventView(item.src)">
-                    <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
-                        <span>图片加载中...</span>
+                <a href='/detail?id=123'>
+                    <div class="img-container relative cursor-pointer">
+                        <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
+                            <span>图片加载中...</span>
+                        </div>
+                        <div class='top-0 absolute w-full h-full' :id="`img-content-${index}`">
+                            <img class="w-full h-full" :src="item.src" @error="handleError(index)">
+                            <!-- sdfsdfsdf -->
+                        </div>
                     </div>
-                    <div class='top-0 absolute w-full h-full' :id="`img-content-${index}`">
-                        <img class="w-full h-full" :src="item.src" @error="handleError(index)">
-                        <!-- sdfsdfsdf -->
-                    </div>
-                </div>
+                </a>
             </li>
         </ul>
     </div>
@@ -57,8 +59,8 @@ const viewComponent = ref(null)
 
 const eventView = async (src:string) => {
     console.log(src)
-    state.isView = true
-    state.viewSrc = src
+    // state.isView = true
+    // state.viewSrc = src
 }
 
 const close = () => {

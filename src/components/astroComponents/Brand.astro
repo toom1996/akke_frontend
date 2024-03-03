@@ -45,12 +45,6 @@ const loopBrand = [
     @apply rounded-xl bg-white flex justify-center items-center;
 }
 
-.wrapper {
-    @apply rounded-3xl;
-    max-width: calc(100vw - 180px);
-    background-image: linear-gradient(90deg,#eff3f500 0,#eff3f503 8.1%,#eff3f50c 15.5%,#eff3f51b 22.5%,#eff3f52d 29%,#eff3f542 35.3%,#eff3f55a,#eff3f573 47.1%,#eff3f58c 52.9%,#eff3f5a5,#eff3f5bd 64.7%,#eff3f5d2 71%,#eff3f5e4 77.5%,#eff3f5f3 84.5%,#eff3f5fc 91.9%,#eff3f5);
-}
-
 .brand-logo-items:first-child {
     background: linear-gradient(160deg,#fff0 2.55%,#ffffffbf)
 }
@@ -221,7 +215,7 @@ gsap.fromTo('.brand-loop-wrapper-item-right', {
       <div class="brand-logo-items"></div>
     </div>
   </div>
-  <div class="brand-loop-wrapper text-5xl w-full text-slate-200">
+  <div class="brand-loop-wrapper text-5xl w-full text-slate-200 overflow-hidden">
     {
       loopBrand.map((e, index) => (
           index % 2 == 0
