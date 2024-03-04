@@ -2,8 +2,12 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import MainGallary from '@/components/MainGallary.vue';
 import MainHeader from '@/components/MainHeader.astro';
+import Video from '@/components/astroComponents/Video.astro'
+import GallaryToolBar from '@/components/GallaryToolBar.vue';
 ---
 
 <MainLayout title="Gallary">
-    213123123213213213123213213213123
+    <MainGallary client:load transition:name="abc" transition:persist>
+        
+    </MainGallary>
 </MainLayout>

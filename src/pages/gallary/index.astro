@@ -4,10 +4,13 @@ import MainGallary from '@/components/MainGallary.vue';
 import MainHeader from '@/components/MainHeader.astro';
 import MainFooter from '@/components/common/MainFooter.vue';
 import GallaryToolBar from '@/components/GallaryToolBar.vue';
+import Video from '@/components/astroComponents/Video.astro'
 ---
 
 <MainLayout title="Gallary">
     <MainHeader></MainHeader>
     <!-- <GallaryToolBar client:visible /> -->
-    <MainGallary client:visible />
+    <MainGallary client:load transition:name="abc" transition:persist>
+        <div class="bg-slate-600">1231232</div>
+    </MainGallary>
 </MainLayout>

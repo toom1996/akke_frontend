@@ -1,7 +1,9 @@
 <template>
-    <View :src="state.viewSrc" @close="close" ref="viewComponent" v-if="state.isView" />
-    <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-        <span class="text-4xl font-bold">2024/25秋冬米兰(Fear of God)男女装发布会</span>
+    <!-- <View :src="state.viewSrc" @close="close" ref="viewComponent" v-if="state.isView" /> -->
+    <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto" transition:persist>
+        {{ state.count }}
+    <div @click="eventView('sdfsdf')">33321</div>
+        <span class="text-4xl font-bold"><a href="/detail?id=123">2024/25秋冬米兰(Fear of God)男女装发布会</a></span>
         <div>
             Fear of god
         </div>
@@ -20,7 +22,7 @@
          </div>
          <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
-                <a href='/detail?id=123'>
+                <a data-astro-history="replace" href='/detail?id=123'>
                     <div class="img-container relative cursor-pointer">
                         <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
                             <span>图片加载中...</span>
@@ -33,6 +35,7 @@
                 </a>
             </li>
         </ul>
+        <slot></slot>
     </div>
 </template>
 <script setup lang="ts">
@@ -47,12 +50,14 @@ interface IDataProvider {
 interface State {
     dataProvider: IDataProvider[],
     isView: boolean,
-    viewSrc: string
+    viewSrc: string,
+    count:number
 }
 const state = reactive<State>({
     dataProvider: [],
     isView: false,
-    viewSrc: ''
+    viewSrc: '',
+    count:0,
 })
 
 const viewComponent = ref(null)
@@ -61,6 +66,7 @@ const eventView = async (src:string) => {
     console.log(src)
     // state.isView = true
     // state.viewSrc = src
+    state.count++
 }
 
 const close = () => {
