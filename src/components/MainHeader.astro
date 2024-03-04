@@ -1,5 +1,22 @@
 ---
-const nav = ["为您呈现", "发现", "聘请", "资源", "职位"];
+const nav = [
+    {
+        label:"秀场",
+        url: '/show'
+    },{
+        label:"发现",
+        url: '/show'
+    },{
+        label:"聘请",
+        url: '/show'
+    },{
+        label:"资源",
+        url: '/show'
+    },{
+        label:"职位",
+        url: '/show'
+    }
+];
 import IconLogo from '@/assets/icons/IconLogo.vue'
 ---
 
@@ -29,8 +46,8 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
             {
                 nav.map((item) => (
                     <li class="m-4">
-                        <a href="/gallary">
-                            <span class="font-semibold">{item}</span>
+                        <a href={item.url}>
+                            <span class="font-semibold">{item.label}</span>
                         </a>
                     </li>
                 ))

@@ -22,7 +22,7 @@
          </div>
          <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
-                <a data-astro-history="replace" href='/detail?id=123'>
+                <a href='/detail?id=123'>
                     <div class="img-container relative cursor-pointer">
                         <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
                             <span>图片加载中...</span>
