@@ -1,73 +1,12 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
-import Content from './content.vue'
+import MainHeader from '../../components/MainHeader.astro';
+import Content from '@/pages/show/content.vue';
 ---
-
-<style>
-.home-content-block {
-    padding-left: 0;
-    padding-right: 0;
-    max-width: 1024px;
-    margin: 0 auto;
-}
-.updates__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    grid-auto-rows: 22rem;
-    row-gap: 32px;
-    column-gap: 32px;
-}
-.updates__card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    background-size: 100%;
-    background-position-x: center;
-    background-position-y: 0%;
-    background-repeat: no-repeat;
-    transition: all ease-in-out .3s;
-}
-.updates__card:hover {
-    background-position-y: -28px;
-}
-
-.updates__card-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4rem;
-    background: linear-gradient(0deg, #ffffff 15%, rgba(255, 255, 255, 0) 100%);
-    border-bottom-right-radius: var(--arbutus-border-radius-accent);
-    border-bottom-left-radius: var(--arbutus-border-radius-accent);
-}
-.updates__card:hover .updates__card-content {
-    bottom: 0;
-}
-.updates__card-link {
-    transition: all ease-in-out .25s;
-    transition-delay: .15s;
-    opacity: 0;
-}
-.updates__card:hover .updates__card-link {
-    opacity: 1;
-}
-.text__color--action {
-    color: var(--arbutus-color-action);
-}
-.updates__card-content {
-    position: relative;
-    z-index: 1;
-    bottom: -16px;
-    transition: all ease-in-out .25s;
-    padding-bottom: 16px;
-}
-.tile--padding-relaxed {
-    padding: 32px;
-}
-</style>
 <MainLayout title="show">
-    <p class="text-4xl text-center m-4">秀场</p>
-    <Content client:load></Content>
+    <MainHeader></MainHeader>
+    <div class="pt-60">
+        <p class="text-4xl text-center m-4">秀场</p>
+        <Content client:load></Content>
+    </div>
 </MainLayout>

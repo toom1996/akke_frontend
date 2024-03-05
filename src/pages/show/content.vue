@@ -7,8 +7,8 @@
 }
 .updates__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    grid-auto-rows: 22rem;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    grid-auto-rows: 30rem;
     row-gap: 32px;
     column-gap: 32px;
 }
@@ -67,13 +67,12 @@
         <div class="updates__grid">
             <a class="tile tile--padding-relaxed updates__card" style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/teams_update_cover.L4JnP_ME.webp")' href="https://microsoft.design/articles/designing-a-new-outlook-experience">
                 <span class="updates__card-content">
-                    <h4 class="text--title-3 text__color--foreground-1 mt0 mb4">A new era of Teams</h4>
-                    <p class="text--body-2 text__color--foreground-2 mt0 mb4 updates__card-description">
-                        Teams leverages Fluent 2 to boost performance and reduce
-                        complexity
-                    </p><span
+                    <p class="text-2xl font-bold mt0 mb4">Paula Canovas del Vas</p>
+                    <div class="text-sm font-semibold mt0 mb4 updates__card-description">
+                        2024/25秋冬巴黎女装发布会
+                    </div><div
                         class="text--body-2 text__color--action mt0 updates__card-link"
-                        >Read more →</span
+                        >Read more →</div
                     ></span
                 ><span aria-hidden="true" class="updates__card-gradient"
                     >&nbsp;</span
