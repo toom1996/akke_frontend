@@ -8,7 +8,8 @@ import Video from '@/components/astroComponents/Video.astro'
 ---
 
 <MainLayout title="Gallary">
-    <MainHeader></MainHeader>
+    <a href="/main" data-astro-reload>pushState</a>
+    <!-- <MainHeader></MainHeader> -->
     <!-- <GallaryToolBar client:visible /> -->
     <MainGallary client:load transition:name="abc" transition:persist>
         <div class="bg-slate-600">1231232</div>
