@@ -2,7 +2,7 @@
 const nav = [
     {
         label:"秀场",
-        url: '#show',
+        url: 'show',
         child: [
             {
                 label: '时装发布会',
@@ -42,6 +42,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
     }
 
     .drop-menu-container {
+        @apply pb-12;
         background: transparent;
         display: none;
         left: 0;
@@ -51,16 +52,33 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         top: calc(7.25rem - 2.125rem);
         z-index: 1;
     }
-</style>
 
-<nav class="z-50 fixed w-full top-0">
+    .drop-mask {
+        background-color: #000000b3;
+        height: 100vh;
+        inset: 0;
+        isolation: isolate;
+        opacity: 0;
+        pointer-events: none;
+        position: fixed;
+        top: var(--header-container-height);
+        transition: all .5s ease;
+        width: 100%;
+        z-index: -1;
+    }
+</style>
+<gogoex-header class="z-50 fixed w-full top-0" transition:persist>
+    <astro-heart>
+        <button aria-label="Heart">💜</button> × <span>0</span>
+      </astro-heart>
+    <div class="drop-mask"></div>
     <div class="main-nav flex px-6">
         <ul class="flex h-full items-center mr-auto">
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
             {
                 nav.map((item) => (
                     <li class="m-4">
-                        <a href={item.url}>
+                        <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
                             <span class="font-semibold">{item.label}</span>
                         </a>
                         {
@@ -106,4 +124,51 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                 </li>
             </ul>
     </div>
-</nav>
+</gogoex-header>
+<script>
+    var dropButton = document.querySelectorAll('[id^="drop-"]');
+      console.log(dropButton)
+        dropButton.forEach(function (button) {
+            button.addEventListener('click', function () {
+                console.log("按钮被点击了！");
+                // 其他操作...
+            }, true);
+        })
+    class Nav extends HTMLElement {
+    constructor() {
+      super();
+      let count = 0;
+
+      var dropButton = document.querySelectorAll('[id^="drop-"]');
+      console.log(dropButton)
+        dropButton.forEach(function (button) {
+            // button.addEventListener('click', function () {
+            //     console.log("按钮被点击了！");
+            //     // 其他操作...
+            // }, true);
+        })
+    }
+  }
+
+     // 为我们的新 HTML 自定义元素定义行为。
+  class AstroHeart extends HTMLElement {
+    constructor() {
+      super();
+      let count = 0;
+
+      const heartButton = this.querySelector('button');
+      const countSpan = this.querySelector('span');
+
+      // 每次单击按钮时，更新计数。
+      heartButton.addEventListener('click', () => {
+        count++;
+        countSpan.textContent = count.toString();
+      });
+    }
+  }
+
+  // 告诉浏览器将我们的 AstroHeart 类用于 <astro-heart> 元素。
+  customElements.define('astro-heart', AstroHeart);
+//   customElements.define('gogoex-header', Nav);
+    
+</script>

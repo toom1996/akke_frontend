@@ -4,7 +4,7 @@ import MainHeader from '../../components/MainHeader.astro';
 import Content from '@/pages/show/content.vue';
 ---
 <MainLayout title="show">
-    <MainHeader></MainHeader>
+    <MainHeader transition:persist="gge-header" transition:persist></MainHeader>
     <div class="pt-60">
         <p class="text-4xl text-center m-4">秀场</p>
         <Content client:load></Content>
