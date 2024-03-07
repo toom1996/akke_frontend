@@ -66,12 +66,25 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         width: 100%;
         z-index: -1;
     }
+
+    .drop-background {
+        background-color: #fff;
+        display: block;
+        height: 0px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
 </style>
 <gogoex-header class="z-50 fixed w-full top-0" transition:persist>
     <astro-heart>
         <button aria-label="Heart">💜</button> × <span>0</span>
       </astro-heart>
-    <div class="drop-mask"></div>
+    <div id="dropOverlay" class="drop-mask"></div>
+    <div id="dropBackground" class="drop-background"></div>
     <div class="main-nav flex px-6">
         <ul class="flex h-full items-center mr-auto">
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
@@ -84,7 +97,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                         {
                             item.child.length > 0 ?
                             item.child.map((childItem) => (
-                                <div id="dropMenuContainer" class="drop-menu-container" aria-expanded="false" style="display: block;">
+                                <div id="dropMenuContainer" class="drop-menu-container" aria-expanded="false">
                                     <div class="c-megamenu__droplet-wrapper astro-FAS2F7R5 flex justify-center">
                                         <div class="c-megamenu__droplet-inner astro-FAS2F7R5" style="opacity: 1;">
                                             <div class=" astro-FAS2F7R5">
@@ -127,23 +140,40 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
 </gogoex-header>
 <script>
     var dropButton = document.querySelectorAll('[id^="drop-"]');
-      console.log(dropButton)
-        dropButton.forEach(function (button) {
-            button.addEventListener('click', function () {
-                var container = document.getElementById('dropMenuContainer');
-                if (container) {
-                    if (container.getAttribute('aria-expanded') == 'false') {
-                    container.setAttribute('aria-expanded', 'true');
-                    container.style.display = 'none';
+    console.log(dropButton)
+    dropButton.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var dropMenuEl = document.getElementById('dropMenuContainer');
+            var dropOverlayEl = document.getElementById('dropOverlay');
+            if (dropMenuEl) {
+                if (dropMenuEl.getAttribute('aria-expanded') == 'false') {
+                    dropMenuEl.setAttribute('aria-expanded', 'true');
+                    dropMenuEl.style.display = 'block';
+                    dropOverlayEl ? dropOverlayEl.style.opacity = '1' : ''
                 } else {
-                    container.setAttribute('aria-expanded', 'false')
-                    container.style.display = 'block';
+                    dropMenuEl.setAttribute('aria-expanded', 'false')
+                    dropMenuEl.style.display = 'none';
+                    dropOverlayEl ? dropOverlayEl.style.opacity = '0' : ''
                 }
-                }
-                console.log("按钮被点击了！");
-                // 其他操作...
-            }, true);
-        })
+                // __toggledropOverlay()
+            }
+            console.log("按钮被点击了！");
+            // 其他操作...
+        }, true);
+    })
+
+    function __toggledropOverlay()
+    {
+        var el = document.getElementById('dropOverlay');
+        if (el) {
+            console.log(window.getComputedStyle(el).opacity)
+            if (window.getComputedStyle(el).opacity != '0') {
+                el.style.opacity = '0'
+            } else {
+                el.style.opacity = '1'
+            }
+        }
+    }
     class Nav extends HTMLElement {
     constructor() {
       super();
