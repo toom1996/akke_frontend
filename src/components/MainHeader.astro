@@ -84,7 +84,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                         {
                             item.child.length > 0 ?
                             item.child.map((childItem) => (
-                                <div class="drop-menu-container" style="display: block;">
+                                <div id="dropMenuContainer" class="drop-menu-container" aria-expanded="false" style="display: block;">
                                     <div class="c-megamenu__droplet-wrapper astro-FAS2F7R5 flex justify-center">
                                         <div class="c-megamenu__droplet-inner astro-FAS2F7R5" style="opacity: 1;">
                                             <div class=" astro-FAS2F7R5">
@@ -130,6 +130,16 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
       console.log(dropButton)
         dropButton.forEach(function (button) {
             button.addEventListener('click', function () {
+                var container = document.getElementById('dropMenuContainer');
+                if (container) {
+                    if (container.getAttribute('aria-expanded') == 'false') {
+                    container.setAttribute('aria-expanded', 'true');
+                    container.style.display = 'none';
+                } else {
+                    container.setAttribute('aria-expanded', 'false')
+                    container.style.display = 'block';
+                }
+                }
                 console.log("按钮被点击了！");
                 // 其他操作...
             }, true);
@@ -159,11 +169,15 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
       const heartButton = this.querySelector('button');
       const countSpan = this.querySelector('span');
 
-      // 每次单击按钮时，更新计数。
-      heartButton.addEventListener('click', () => {
-        count++;
-        countSpan.textContent = count.toString();
-      });
+        if (heartButton) {
+            // 每次单击按钮时，更新计数。
+            heartButton.addEventListener('click', () => {
+                count++;
+                if (countSpan) {
+                    countSpan.textContent = count.toString();
+                }
+            });
+        }
     }
   }
 
