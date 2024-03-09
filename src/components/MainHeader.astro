@@ -5,10 +5,31 @@ const nav = [
         url: 'show',
         child: [
             {
-                label: '时装发布会',
+                label: '时装发布会1',
+                items: [{label: '法国时装周',url: '/show?a=1234'},{label: '米兰时装周',url: '/show?a=1234'}]
+            },
+            {
+                label: '时装发布会2',
                 items: [
                     {
                         label: '法国时装周',
+                        url: '/show?a=1234'
+                    },
+                    {
+                        label: '米兰时装周',
+                        url: '/show?a=1234'
+                    }
+                ]
+            },
+            {
+                label: '时装发布会3',
+                items: [
+                    {
+                        label: '法国时装周',
+                        url: '/show?a=1234'
+                    },
+                    {
+                        label: '米兰时装周',
                         url: '/show?a=1234'
                     }
                 ]
@@ -16,8 +37,32 @@ const nav = [
         ]
     },{
         label:"发现",
-        url: '/show',
-        child: []
+        url: 'find',
+        child: [ {
+                label: '时装发布会',
+                items: [
+                    {
+                        label: '法国时装周!!',
+                        url: '/show?a=1234'
+                    },
+                    {
+                        label: '米兰时装周!!',
+                        url: '/show?a=1234'
+                    },
+                    {
+                        label: '米兰时装周!!',
+                        url: '/show?a=1234'
+                    },
+                    {
+                        label: '米兰时装周!!',
+                        url: '/show?a=1234'
+                    },
+                    {
+                        label: '米兰时装周!!',
+                        url: '/show?a=1234'
+                    }
+                ]
+            }]
     },{
         label:"聘请",
         url: '/show',
@@ -44,13 +89,19 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
     .drop-menu-container {
         @apply pb-12;
         background: transparent;
-        display: none;
+        /* display: none; */
+        opacity:0;
         left: 0;
         padding-block-start: 3rem;
         position: absolute;
         right: 0;
         top: calc(7.25rem - 2.125rem);
+        transition: all .3s ease;
         z-index: 1;
+    }
+
+    .drop-menu-container[aria-expanded = "true"] {
+        opacity:1;
     }
 
     .drop-mask {
@@ -62,29 +113,24 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         pointer-events: none;
         position: fixed;
         top: var(--header-container-height);
-        transition: all .5s ease;
+        transition: all .3s ease;
         width: 100%;
         z-index: -1;
     }
 
     .drop-background {
-        background-color: #fff;
-        display: block;
-        height: 0px;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        z-index: -1;
+        /* background-color: #ffffff; */
+        /* transition: all .3s ease; */
+        /* z-index: -1; */
     }
+    
 </style>
 <gogoex-header class="z-50 fixed w-full top-0" transition:persist>
     <astro-heart>
         <button aria-label="Heart">💜</button> × <span>0</span>
       </astro-heart>
     <div id="dropOverlay" class="drop-mask"></div>
-    <div id="dropBackground" class="drop-background"></div>
+    <div id="dropBackground" class="drop-background absolute right-0 top-0 left-0 h-0 block w-full z-0 bg-white transition-all"></div>
     <div class="main-nav flex px-6">
         <ul class="flex h-full items-center mr-auto">
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
@@ -96,32 +142,23 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                         </a>
                         {
                             item.child.length > 0 ?
-                            item.child.map((childItem) => (
-                                <div id="dropMenuContainer" class="drop-menu-container" aria-expanded="false">
-                                    <div class="c-megamenu__droplet-wrapper astro-FAS2F7R5 flex justify-center">
-                                        <div class="c-megamenu__droplet-inner astro-FAS2F7R5" style="opacity: 1;">
-                                            <div class=" astro-FAS2F7R5">
-                                                <div role="group" aria-labelledby="mm-users" class="col astro-FAS2F7R5">
-                                                    <h2 id="mm-users" class="c-body-text c-body-text--caption u-mb-medium-3 c-body-text--grey-600 col-head astro-FAS2F7R5 astro-N2675GOD">{childItem.label}</h2>
-                                                    <ul class="astro-FAS2F7R5">
-                                                        <li class="astro-FAS2F7R5">
-                                                            <a class="kui-button kui-button--uncontained kui-button--full-width kui-button--align-left astro-N7IEXIQW" href="/authentication/">
-                                                                <span class="kui-button__inner astro-N7IEXIQW">
-                                                                    {
-                                                                        childItem.items.map((v) => (
-                                                                            <span class="kui-button__label astro-N7IEXIQW">{ v.label }</span>
-                                                                        ))
-                                                                    }
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                            <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center" aria-expanded="false">
+                                {
+                                    item.child.map((itemChild) => (
+                                        <div class=" astro-FAS2F7R5">
+                                            <div role="group" aria-labelledby="mm-users" class="col astro-FAS2F7R5">
+                                                <h2 id="mm-users" class="c-body-text c-body-text--caption u-mb-medium-3 c-body-text--grey-600 col-head astro-FAS2F7R5 astro-N2675GOD">{itemChild.label}</h2>
+                                                {
+                                                    itemChild.items.map((v) => (
+                                                        <p class="text-xl font-bold">{ v.label }</p>
+                                                    ))
+                                                }
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            )) : ''
+                                    )) 
+                                }
+                            </div>
+                            : ''
                         }
                     </li>
                 ))
@@ -139,40 +176,63 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
     </div>
 </gogoex-header>
 <script>
+    document.addEventListener('astro:before-preparation', () => {
+        console.log('astro:before')
+    // document.querySelector('#loading').classList.add('show');
+  });
+  document.addEventListener('astro:after-preparation', () => {
+    console.log('astro:after')
+    // document.querySelector('#loading').classList.remove('show');
+  });
+    var currentIsDropedMenuId = ''
     var dropButton = document.querySelectorAll('[id^="drop-"]');
     console.log(dropButton)
     dropButton.forEach(function (button) {
+        console.log(button.id)
         button.addEventListener('click', function () {
-            var dropMenuEl = document.getElementById('dropMenuContainer');
+            let currentDropedMenuId = 'dropMenuContainer__' + button.id
+
+            // 当前菜单的下拉菜单
+            var dropMenuEl = document.getElementById(currentDropedMenuId);
+
+            // 遮罩
             var dropOverlayEl = document.getElementById('dropOverlay');
+            
+            // 菜单背景
+            var dropBackgroundEl = document.getElementById('dropBackground');
+
+
             if (dropMenuEl) {
                 if (dropMenuEl.getAttribute('aria-expanded') == 'false') {
                     dropMenuEl.setAttribute('aria-expanded', 'true');
-                    dropMenuEl.style.display = 'block';
-                    dropOverlayEl ? dropOverlayEl.style.opacity = '1' : ''
+                    dropBackgroundEl ? dropBackgroundEl.style.height = `${dropMenuEl.offsetHeight + 64}px` : ''
+                    __setOpacity([dropOverlayEl, dropBackgroundEl, ], '1')
+
+                    if (currentIsDropedMenuId && currentIsDropedMenuId !== currentDropedMenuId) {
+                        let currentIsDropedMenuEl =  document.getElementById(currentIsDropedMenuId);
+                        currentIsDropedMenuEl?.setAttribute('aria-expanded', 'false')
+                    }
+
+                    // 记录当前哪个是打开的
+                    currentIsDropedMenuId = currentDropedMenuId
+                    console.log(currentDropedMenuId)
                 } else {
                     dropMenuEl.setAttribute('aria-expanded', 'false')
-                    dropMenuEl.style.display = 'none';
-                    dropOverlayEl ? dropOverlayEl.style.opacity = '0' : ''
+                    __setOpacity([dropBackgroundEl, dropOverlayEl, ], '0')
+                    dropBackgroundEl ? dropBackgroundEl.style.height = '0' : ''
                 }
-                // __toggledropOverlay()
             }
-            console.log("按钮被点击了！");
+            
+            document.querySelectorAll("[aria-expanded='true']")
             // 其他操作...
         }, true);
     })
 
-    function __toggledropOverlay()
+    function __setOpacity(el: Array<HTMLElement|null>, opacityVal: string = '0')
     {
-        var el = document.getElementById('dropOverlay');
-        if (el) {
-            console.log(window.getComputedStyle(el).opacity)
-            if (window.getComputedStyle(el).opacity != '0') {
-                el.style.opacity = '0'
-            } else {
-                el.style.opacity = '1'
-            }
-        }
+       el.forEach((e) => {
+            e ? e.style.opacity = opacityVal : '';
+       })
     }
     class Nav extends HTMLElement {
     constructor() {
