@@ -3,6 +3,7 @@
     <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto" transition:persist>
         {{ state.count }}
     <div @click="eventView('sdfsdf')">33321</div>
+    <div @click="pushState()">@@@@@@@@</div>
 
         <span class="text-4xl font-bold"><a href="/detail?id=123">2024/25秋冬米兰(Fear of God)男女装发布会</a></span>
         <div>
@@ -85,7 +86,7 @@ const pushState = () => {
     const state = { page_id: 1, user_id: 5 };
     const url = "/detail";
 
-    history.pushState(state, "", url);
+    window.history.pushState({}, '', '/new-url');
 }
 
 const handleError = (index:number) => {

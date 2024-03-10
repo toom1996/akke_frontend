@@ -87,7 +87,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
     }
 
     .drop-menu-container {
-        @apply pb-12;
+        /* @apply pb-12; */
         background: transparent;
         /* display: none; */
         opacity:0;
@@ -104,24 +104,23 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         opacity:1;
     }
 
+    .drop-menu-container[aria-expanded = "false"] {
+        visibility: hidden;
+    }
+
     .drop-mask {
         background-color: #000000b3;
         height: 100vh;
+        /* pointer-events: none; */
         inset: 0;
         isolation: isolate;
         opacity: 0;
-        pointer-events: none;
+        /* pointer-events: none; */
         position: fixed;
         top: var(--header-container-height);
         transition: all .3s ease;
         width: 100%;
         z-index: -1;
-    }
-
-    .drop-background {
-        /* background-color: #ffffff; */
-        /* transition: all .3s ease; */
-        /* z-index: -1; */
     }
     
 </style>
@@ -164,7 +163,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                 ))
             }
         </ul>
-        <div class="sign-wrapper flex">
+        <!-- <div class="sign-wrapper flex">
             <ul class="PrimaryNav-loggedOutOptions-ZwH flex items-center">
                 <li class="PrimaryNav-loggedOutOption-OP6 PrimaryNav-logIn-td1">
                     <a href="/login" class="btn-dark px-3 py-2  lg:px-4 text-sm transition border border-slate-900 font-medium mr-2">登录</a>
@@ -173,10 +172,20 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                     <a href="/detail" class="btn-light px-3 py-2  lg:px-4 text-sm transition hover:bg-slate-800 border border-slate-300 font-mediummr-2">注册</a>
                 </li>
             </ul>
-    </div>
+        </div> -->
 </gogoex-header>
 <script>
+
+    // 遮罩
+    var dropOverlayEl = document.getElementById('dropOverlay');
+            
+    // 菜单背景
+    var dropBackgroundEl = document.getElementById('dropBackground');
+
     document.addEventListener('astro:before-preparation', () => {
+        let currentIsDropedMenuEl =  document.getElementById(currentIsDropedMenuId);
+                        currentIsDropedMenuEl?.setAttribute('aria-expanded', 'false')
+                        __setOpacity([dropBackgroundEl, dropOverlayEl, ], '0')
         console.log('astro:before')
     // document.querySelector('#loading').classList.add('show');
   });
@@ -184,6 +193,22 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
     console.log('astro:after')
     // document.querySelector('#loading').classList.remove('show');
   });
+
+  var ov = document.getElementById('dropOverlay');
+  console.log(ov)
+  if (ov) {
+    let v = ov?.addEventListener('click', function () {
+    console.log(currentIsDropedMenuId)
+    document.getElementById(currentIsDropedMenuId)?.setAttribute('aria-expanded', 'false')
+    __setOpacity([dropBackgroundEl, dropOverlayEl], '0')
+  })
+
+  console.log(v)
+  }
+
+    // document.getElementById('dropOverlay')?.addEventListener('click', function () {
+    //     console.log(1231232)
+    // })
     var currentIsDropedMenuId = ''
     var dropButton = document.querySelectorAll('[id^="drop-"]');
     console.log(dropButton)
@@ -195,17 +220,10 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
             // 当前菜单的下拉菜单
             var dropMenuEl = document.getElementById(currentDropedMenuId);
 
-            // 遮罩
-            var dropOverlayEl = document.getElementById('dropOverlay');
-            
-            // 菜单背景
-            var dropBackgroundEl = document.getElementById('dropBackground');
-
-
             if (dropMenuEl) {
                 if (dropMenuEl.getAttribute('aria-expanded') == 'false') {
                     dropMenuEl.setAttribute('aria-expanded', 'true');
-                    dropBackgroundEl ? dropBackgroundEl.style.height = `${dropMenuEl.offsetHeight + 64}px` : ''
+                    dropBackgroundEl ? dropBackgroundEl.style.height = `${dropMenuEl.offsetHeight + 128}px` : ''
                     __setOpacity([dropOverlayEl, dropBackgroundEl, ], '1')
 
                     if (currentIsDropedMenuId && currentIsDropedMenuId !== currentDropedMenuId) {
@@ -228,11 +246,14 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         }, true);
     })
 
-    function __setOpacity(el: Array<HTMLElement|null>, opacityVal: string = '0')
-    {
-       el.forEach((e) => {
-            e ? e.style.opacity = opacityVal : '';
-       })
+    function __setOpacity(el: Array<HTMLElement | null>, opacityVal: string = '0') {
+        el.forEach((e) => {
+            if (e) {
+                e.style.opacity = opacityVal;
+                let visibilityVal = opacityVal == '0' ? 'hidden' : 'unset';
+                e.style.visibility = visibilityVal;
+            }
+        });
     }
     class Nav extends HTMLElement {
     constructor() {
