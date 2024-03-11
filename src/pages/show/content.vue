@@ -1,5 +1,5 @@
 <style scoped>
-    .home-content-block {
+.home-content-block {
     padding-left: 0;
     padding-right: 0;
     max-width: 1024px;
@@ -32,7 +32,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4rem;
+    height: 12rem;
     background: linear-gradient(0deg, #ffffff 15%, rgba(255, 255, 255, 0) 100%);
     border-bottom-right-radius: var(--arbutus-border-radius-accent);
     border-bottom-left-radius: var(--arbutus-border-radius-accent);
@@ -65,7 +65,7 @@
 <template>
     <div class="home-content-block">
         <div class="updates__grid">
-            <a class="tile tile--padding-relaxed updates__card" style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/teams_update_cover.L4JnP_ME.webp")' href="https://microsoft.design/articles/designing-a-new-outlook-experience">
+            <a class="tile tile--padding-relaxed updates__card" style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/teams_update_cover.L4JnP_ME.webp")' href="/show/gallary">
                 <span class="updates__card-content">
                     <p class="text-2xl font-bold mt0 mb4">Paula Canovas del Vas</p>
                     <div class="text-sm font-semibold mt0 mb4 updates__card-description">

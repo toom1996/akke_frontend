@@ -2,7 +2,6 @@
     <div @click="close" class="fixed top-0 left-0 h-screen w-screen bg-black overflow-x-auto z-50 ">
         <div class="h-full flex">
           <img class="h-full mx-auto" :src="src">
-          
         </div>
     </div>
 </template>
@@ -34,9 +33,12 @@ onMounted(() => {
     var mo = function (e: any) {
     e.preventDefault()
   }
-    document.body.style.overflow = 'hidden'
-  document.addEventListener('touchmove', mo, false) //禁止页面滑动
+  //   document.body.style.overflow = 'hidden'
+  // document.addEventListener('touchmove', mo, false) //禁止页面滑动
 })
 
+defineExpose({
+        close
+    })
 
 </script>

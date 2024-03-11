@@ -125,9 +125,9 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
     
 </style>
 <gogoex-header class="z-50 fixed w-full top-0" transition:persist>
-    <astro-heart>
+    <!-- <astro-heart>
         <button aria-label="Heart">💜</button> × <span>0</span>
-      </astro-heart>
+      </astro-heart> -->
     <div id="dropOverlay" class="drop-mask"></div>
     <div id="dropBackground" class="drop-background absolute right-0 top-0 left-0 h-0 block w-full z-0 bg-white transition-all"></div>
     <div class="main-nav flex px-6">
@@ -135,7 +135,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
             {
                 nav.map((item) => (
-                    <li class="m-4">
+                    <li class="m-4 text-lg">
                         <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
                             <span class="font-semibold">{item.label}</span>
                         </a>
@@ -175,125 +175,116 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         </div> -->
 </gogoex-header>
 <script>
+    class Gogoex extends HTMLElement {
+    constructor() {
+      super();
+      let count = 0;
 
-    // 遮罩
+      // 遮罩
     var dropOverlayEl = document.getElementById('dropOverlay');
             
-    // 菜单背景
-    var dropBackgroundEl = document.getElementById('dropBackground');
-
-    document.addEventListener('astro:before-preparation', () => {
-        let currentIsDropedMenuEl =  document.getElementById(currentIsDropedMenuId);
-                        currentIsDropedMenuEl?.setAttribute('aria-expanded', 'false')
-                        __setOpacity([dropBackgroundEl, dropOverlayEl, ], '0')
-        console.log('astro:before')
-    // document.querySelector('#loading').classList.add('show');
-  });
-  document.addEventListener('astro:after-preparation', () => {
-    console.log('astro:after')
-    // document.querySelector('#loading').classList.remove('show');
-  });
-
-  var ov = document.getElementById('dropOverlay');
-  console.log(ov)
-  if (ov) {
-    let v = ov?.addEventListener('click', function () {
-    console.log(currentIsDropedMenuId)
-    document.getElementById(currentIsDropedMenuId)?.setAttribute('aria-expanded', 'false')
-    __setOpacity([dropBackgroundEl, dropOverlayEl], '0')
-  })
-
-  console.log(v)
-  }
-
-    // document.getElementById('dropOverlay')?.addEventListener('click', function () {
-    //     console.log(1231232)
-    // })
-    var currentIsDropedMenuId = ''
-    var dropButton = document.querySelectorAll('[id^="drop-"]');
-    console.log(dropButton)
-    dropButton.forEach(function (button) {
-        console.log(button.id)
-        button.addEventListener('click', function () {
-            let currentDropedMenuId = 'dropMenuContainer__' + button.id
-
-            // 当前菜单的下拉菜单
-            var dropMenuEl = document.getElementById(currentDropedMenuId);
-
-            if (dropMenuEl) {
-                if (dropMenuEl.getAttribute('aria-expanded') == 'false') {
-                    dropMenuEl.setAttribute('aria-expanded', 'true');
-                    dropBackgroundEl ? dropBackgroundEl.style.height = `${dropMenuEl.offsetHeight + 128}px` : ''
-                    __setOpacity([dropOverlayEl, dropBackgroundEl, ], '1')
-
-                    if (currentIsDropedMenuId && currentIsDropedMenuId !== currentDropedMenuId) {
-                        let currentIsDropedMenuEl =  document.getElementById(currentIsDropedMenuId);
-                        currentIsDropedMenuEl?.setAttribute('aria-expanded', 'false')
+            // 菜单背景
+            var dropBackgroundEl = document.getElementById('dropBackground');
+        
+            document.addEventListener('astro:before-preparation', () => {
+                let currentIsDropedMenuEl =  document.getElementById(currentIsDropedMenuId);
+                                currentIsDropedMenuEl?.setAttribute('aria-expanded', 'false')
+                                __setOpacity([dropBackgroundEl, dropOverlayEl, ], '0')
+                console.log('astro:before')
+            // document.querySelector('#loading').classList.add('show');
+          });
+          document.addEventListener('astro:after-preparation', () => {
+            console.log('astro:after')
+            // document.querySelector('#loading').classList.remove('show');
+          });
+        
+          var ov = document.getElementById('dropOverlay');
+          console.log(ov)
+          if (ov) {
+            let v = ov?.addEventListener('click', function () {
+            console.log(currentIsDropedMenuId)
+            document.getElementById(currentIsDropedMenuId)?.setAttribute('aria-expanded', 'false')
+            __setOpacity([dropBackgroundEl, dropOverlayEl], '0')
+          })
+        
+          console.log(v)
+          }
+        
+            // document.getElementById('dropOverlay')?.addEventListener('click', function () {
+            //     console.log(1231232)
+            // })
+            var currentIsDropedMenuId = ''
+            var dropButton = document.querySelectorAll('[id^="drop-"]');
+            console.log(dropButton)
+            dropButton.forEach(function (button) {
+                console.log(button.id)
+                button.addEventListener('click', function () {
+                    let currentDropedMenuId = 'dropMenuContainer__' + button.id
+        
+                    // 当前菜单的下拉菜单
+                    var dropMenuEl = document.getElementById(currentDropedMenuId);
+        
+                    if (dropMenuEl) {
+                        if (dropMenuEl.getAttribute('aria-expanded') == 'false') {
+                            dropMenuEl.setAttribute('aria-expanded', 'true');
+                            dropBackgroundEl ? dropBackgroundEl.style.height = `${dropMenuEl.offsetHeight + 128}px` : ''
+                            __setOpacity([dropOverlayEl, dropBackgroundEl, ], '1')
+        
+                            if (currentIsDropedMenuId && currentIsDropedMenuId !== currentDropedMenuId) {
+                                let currentIsDropedMenuEl =  document.getElementById(currentIsDropedMenuId);
+                                currentIsDropedMenuEl?.setAttribute('aria-expanded', 'false')
+                            }
+        
+                            // 记录当前哪个是打开的
+                            currentIsDropedMenuId = currentDropedMenuId
+                            console.log(currentDropedMenuId)
+                        } else {
+                            dropMenuEl.setAttribute('aria-expanded', 'false')
+                            __setOpacity([dropBackgroundEl, dropOverlayEl, ], '0')
+                            dropBackgroundEl ? dropBackgroundEl.style.height = '0' : ''
+                        }
                     }
-
-                    // 记录当前哪个是打开的
-                    currentIsDropedMenuId = currentDropedMenuId
-                    console.log(currentDropedMenuId)
-                } else {
-                    dropMenuEl.setAttribute('aria-expanded', 'false')
-                    __setOpacity([dropBackgroundEl, dropOverlayEl, ], '0')
-                    dropBackgroundEl ? dropBackgroundEl.style.height = '0' : ''
-                }
+                    
+                    document.querySelectorAll("[aria-expanded='true']")
+                    // 其他操作...
+                }, true);
+            })
+        
+            function __setOpacity(el: Array<HTMLElement | null>, opacityVal: string = '0') {
+                el.forEach((e) => {
+                    if (e) {
+                        e.style.opacity = opacityVal;
+                        let visibilityVal = opacityVal == '0' ? 'hidden' : 'unset';
+                        e.style.visibility = visibilityVal;
+                    }
+                });
             }
-            
-            document.querySelectorAll("[aria-expanded='true']")
-            // 其他操作...
-        }, true);
-    })
-
-    function __setOpacity(el: Array<HTMLElement | null>, opacityVal: string = '0') {
-        el.forEach((e) => {
-            if (e) {
-                e.style.opacity = opacityVal;
-                let visibilityVal = opacityVal == '0' ? 'hidden' : 'unset';
-                e.style.visibility = visibilityVal;
-            }
-        });
-    }
-    class Nav extends HTMLElement {
-    constructor() {
-      super();
-      let count = 0;
-
-      var dropButton = document.querySelectorAll('[id^="drop-"]');
-      console.log(dropButton)
-        dropButton.forEach(function (button) {
-            // button.addEventListener('click', function () {
-            //     console.log("按钮被点击了！");
-            //     // 其他操作...
-            // }, true);
-        })
     }
   }
+  customElements.define('gogoex-header', Gogoex);
+//      // 为我们的新 HTML 自定义元素定义行为。
+//   class AstroHeart extends HTMLElement {
+//     constructor() {
+//       super();
+//       let count = 0;
 
-     // 为我们的新 HTML 自定义元素定义行为。
-  class AstroHeart extends HTMLElement {
-    constructor() {
-      super();
-      let count = 0;
+//       const heartButton = this.querySelector('button');
+//       const countSpan = this.querySelector('span');
 
-      const heartButton = this.querySelector('button');
-      const countSpan = this.querySelector('span');
+//         if (heartButton) {
+//             // 每次单击按钮时，更新计数。
+//             heartButton.addEventListener('click', () => {
+//                 count++;
+//                 if (countSpan) {
+//                     countSpan.textContent = count.toString();
+//                 }
+//             });
+//         }
+//     }
+//   }
 
-        if (heartButton) {
-            // 每次单击按钮时，更新计数。
-            heartButton.addEventListener('click', () => {
-                count++;
-                if (countSpan) {
-                    countSpan.textContent = count.toString();
-                }
-            });
-        }
-    }
-  }
-
-  // 告诉浏览器将我们的 AstroHeart 类用于 <astro-heart> 元素。
-  customElements.define('astro-heart', AstroHeart);
+//   // 告诉浏览器将我们的 AstroHeart 类用于 <astro-heart> 元素。
+//   customElements.define('astro-heart', AstroHeart);
 //   customElements.define('gogoex-header', Nav);
     
 </script>
