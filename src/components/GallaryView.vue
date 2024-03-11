@@ -14,8 +14,9 @@ const emit = defineEmits(["close"])
 
 interface stateInterface {
   src: string
+  originUrl: string
 }
-defineProps<stateInterface>()
+const v = defineProps<stateInterface>()
 
 const close = () => {
     var mo = function (e: any) {
@@ -23,6 +24,8 @@ const close = () => {
   }
   document.body.style.overflow = '' //出现滚动条
   document.removeEventListener('touchmove', mo, false)
+  console.log(v)
+  window.history.pushState({}, '', v.originUrl)
     emit("close", false)
 }
 
@@ -33,8 +36,8 @@ onMounted(() => {
     var mo = function (e: any) {
     e.preventDefault()
   }
-  //   document.body.style.overflow = 'hidden'
-  // document.addEventListener('touchmove', mo, false) //禁止页面滑动
+    document.body.style.overflow = 'hidden'
+  document.addEventListener('touchmove', mo, false) //禁止页面滑动
 })
 
 defineExpose({

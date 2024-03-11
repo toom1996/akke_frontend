@@ -122,6 +122,29 @@
                 ><span aria-hidden="true" class="updates__card-gradient"
                     >&nbsp;</span
                 ></a>
+                <a
+                class="tile tile--padding-relaxed updates__card"
+                style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/outlook_update_cover_2x.dPUrzBZ_.webp")'
+                href="https://microsoft.design/articles/designing-the-new-era-of-teams"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span class="updates__card-content"
+                    ><h4
+                        class="text--title-3 text__color--foreground-1 mt0 mb4"
+                    >
+                        A modern Outlook
+                    </h4><p
+                        class="text--body-2 text__color--foreground-2 mt0 mb4 updates__card-description"
+                    >
+                        Outlook, Windows, and Fluent unite for a customizable
+                        hub experience
+                    </p><span
+                        class="text--body-2 text__color--action mt0 updates__card-link"
+                        >Read more →</span
+                    ></span
+                ><span aria-hidden="true" class="updates__card-gradient"
+                    >&nbsp;</span
+                ></a>
         </div>
     </div>
 </template>

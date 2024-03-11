@@ -122,6 +122,28 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         width: 100%;
         z-index: -1;
     }
+
+    a {
+  text-decoration: none;
+  position: relative;
+}
+
+/* 伪元素 */
+a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: black; /* 下划线颜色 */
+  transition: width 0.3s ease; /* 过渡效果 */
+}
+
+/* 鼠标悬停时横线从左向右展开 */
+a:hover::before {
+  width: 100%;
+}
     
 </style>
 <gogoex-header class="z-50 fixed w-full top-0" transition:persist>
@@ -144,15 +166,13 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                             <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center" aria-expanded="false">
                                 {
                                     item.child.map((itemChild) => (
-                                        <div class=" astro-FAS2F7R5">
-                                            <div role="group" aria-labelledby="mm-users" class="col astro-FAS2F7R5">
-                                                <h2 id="mm-users" class="c-body-text c-body-text--caption u-mb-medium-3 c-body-text--grey-600 col-head astro-FAS2F7R5 astro-N2675GOD">{itemChild.label}</h2>
+                                        <div role="group" class="mx-8">
+                                                <a id="mm-users" class="mb-4 text-xl font-bold">{itemChild.label}</a>
                                                 {
                                                     itemChild.items.map((v) => (
-                                                        <p class="text-xl font-bold">{ v.label }</p>
+                                                        <p class=" my-2">{ v.label }</p>
                                                     ))
                                                 }
-                                            </div>
                                         </div>
                                     )) 
                                 }
