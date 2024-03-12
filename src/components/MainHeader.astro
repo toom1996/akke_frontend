@@ -128,23 +128,6 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
   position: relative;
 }
 
-/* 伪元素 */
-a::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: black; /* 下划线颜色 */
-  transition: width 0.3s ease; /* 过渡效果 */
-}
-
-/* 鼠标悬停时横线从左向右展开 */
-a:hover::before {
-  width: 100%;
-}
-    
 </style>
 <gogoex-header class="z-50 fixed w-full top-0" transition:persist>
     <!-- <astro-heart>
@@ -159,7 +142,7 @@ a:hover::before {
                 nav.map((item) => (
                     <li class="m-4 text-lg">
                         <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
-                            <span class="font-semibold">{item.label}</span>
+                            <span class="font-semibold line">{item.label}</span>
                         </a>
                         {
                             item.child.length > 0 ?
@@ -167,10 +150,12 @@ a:hover::before {
                                 {
                                     item.child.map((itemChild) => (
                                         <div role="group" class="mx-8">
-                                                <a id="mm-users" class="mb-4 text-xl font-bold">{itemChild.label}</a>
+                                                <a id="mm-users" class="mb-4 text-xl font-bold line">{itemChild.label}</a>
                                                 {
                                                     itemChild.items.map((v) => (
-                                                        <p class=" my-2">{ v.label }</p>
+                                                        <div class="my-2">
+                                                            <a class="line">{ v.label }</a>
+                                                        </div>
                                                     ))
                                                 }
                                         </div>

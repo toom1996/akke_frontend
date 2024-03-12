@@ -1,5 +1,5 @@
 <template>
-    <View :src="state.viewSrc" :originUrl="state.originUrl" @close="close" ref="viewComponent" v-if="state.isView" />
+    <View :src="state.viewSrc" :originUrl="state.originUrl" @close="close" ref="viewComponent" v-show="state.isView" />
     <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
         <span class="text-4xl font-bold"><a href="/detail?id=123">2024/25秋冬米兰(Fear of God)男女装发布会</a></span>
         <div>
@@ -48,13 +48,13 @@ interface State {
     dataProvider: IDataProvider[],
     isView: boolean,
     viewSrc: string,
-    originUrl: string,
+    originUrl: string
 }
 const state = reactive<State>({
     dataProvider: [],
     isView: false,
     viewSrc: '',
-    originUrl: '',
+    originUrl: ''
 })
 
 const viewComponent = ref(null)
@@ -63,8 +63,6 @@ const eventView = async (src:string) => {
     console.log(src)
     state.isView = true
     state.viewSrc = src
-    state.originUrl = window.location.pathname + window.location.search;
-    console.log(state.originUrl);
     window.history.pushState({}, '', '/new-url');
     // state.count++
 }

@@ -1,67 +1,24 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import MainHeader from '../components/MainHeader.astro';
-import MainFooter from '@/components/common/MainFooter.vue';
-import Content from '../components/pages/MainContent.vue'
-import ToolBar from '@/components/ToolBar.vue';
 import DescriptionSelection from '@/components/astroComponents/Description.astro'
 import TStageSelection from '@/components/astroComponents/Tstage.astro'
 import BrandSelection from '@/components/astroComponents/Brand.astro'
 import Footer from '@/components/astroComponents/Footer.astro'
-import Video from '@/components/astroComponents/Video.astro'
-
-const panelSearchNav = [
-'项目',
-'资源',
-'图像',
-'原型',
-'直播',
-'人物',
-'情绪板',
-];
 ---
-<style>
-	.search-bar-wrapper {
-		/* background-color: #f9f9f9; */
-		border: 1px solid #ccc;
-	}
-
-	.panel-search-header {
-		background-color: #fff;
-		border-bottom: 1px solid #f2f2f2;
-		padding: 24px;
-		padding-bottom: 21px;
-		/* position: fixed; */
-		z-index: 3;
-		@apply top-14;
-	}
-
-	nav {
-		border-left: 1px solid #ccc;
-	}
-</style>
 <MainLayout title="Welcome to GogoEx.">
+	<!-- 头部内容 -->
 	<header>
 		<MainHeader transition:persist="gge-header"></MainHeader>
 	</header>
+	<!-- 主题内容 -->
 	<main class="mt-28">
-		<!-- <div> -->
 		<DescriptionSelection></DescriptionSelection>
 		<TStageSelection></TStageSelection>
 		<BrandSelection></BrandSelection>
-		<!-- </div> -->
-		
 	</main>
+	<!-- 底部内容 -->
 	<footer>
 		<Footer></Footer>
 	</footer>
-
-	<!-- <div class="panel fixed panel-search-header w-full">
-	</div> -->
-	<!-- <content> -->
-		<!-- <Content client:load> -->
-			<!-- <ToolBar client:load></ToolBar> -->
-		<!-- </Content> -->
-	<!-- </content> -->
-	<!-- <MainFooter client:visible></MainFooter> -->
 </Layout>

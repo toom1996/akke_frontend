@@ -1,3 +1,21 @@
+/* 伪元素 */
+.line::before {
+    content: "";
+    position: absolute;
+    bottom: -.25rem;
+    left: 0;
+    width: 0;
+    height: .175rem;
+    background-color: black; /* 下划线颜色 */
+    transition: width 0.3s ease; /* 过渡效果 */
+  }
+  
+  /* 鼠标悬停时横线从左向右展开 */
+  .line:hover::before {
+    width: 100%;
+  }
+
+/** ---------------------------------------------------- **/
 .btn-dark {
     /* display: inline-block; */
     --background-color:hsl(0 0% 6%);

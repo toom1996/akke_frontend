@@ -52,3 +52,7 @@ export function buildIndex (params:object) {
           }]
     }) : get('/api/v1/build', params)
 }
+
+export function show (params:object) {
+    return isDevMode ? get('/apiV1Show', params) : get('/api/v1/show', params)
+}

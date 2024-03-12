@@ -2,13 +2,13 @@
 .home-content-block {
     padding-left: 0;
     padding-right: 0;
-    max-width: 1024px;
+    /* max-width: 1024px; */
     margin: 0 auto;
 }
 .updates__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-    grid-auto-rows: 30rem;
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); */
+    grid-auto-rows: 40rem;
     row-gap: 32px;
     column-gap: 32px;
 }
@@ -64,7 +64,7 @@
 </style>
 <template>
     <div class="home-content-block">
-        <div class="updates__grid">
+        <div class="updates__grid grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
             <a class="tile tile--padding-relaxed updates__card" style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/teams_update_cover.L4JnP_ME.webp")' href="/show/gallary">
                 <span class="updates__card-content">
                     <p class="text-2xl font-bold mt0 mb4">Paula Canovas del Vas</p>
@@ -149,8 +149,30 @@
     </div>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
-onMounted(() => {
-    console.log(12312312321)
+import { onMounted, reactive } from 'vue';
+import { show } from '@/api/v1';
+
+interface IDataProvider {
+    brand: string,
+    title: string
+}
+
+interface State {
+    dataProvider: IDataProvider[],
+
+}
+const state = reactive<State>({
+    dataProvider: [],
 })
+
+onMounted(() => {
+    getIndex()
+})
+
+const getIndex = () => {
+    show({}).then((e) => {
+        
+        console.log(e)
+    })
+}
 </script>

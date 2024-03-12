@@ -1,0 +1,11 @@
+{
+	"apiV1Show": {
+		"code": 200,
+		"data": {
+			"list": [{
+				"brand": "Tanaka",
+				"title": "2024-25秋冬东京高级成衣时装发布会"
+			}]
+		}
+	}
+}
