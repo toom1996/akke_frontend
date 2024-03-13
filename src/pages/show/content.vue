@@ -8,7 +8,7 @@
 .updates__grid {
     /* display: grid; */
     /* grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); */
-    grid-auto-rows: 40rem;
+    grid-auto-rows: 32rem;
     row-gap: 32px;
     column-gap: 32px;
 }
@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    background-size: 100%;
+    /* background-size: 100%; */
     background-position-x: center;
     background-position-y: 0%;
     background-repeat: no-repeat;
@@ -61,90 +61,42 @@
 .tile--padding-relaxed {
     padding: 32px;
 }
+.tile {
+    --tile-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .14), inset 0 0 0px 2px transparent;
+    --tile-shadow-hover: 0 0 2px rgba(0, 0, 0, .12), 0 8px 16px rgba(0, 0, 0, .14), inset 0 0 0px 5px var(--fluent-color-neutral-background-1);
+    --accent-border-width: 3px;
+    --arbutus-border-radius-accent: 22px;
+    text-decoration: none;
+    z-index: 1;
+    position: relative;
+    background-color: #fff;
+    border-top-left-radius: var(--arbutus-border-radius-accent);
+    border-top-right-radius: var(--arbutus-border-radius-accent);
+    border-bottom-right-radius: var(--arbutus-border-radius-accent);
+    border-bottom-left-radius: var(--arbutus-border-radius-accent);
+    box-shadow: var(--tile-shadow);
+    transition: all ease-in-out .25s;
+    cursor: pointer;
+}
+
+.tile:hover {
+    box-shadow: var(--tile-shadow-hover);
+}
+
 </style>
 <template>
-    <div class="home-content-block">
+    <div class="home-content-block container">
         <div class="updates__grid grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-            <a class="tile tile--padding-relaxed updates__card" style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/teams_update_cover.L4JnP_ME.webp")' href="/show/gallary">
+            <a v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" href="/show/gallary">
                 <span class="updates__card-content">
-                    <p class="text-2xl font-bold mt0 mb4">Paula Canovas del Vas</p>
+                    <p class="text-2xl font-bold mt0 mb4">{{ item.brand }}</p>
                     <div class="text-sm font-semibold mt0 mb4 updates__card-description">
-                        2024/25秋冬巴黎女装发布会
-                    </div><div
-                        class="text--body-2 text__color--action mt0 updates__card-link"
-                        >Read more →</div
-                    ></span
-                ><span aria-hidden="true" class="updates__card-gradient"
-                    >&nbsp;</span
-                ></a
-            ><a
-                class="tile tile--padding-relaxed updates__card"
-                style='background-image: url("https://assets.vogue.com/photos/5ba66fd82d53962db47f091a/master/w_1280,c_limit/_ARC0085.jpg");'
-                href="https://microsoft.design/articles/designing-in-the-open-source"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span class="updates__card-content"
-                    ><h4
-                        class="text--title-3 text__color--foreground-1 mt0 mb4"
-                    >
-                        Emoji update
-                    </h4><p
-                        class="text--body-2 text__color--foreground-2 mt0 mb4 updates__card-description"
-                    >
-                        Whatever the moment calls for, there's an emoji for that
-                    </p><span
-                        class="text--body-2 text__color--action mt0 updates__card-link"
-                        >Read more →</span
-                    ></span
-                ><span aria-hidden="true" class="updates__card-gradient"
-                    >&nbsp;</span
-                ></a
-            ><a
-                class="tile tile--padding-relaxed updates__card"
-                style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/outlook_update_cover_2x.dPUrzBZ_.webp")'
-                href="https://microsoft.design/articles/designing-the-new-era-of-teams"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span class="updates__card-content"
-                    ><h4
-                        class="text--title-3 text__color--foreground-1 mt0 mb4"
-                    >
-                        A modern Outlook
-                    </h4><p
-                        class="text--body-2 text__color--foreground-2 mt0 mb4 updates__card-description"
-                    >
-                        Outlook, Windows, and Fluent unite for a customizable
-                        hub experience
-                    </p><span
-                        class="text--body-2 text__color--action mt0 updates__card-link"
-                        >Read more →</span
-                    ></span
-                ><span aria-hidden="true" class="updates__card-gradient"
-                    >&nbsp;</span
-                ></a>
-                <a
-                class="tile tile--padding-relaxed updates__card"
-                style='background-image:url("https://fluent2websitecdn.azureedge.net/cdn/outlook_update_cover_2x.dPUrzBZ_.webp")'
-                href="https://microsoft.design/articles/designing-the-new-era-of-teams"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span class="updates__card-content"
-                    ><h4
-                        class="text--title-3 text__color--foreground-1 mt0 mb4"
-                    >
-                        A modern Outlook
-                    </h4><p
-                        class="text--body-2 text__color--foreground-2 mt0 mb4 updates__card-description"
-                    >
-                        Outlook, Windows, and Fluent unite for a customizable
-                        hub experience
-                    </p><span
-                        class="text--body-2 text__color--action mt0 updates__card-link"
-                        >Read more →</span
-                    ></span
-                ><span aria-hidden="true" class="updates__card-gradient"
-                    >&nbsp;</span
-                ></a>
+                        {{ item.title }}
+                    </div>
+                    <div class="text--body-2 text__color--action mt0 updates__card-link">Read more →</div>
+                </span>
+                <span aria-hidden="true" class="updates__card-gradient"></span>
+            </a>
         </div>
     </div>
 </template>
@@ -152,17 +104,23 @@
 import { onMounted, reactive } from 'vue';
 import { show } from '@/api/v1';
 
-interface IDataProvider {
+interface DataProviderDataList{
     brand: string,
-    title: string
+    title: string,
+    cover: string
+}
+
+interface DataProvider {
+    list: DataProviderDataList[]
 }
 
 interface State {
-    dataProvider: IDataProvider[],
-
+    dataProvider: DataProvider,
 }
 const state = reactive<State>({
-    dataProvider: [],
+    dataProvider: {
+        list: []
+    },
 })
 
 onMounted(() => {
@@ -171,8 +129,8 @@ onMounted(() => {
 
 const getIndex = () => {
     show({}).then((e) => {
-        
-        console.log(e)
+        state.dataProvider = e.data
+        console.log(state.dataProvider)
     })
 }
 </script>

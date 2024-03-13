@@ -40,7 +40,7 @@ export function get(url: string, params = {}): Promise<any> {
                 // console.log(response.data.msg)
                 resolve(null)
             }
-            resolve(response?.data?.data)
+            resolve(response?.data)
         }).catch(error => {
             reject(error)
         })
