@@ -37,7 +37,7 @@ const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
         height: 100vh;
         /* pointer-events: none; */
         inset: 0;
-        isolation: isolate;
+        /* isolation: isolate; */
         opacity: 0;
         /* pointer-events: none; */
         position: fixed;
@@ -45,6 +45,7 @@ const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
         transition: all .3s ease;
         width: 100%;
         z-index: -1;
+        visibility: hidden;
     }
 
 </style>
@@ -58,7 +59,7 @@ const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
         <ul class="flex h-full items-center mr-auto">
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
             {
-                dataProvider.data.columns.map((item) => (
+                dataProvider.data.columns.map((item: { label: string, url: string, child: []}) => (
                     <li class="m-4 text-lg">
                         <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
                             <span class="font-semibold line">{item.label}</span>
@@ -67,13 +68,13 @@ const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
                             item.child.length > 0 ?
                             <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center" aria-expanded="false">
                                 {
-                                    item.child.map((itemChild) => (
+                                    item.child.map((itemChild: { label: string, url: string, items: []}) => (
                                         <div role="group" class="mx-8">
-                                                <a id="mm-users" class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
+                                                <a class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
                                                 {
-                                                    itemChild.items.map((v) => (
+                                                    itemChild.items.map((v: {url: string, label: string}) => (
                                                         <div class="my-2">
-                                                            <a class="line" href={v.ul}>{ v.label }</a>
+                                                            <a class="line" href={v.url}>{ v.label }</a>
                                                         </div>
                                                     ))
                                                 }
@@ -87,16 +88,6 @@ const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
                 ))
             }
         </ul>
-        <!-- <div class="sign-wrapper flex">
-            <ul class="PrimaryNav-loggedOutOptions-ZwH flex items-center">
-                <li class="PrimaryNav-loggedOutOption-OP6 PrimaryNav-logIn-td1">
-                    <a href="/login" class="btn-dark px-3 py-2  lg:px-4 text-sm transition border border-slate-900 font-medium mr-2">登录</a>
-                </li>
-                <li class="PrimaryNav-loggedOutOption-OP6">
-                    <a href="/detail" class="btn-light px-3 py-2  lg:px-4 text-sm transition hover:bg-slate-800 border border-slate-300 font-mediummr-2">注册</a>
-                </li>
-            </ul>
-        </div> -->
 </gogoex-header>
 <script>
     class Gogoex extends HTMLElement {

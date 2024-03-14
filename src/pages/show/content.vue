@@ -82,23 +82,6 @@
 .tile:hover {
     box-shadow: var(--tile-shadow-hover);
 }
-
-.breadcrumb-wrapper__items {
-    flex-wrap: wrap;
-    margin-top: 12px;
-}
-
-.breadcrumb-wrapper__items li:not(:last-child)::after {
-    content: ">";
-    line-height: 1;
-    color: #886e6e;
-    margin: 0 10px;
-}
-
-.breadcrumb-wrapper__items li {
-    position: relative;
-}
-
 .shop-filter-sort-by__label {
     font-size: 18px;
     font-weight: 400;
@@ -125,19 +108,43 @@
     display: block;
     border-bottom: 1px solid #dedede;
 }
+
+.shop-filter-button__btn {
+    @apply text-lg;
+    /* font-size: 20px; */
+    /* font-weight: 400; */
+    /* line-height: 30px; */
+    /* color: #171717; */
+    padding: 2px 12px 2px;
+    border: 1px solid #000000;
+    background-color: transparent;
+}
+.i-mdi-light-format-list-bulleted {
+  --un-icon: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 24 24' width='1.2em' height='1.2em' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='currentColor' d='M20 18v1H7v-1zm-16.5-.5a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1M20 12v1H7v-1zm-16.5-.5a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1M20 6v1H7V6zM3.5 5.5a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1'/%3E%3C/svg%3E");
+  -webkit-mask: var(--un-icon) no-repeat;
+  mask: var(--un-icon) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1.2em;
+  height: 1.2em;
+}
 </style>
 <template>
     <div class="home-content-block container">
-        <ul class="breadcrumb-wrapper__items flex justify-center text-xl pb-8"><li><a href="index.html">Home</a></li><li><span>Shop</span></li></ul>
+        <BreadCrumb :path="state.path"></BreadCrumb>
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
             <div class="flex">
                 <div class="shop-filter flex justify-between align-items-center mb-4 flex-1	">
                     <div class="shop-filter-default flex justify-content-between align-items-center">
                         <div class="shop-filter-count d-none d-sm-block text-lg">我们为您找到了90条结果</div>
                     </div>
-                    <div class="shop-filter-sort-by"><div class="shop-filter-sort-by__label"><span>Sort by Default</span><i class="lastudioicon-down-arrow"></i></div><ul class="shop-filter-sort-by__dropdown"><li class="active"><a href="#">Sort by Default</a></li><li><a href="#">Sort by Popularity</a></li><li><a href="#">Sort by Rated</a></li><li><a href="#">Sort by Latest</a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-up"></i></a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-down"></i></a></li></ul></div>
+                    <!-- <div class="shop-filter-sort-by"><div class="shop-filter-sort-by__label"><span>Sort by Default</span><i class="lastudioicon-down-arrow"></i></div><ul class="shop-filter-sort-by__dropdown"><li class="active"><a href="#">Sort by Default</a></li><li><a href="#">Sort by Popularity</a></li><li><a href="#">Sort by Rated</a></li><li><a href="#">Sort by Latest</a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-up"></i></a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-down"></i></a></li></ul></div> -->
                 </div>
-                <div class="shop-filter-button"><button class="shop-filter-button__btn shop-filter-toggle"><span>Filter</span><i class="lastudioicon-menu-4-2"></i></button></div>
+                <div class="shop-filter-button"><button @click="state.isShowFilter = !state.isShowFilter" class="shop-filter-button__btn shop-filter-toggle flex items-center cursor-pointer"><span>筛选</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg></button></div>
             </div>
             <div class="updates__grid grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
                 <a v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" href="/show/gallary">
@@ -152,31 +159,14 @@
                 </a>
             </div>
         </div>
-
-        <div class="flex justify-center">
-    <ul class="inline-flex -space-x-px list-inside my-2">
-        <li>
-          <a href="#" class="py-2 px-3 ml-0  text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-        </li>
-        <li>
-          <a href="#" class="py-2 px-3  text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-        </li>                                        
-        <li>
-          <a href="#" aria-current="page" class="py-2 px-3 text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">2</a>
-        </li>
-        <li>
-            <a href="#" class="py-2 px-3  text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
-          </li>
-        <li>
-          <a href="#" class="py-2 px-3  text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-        </li>
-    </ul>
-</div>
+        <Drawer :isShow="state.isShowFilter"></Drawer>
     </div>
 </template>
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
 import { show } from '@/api/v1';
+import BreadCrumb from '@/components/BreadCrumb.vue'
+import Drawer from '@/components/Drawer.vue';
 
 interface DataProviderDataList{
     brand: string,
@@ -189,18 +179,26 @@ interface DataProvider {
 }
 
 interface State {
-    dataProvider: DataProvider,
+    dataProvider: DataProvider
+    isShowFilter: boolean
+    path: string[]
 }
 const state = reactive<State>({
     dataProvider: {
         list: []
     },
+    isShowFilter: false,
+    path: ['秀场']
 })
 
 onMounted(() => {
     getIndex()
 })
 
+const closeFilter = () => {
+    console.log('closeFilter')
+    state.isShowFilter = false
+}
 const getIndex = () => {
     show({}).then((e) => {
         state.dataProvider = e.data

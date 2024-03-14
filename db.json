@@ -49,7 +49,8 @@
 				"url": "show",
 				"child": [
 					{
-						"label": "时装发布会1",
+						"label": "时装发布会",
+						"url": "show",
 						"items": [{"label": "法国时装周","url": "/show?a=1234"},{"label": "米兰时装周","url": "/show?a=1234"}]
 					},
 					{
