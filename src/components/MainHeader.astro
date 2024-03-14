@@ -1,84 +1,8 @@
 ---
-const nav = [
-    {
-        label:"秀场",
-        url: 'show',
-        child: [
-            {
-                label: '时装发布会1',
-                items: [{label: '法国时装周',url: '/show?a=1234'},{label: '米兰时装周',url: '/show?a=1234'}]
-            },
-            {
-                label: '时装发布会2',
-                items: [
-                    {
-                        label: '法国时装周',
-                        url: '/show?a=1234'
-                    },
-                    {
-                        label: '米兰时装周',
-                        url: '/show?a=1234'
-                    }
-                ]
-            },
-            {
-                label: '时装发布会3',
-                items: [
-                    {
-                        label: '法国时装周',
-                        url: '/show?a=1234'
-                    },
-                    {
-                        label: '米兰时装周',
-                        url: '/show?a=1234'
-                    }
-                ]
-            }
-        ]
-    },{
-        label:"发现",
-        url: 'find',
-        child: [ {
-                label: '时装发布会',
-                items: [
-                    {
-                        label: '法国时装周!!',
-                        url: '/show?a=1234'
-                    },
-                    {
-                        label: '米兰时装周!!',
-                        url: '/show?a=1234'
-                    },
-                    {
-                        label: '米兰时装周!!',
-                        url: '/show?a=1234'
-                    },
-                    {
-                        label: '米兰时装周!!',
-                        url: '/show?a=1234'
-                    },
-                    {
-                        label: '米兰时装周!!',
-                        url: '/show?a=1234'
-                    }
-                ]
-            }]
-    },{
-        label:"聘请",
-        url: '/show',
-        child: []
-    },{
-        label:"资源",
-        url: '/show',
-        child: []
-    },{
-        label:"职位",
-        url: '/show',
-        child: []
-    }
-];
-
 import IconLogo from '@/assets/icons/IconLogo.vue'
+const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
+    return e.json()
+})
 ---
 
 <style>
@@ -123,11 +47,6 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         z-index: -1;
     }
 
-    a {
-  text-decoration: none;
-  position: relative;
-}
-
 </style>
 <gogoex-header class="z-50 fixed w-full top-0" transition:persist>
     <!-- <astro-heart>
@@ -139,7 +58,7 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
         <ul class="flex h-full items-center mr-auto">
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
             {
-                nav.map((item) => (
+                dataProvider.data.columns.map((item) => (
                     <li class="m-4 text-lg">
                         <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
                             <span class="font-semibold line">{item.label}</span>
@@ -150,11 +69,11 @@ import IconLogo from '@/assets/icons/IconLogo.vue'
                                 {
                                     item.child.map((itemChild) => (
                                         <div role="group" class="mx-8">
-                                                <a id="mm-users" class="mb-4 text-xl font-bold line">{itemChild.label}</a>
+                                                <a id="mm-users" class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
                                                 {
                                                     itemChild.items.map((v) => (
                                                         <div class="my-2">
-                                                            <a class="line">{ v.label }</a>
+                                                            <a class="line" href={v.ul}>{ v.label }</a>
                                                         </div>
                                                     ))
                                                 }

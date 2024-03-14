@@ -10,10 +10,15 @@
     transition: width 0.3s ease; /* 过渡效果 */
   }
   
-  /* 鼠标悬停时横线从左向右展开 */
-  .line:hover::before {
-    width: 100%;
-  }
+/* 鼠标悬停时横线从左向右展开 */
+.line:hover::before {
+width: 100%;
+}
+
+.line {
+text-decoration: none;
+position: relative;
+}
 
 /** ---------------------------------------------------- **/
 .btn-dark {

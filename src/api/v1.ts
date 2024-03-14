@@ -54,5 +54,6 @@ export function buildIndex (params:object) {
 }
 
 export function show (params:object) {
-    return isDevMode ? get('/apiV1Show', params) : get('/api/v1/show', params)
+    let url = isDevMode ? 'show' : '/api/v1/show'
+    return get(url)
 }
