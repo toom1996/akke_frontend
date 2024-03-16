@@ -1,17 +1,4 @@
 <style scoped>
-.home-content-block {
-    padding-left: 0;
-    padding-right: 0;
-    /* max-width: 1024px; */
-    margin: 0 auto;
-}
-.updates__grid {
-    /* display: grid; */
-    /* grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); */
-    grid-auto-rows: 32rem;
-    row-gap: 32px;
-    column-gap: 32px;
-}
 .updates__card {
     display: flex;
     flex-direction: column;
@@ -110,12 +97,7 @@
 }
 
 .shop-filter-button__btn {
-    @apply text-lg;
-    /* font-size: 20px; */
-    /* font-weight: 400; */
-    /* line-height: 30px; */
-    /* color: #171717; */
-    padding: 2px 12px 2px;
+    @apply text-lg px-3;
     border: 1px solid #000000;
     background-color: transparent;
 }
@@ -132,13 +114,13 @@
 }
 </style>
 <template>
-    <div class="home-content-block container">
+    <div class="container px-0 m-auto">
         <BreadCrumb :path="state.path"></BreadCrumb>
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
             <div class="flex">
                 <div class="shop-filter flex justify-between align-items-center mb-4 flex-1	">
                     <div class="shop-filter-default flex justify-content-between align-items-center">
-                        <div class="shop-filter-count d-none d-sm-block text-lg">我们为您找到了90条结果</div>
+                        <div class="shop-filter-count d-none d-sm-block text-lg">为您找到了{{ state.dataProvider.total }}条结果</div>
                     </div>
                     <!-- <div class="shop-filter-sort-by"><div class="shop-filter-sort-by__label"><span>Sort by Default</span><i class="lastudioicon-down-arrow"></i></div><ul class="shop-filter-sort-by__dropdown"><li class="active"><a href="#">Sort by Default</a></li><li><a href="#">Sort by Popularity</a></li><li><a href="#">Sort by Rated</a></li><li><a href="#">Sort by Latest</a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-up"></i></a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-down"></i></a></li></ul></div> -->
                 </div>
@@ -146,7 +128,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
     </svg></button></div>
             </div>
-            <div class="updates__grid grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
+            <div class="updates__grid grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
                 <a v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" href="/show/gallary">
                     <span class="updates__card-content">
                         <p class="text-2xl font-bold mt0 mb4">{{ item.brand }}</p>
@@ -159,7 +141,7 @@
                 </a>
             </div>
         </div>
-        <Drawer :isShow="state.isShowFilter"></Drawer>
+        <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
 </template>
 <script setup lang="ts">
@@ -176,6 +158,7 @@ interface DataProviderDataList{
 
 interface DataProvider {
     list: DataProviderDataList[]
+    total: number
 }
 
 interface State {
@@ -185,10 +168,11 @@ interface State {
 }
 const state = reactive<State>({
     dataProvider: {
-        list: []
+        list: [],
+        total: 0
     },
     isShowFilter: false,
-    path: ['秀场']
+    path: ['秀场', '时装发布会']
 })
 
 onMounted(() => {

@@ -38,7 +38,8 @@
 				"brand": "Mrz",
 				"title": "2024-25秋冬米兰高级成衣时装发布会",
 				"cover": "https://img05.wow-find.com/24/070/BHjF0peY4PDn37XYjx9fPpBiJF6FHo38uikuJF0a.jpg!wr5?attname=WOW-TRENDBHjF0peY4PDn37XYjx9fPpBiJF6FHo38uikuJF0a.jpg"
-			}]
+			}],
+			"total": 1100
 		}
 	},
 	"headers": {
@@ -50,7 +51,7 @@
 				"child": [
 					{
 						"label": "时装发布会",
-						"url": "show",
+						"url": "show/fashion-show",
 						"items": [{"label": "法国时装周","url": "/show?a=1234"},{"label": "米兰时装周","url": "/show?a=1234"}]
 					},
 					{
