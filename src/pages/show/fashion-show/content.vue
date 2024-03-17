@@ -8,19 +8,17 @@
     background-position-x: center;
     background-position-y: 0%;
     background-repeat: no-repeat;
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out .2s;
 }
 .updates__card:hover {
-    background-position-y: -28px;
+    --tw-scale-x: 1.05;
+    --tw-scale-y: 1.05;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+
 .updates__card-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 12rem;
-    background: linear-gradient(0deg, #ffffff 15%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, #ffffff 5%, rgba(255, 255, 255, 0) 100%);
     border-bottom-right-radius: var(--arbutus-border-radius-accent);
     border-bottom-left-radius: var(--arbutus-border-radius-accent);
 }
@@ -135,9 +133,9 @@
                         <div class="text-sm font-semibold mt0 mb4 updates__card-description">
                             {{ item.title }}
                         </div>
-                        <div class="text--body-2 text__color--action mt0 updates__card-link">Read more →</div>
+                        <div class="text--body-2 text__color--action mt0 updates__card-link">查看更多 →</div>
                     </span>
-                    <span aria-hidden="true" class="updates__card-gradient"></span>
+                    <span aria-hidden="true" class="updates__card-gradient absolute bottom-0 left-0 w-full h-48"></span>
                 </a>
             </div>
         </div>

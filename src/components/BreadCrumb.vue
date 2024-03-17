@@ -7,7 +7,7 @@
 .breadcrumb-wrapper__items li:not(:last-child)::after {
   content: ">";
   line-height: 1;
-  color: #886e6e;
+  color: #000000;
   margin: 0 10px;
 }
 
@@ -16,7 +16,7 @@
 }
 </style>
 <template>
-  <ul class="breadcrumb-wrapper__items flex justify-center text-xl pb-8">
+  <ul class="breadcrumb-wrapper__items flex justify-center text-4xl pb-8">
     <li><a href="/">首页</a></li>
     <li v-for="item in path">
         <span>{{ item }}</span>
