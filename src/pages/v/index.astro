@@ -1,0 +1,28 @@
+---
+const a = Astro.url
+---
+<h1>currentUrl：{Astro.url}</h1>
+<h1>currentPath：{Astro.url.pathname}</h1>
+<h1>baseUrl：{Astro.url.origin}</h1>
+<a>{a}</a>
+
+<script>
+    // 获取当前页面的 URL
+const url = new URL(window.location.href);
+
+// 获取路径部分（不包含协议、域名、查询参数等）
+const path = url.pathname;
+
+// 将路径部分按斜杠分割成数组
+const pathSegments = path.split("/").filter(segment => segment !== "");
+
+// 如果您知道路径中每个部分的意义，可以按索引获取对应的值
+const country = pathSegments[0];
+const city = pathSegments[1];
+// const district = pathSegments[2];
+
+// 将解析出的路由参数打印到控制台
+console.log("国家:", country);
+console.log("城市:", city);
+// console.log("区域:", district);
+</script>

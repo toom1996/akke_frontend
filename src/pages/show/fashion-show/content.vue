@@ -11,8 +11,8 @@
     transition: all ease-in-out .2s;
 }
 .updates__card:hover {
-    --tw-scale-x: 1.05;
-    --tw-scale-y: 1.05;
+    --tw-scale-x: 1.03;
+    --tw-scale-y: 1.03;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -48,7 +48,7 @@
 }
 .tile {
     --tile-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .14), inset 0 0 0px 2px transparent;
-    --tile-shadow-hover: 0 0 2px rgba(0, 0, 0, .12), 0 8px 16px rgba(0, 0, 0, .14), inset 0 0 0px 5px var(--fluent-color-neutral-background-1);
+    --tile-shadow-hover: 0 0 2px rgba(0, 0, 0, .12), 0 8px 16px rgba(0, 0, 0, .14), inset 0 0 0px 5px #ffffff;
     --accent-border-width: 3px;
     --arbutus-border-radius-accent: 22px;
     text-decoration: none;
@@ -65,15 +65,7 @@
 }
 
 .tile:hover {
-    box-shadow: var(--tile-shadow-hover);
-}
-.shop-filter-sort-by__label {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.8;
-    color: #171717;
-    cursor: pointer;
-    white-space: nowrap;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 8px 16px rgba(0, 0, 0, .14), inset 0 0 0px 0px #ffffff;
 }
 
 .shop-filter-sort-by__dropdown {
@@ -127,7 +119,7 @@
     </svg></button></div>
             </div>
             <div class="updates__grid grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
-                <a v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" href="/show/gallary">
+                <a target="_blank" v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" href="/show/gallary">
                     <span class="updates__card-content">
                         <p class="text-2xl font-bold mt0 mb4">{{ item.brand }}</p>
                         <div class="text-sm font-semibold mt0 mb4 updates__card-description">
