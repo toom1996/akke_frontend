@@ -1,43 +1,52 @@
 {
-	"show": {
+	"fashion-show": {
 		"code": 0,
 		"data": {
 			"list": [{
 				"brand": "Tanaka",
 				"title": "2024-25秋冬东京高级成衣时装发布会",
-				"cover": "https://img02.wow-find.com/24/071/6523a3cbf32934c4ddffbb2fb042d5af.jpg!wr5?attname=WOW-TREND6523a3cbf32934c4ddffbb2fb042d5af.jpg"
+				"cover": "https://img02.wow-find.com/24/071/6523a3cbf32934c4ddffbb2fb042d5af.jpg!wr5?attname=WOW-TREND6523a3cbf32934c4ddffbb2fb042d5af.jpg",
+				"hash": "abc1234561"
 			},{
 				"brand": "Kamiya",
 				"title": "2024-25秋冬东京高级成衣时装发布会",
-				"cover": "https://img02.wow-find.com/24/071/51615e4974ede1729d725baab36cdfd1.jpg!wr5?attname=WOW-TREND51615e4974ede1729d725baab36cdfd1.jpg"
+				"cover": "https://img02.wow-find.com/24/071/51615e4974ede1729d725baab36cdfd1.jpg!wr5?attname=WOW-TREND51615e4974ede1729d725baab36cdfd1.jpg",
+				"hash": "abc1234562"
 			},{
 				"brand": "Chika Kisada",
 				"title": "2024-25秋冬东京高级成衣时装发布会",
-				"cover": "https://img07.wow-find.com/24/071/7b3ab9a115163571ad1c329a0bcc900e.jpg!wr5?attname=WOW-TREND7b3ab9a115163571ad1c329a0bcc900e.jpg"
+				"cover": "https://img07.wow-find.com/24/071/7b3ab9a115163571ad1c329a0bcc900e.jpg!wr5?attname=WOW-TREND7b3ab9a115163571ad1c329a0bcc900e.jpg",
+				"hash": "abc1234563"
 			},{
 				"brand": "Salon 1884",
 				"title": "2024-25秋冬纽约高级成衣时装发布会",
-				"cover": "https://img02.wow-find.com/24/071/a93030138987bc3dbb9b265581a02ba2.jpg!wr5?attname=WOW-TRENDa93030138987bc3dbb9b265581a02ba2.jpg"
+				"cover": "https://img02.wow-find.com/24/071/a93030138987bc3dbb9b265581a02ba2.jpg!wr5?attname=WOW-TRENDa93030138987bc3dbb9b265581a02ba2.jpg",
+				"hash": "abc1234564"
 			},{
 				"brand": "Hidesign",
 				"title": "2024-25秋冬东京高级成衣时装发布会",
-				"cover": "https://img07.wow-find.com/24/070/8679f582b2808ceab5f870557c0e2f66.jpg!wr5?attname=WOW-TREND8679f582b2808ceab5f870557c0e2f66.jpg"
+				"cover": "https://img07.wow-find.com/24/070/8679f582b2808ceab5f870557c0e2f66.jpg!wr5?attname=WOW-TREND8679f582b2808ceab5f870557c0e2f66.jpg",
+				"hash": "abc1234565"
 			},{
 				"brand": "Irenisa",
 				"title": "2024-25秋冬东京高级成衣时装发布会",
-				"cover": "https://img08.wow-find.com/24/071/e9431cc2073283d078e68edab6ee44bd.jpg!wr5?attname=WOW-TRENDe9431cc2073283d078e68edab6ee44bd.jpg"
+				"cover": "https://img08.wow-find.com/24/071/e9431cc2073283d078e68edab6ee44bd.jpg!wr5?attname=WOW-TRENDe9431cc2073283d078e68edab6ee44bd.jpg",
+				"hash": "abc1234566"
 			},{
 				"brand": "Pays Des Fees",
 				"title": "2024-25秋冬巴黎高级成衣时装发布会",
-				"cover": "https://img06.wow-find.com/24/071/s2js0uXaGnlkx5ot6NETZqsUlfvDa7VgSxQNmzra.jpg!wr5?attname=WOW-TRENDs2js0uXaGnlkx5ot6NETZqsUlfvDa7VgSxQNmzra.jpg"
+				"cover": "https://img06.wow-find.com/24/071/s2js0uXaGnlkx5ot6NETZqsUlfvDa7VgSxQNmzra.jpg!wr5?attname=WOW-TRENDs2js0uXaGnlkx5ot6NETZqsUlfvDa7VgSxQNmzra.jpg",
+				"hash": "abc1234567"
 			},{
 				"brand": "Story Mfg",
 				"title": "2024春夏东京高级成衣时装发布会",
-				"cover": "https://img00.wow-find.com/24/070/y4u2PuiJSIjYZbFqjkfxyMnZgFeyX5st2DaeYEqr.jpg!wr5?attname=WOW-TRENDy4u2PuiJSIjYZbFqjkfxyMnZgFeyX5st2DaeYEqr.jpg"
+				"cover": "https://img00.wow-find.com/24/070/y4u2PuiJSIjYZbFqjkfxyMnZgFeyX5st2DaeYEqr.jpg!wr5?attname=WOW-TRENDy4u2PuiJSIjYZbFqjkfxyMnZgFeyX5st2DaeYEqr.jpg",
+				"hash": "abc1234568"
 			},{
 				"brand": "Mrz",
 				"title": "2024-25秋冬米兰高级成衣时装发布会",
-				"cover": "https://img05.wow-find.com/24/070/BHjF0peY4PDn37XYjx9fPpBiJF6FHo38uikuJF0a.jpg!wr5?attname=WOW-TRENDBHjF0peY4PDn37XYjx9fPpBiJF6FHo38uikuJF0a.jpg"
+				"cover": "https://img05.wow-find.com/24/070/BHjF0peY4PDn37XYjx9fPpBiJF6FHo38uikuJF0a.jpg!wr5?attname=WOW-TRENDBHjF0peY4PDn37XYjx9fPpBiJF6FHo38uikuJF0a.jpg",
+				"hash": "abc1234569"
 			}],
 			"total": 1100
 		}
@@ -96,5 +105,23 @@
 				"child": []
 			}]
 		}
+	},
+	"view": {
+		"code": 0,
+		"data": [
+			{
+				"url": "https://shows.vogueimg.com.cn/202403/d05bb618442280088d3e7e44bd401cc1/2024/S2024RTW/cong-tri/collection/00001-cong-tri-spring-2024-ready-to-wear-credit-brand_L.jpg"
+			},{
+				"url": "https://shows.vogueimg.com.cn/202403/387f5e655ea0e49459692c3a20c9e01a/2024/S2024RTW/cong-tri/collection/00002-cong-tri-spring-2024-ready-to-wear-credit-brand_L.jpg"
+			},{
+				"url": "https://shows.vogueimg.com.cn/202403/d29e65dd9c14a60b96885368dbb15dc5/2024/S2024RTW/cong-tri/collection/00003-cong-tri-spring-2024-ready-to-wear-credit-brand_L.jpg"
+			},{
+				"url": "https://shows.vogueimg.com.cn/202403/c7ce94f9b9deaebae4b23ef14baaa156/2024/S2024RTW/cong-tri/collection/00004-cong-tri-spring-2024-ready-to-wear-credit-brand_L.jpg"
+			},{
+				"url": "https://shows.vogueimg.com.cn/202403/2314d5b0dfaca74a9240b62f81e655ee/2024/S2024RTW/cong-tri/collection/00005-cong-tri-spring-2024-ready-to-wear-credit-brand_L.jpg"
+			},{
+				"url": "https://shows.vogueimg.com.cn/202403/afc2d6b0bbc2efc697577cb94d8de801/2024/S2024RTW/cong-tri/collection/00006-cong-tri-spring-2024-ready-to-wear-credit-brand_L.jpg"
+			}
+		]
 	}
 }

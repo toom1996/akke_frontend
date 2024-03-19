@@ -7,3 +7,8 @@ export function arrayToObject<T extends {[key: string]: any}, K extends keyof T>
       return obj;
     }, {} as {[key: string]: T});
   }
+
+  export function urlPushState(newUrl: string)
+  {
+    window.history.pushState({}, '', newUrl);
+  }

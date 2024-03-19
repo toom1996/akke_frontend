@@ -1,7 +1,7 @@
 <template>
-    <View :src="state.viewSrc" :originUrl="state.originUrl" @close="close" ref="viewComponent" v-show="state.isView" />
-    <div class="wrapper pt-60 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-        <span class="text-4xl font-bold"><a href="/detail?id=123">2024/25秋冬米兰(Fear of God)男女装发布会</a></span>
+    <View :src="state.viewSrc" :originUrl="state.originUrl" @close="close" ref="viewComponent" v-if="state.isView" />
+    <div class="wrapper py-2 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
+        <span class="text-4xl font-bold"><a href="/detail?id=123">Fear of God | 2024/25秋冬米兰男女装发布会</a></span>
         <div>
             Fear of god
         </div>
@@ -20,13 +20,13 @@
          </div>
          <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
-                <a @click="eventView(item.src)">
+                <a @click="eventView(item.url)">
                     <div class="img-container relative cursor-pointer">
                         <div :class="['absolute flex items-center top-0 h-full w-full justify-center text-xs', `image-mask${index}`]">
                             <span>图片加载中...</span>
                         </div>
                         <div class='top-0 absolute w-full h-full' :id="`img-content-${index}`">
-                            <img class="w-full h-full" :src="item.src" @error="handleError(index)">
+                            <img class="w-full h-full" :src="item.url" @error="handleError(index)">
                             <!-- sdfsdfsdf -->
                         </div>
                     </div>
@@ -37,11 +37,12 @@
 </template>
 <script setup lang="ts">
 import { nextTick, onMounted, reactive, ref} from 'vue';
-import { gallaryIndex } from '@/api/v1';
+import { view } from '@/api/v1';
 import View from '@/components/GallaryView.vue'
+import { urlPushState } from '@/utils/helpers';
 
 interface IDataProvider {
-    src: string
+    url: string
 }
 
 interface State {
@@ -63,7 +64,7 @@ const eventView = async (src:string) => {
     console.log(src)
     state.isView = true
     state.viewSrc = src
-    window.history.pushState({}, '', '/new-url');
+    pushState()
     // state.count++
 }
 
@@ -72,18 +73,18 @@ const close = () => {
 }
 
 onMounted(() => {
-    window.addEventListener('popstate', function(event) {
-  // 检查存储的页面状态
-//   var pageState = sessionStorage.getItem('pageState');
-//   if (pageState === 'A') {
-//     // 根据需要执行操作，例如更新页面内容
-//     console.log('用户点击了后退按钮，但不重新加载页面');
-//   }
-    console.log(viewComponent.value.close())
-});
+//     window.addEventListener('popstate', function(event) {
+//   // 检查存储的页面状态
+// //   var pageState = sessionStorage.getItem('pageState');
+// //   if (pageState === 'A') {
+// //     // 根据需要执行操作，例如更新页面内容
+// //     console.log('用户点击了后退按钮，但不重新加载页面');
+// //   }
+//     console.log(viewComponent.value.close())
+// });
     console.log('init')
-    gallaryIndex({}).then(e => {
-        state.dataProvider = e.list
+    view({}).then(e => {
+        state.dataProvider = e.data
     })
 })
 
@@ -91,8 +92,8 @@ onMounted(() => {
 const pushState = () => {
     const state = { page_id: 1, user_id: 5 };
     const url = "/detail";
-
-    window.history.pushState({}, '', '/new-url');
+    urlPushState('/new-url')
+    // window.history.pushState({}, '', '/new-url');
 }
 
 const handleError = (index:number) => {

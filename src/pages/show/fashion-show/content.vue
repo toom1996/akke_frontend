@@ -119,7 +119,7 @@
     </svg></button></div>
             </div>
             <div class="updates__grid grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
-                <a target="_blank" v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" href="/show/gallary">
+                <a target="_blank" v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" :href="`${'/v/' + item.hash}`">
                     <span class="updates__card-content">
                         <p class="text-2xl font-bold mt0 mb4">{{ item.brand }}</p>
                         <div class="text-sm font-semibold mt0 mb4 updates__card-description">
@@ -133,17 +133,20 @@
         </div>
         <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
+    Scroll down to see the bottom-right button.
+  <el-backtop :right="100" :bottom="100" />
 </template>
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
-import { show } from '@/api/v1';
+import { fashionShow } from '@/api/v1';
 import BreadCrumb from '@/components/BreadCrumb.vue'
 import Drawer from '@/components/Drawer.vue';
 
 interface DataProviderDataList{
-    brand: string,
-    title: string,
+    brand: string
+    title: string
     cover: string
+    hash: string
 }
 
 interface DataProvider {
@@ -174,7 +177,7 @@ const closeFilter = () => {
     state.isShowFilter = false
 }
 const getIndex = () => {
-    show({}).then((e) => {
+    fashionShow({}).then((e) => {
         state.dataProvider = e.data
         console.log(state.dataProvider)
     })
