@@ -6,6 +6,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import { urlPushState } from '@/utils/helpers';
 import { onMounted, reactive } from 'vue';
 
 
@@ -16,7 +17,7 @@ interface stateInterface {
   src: string
   originUrl: string
 }
-const v = defineProps<stateInterface>()
+const props = defineProps<stateInterface>()
 
 const close = () => {
     var mo = function (e: any) {
@@ -24,8 +25,7 @@ const close = () => {
   }
   document.body.style.overflow = '' //出现滚动条
   document.removeEventListener('touchmove', mo, false)
-  console.log(v)
-  window.history.pushState({}, '', v.originUrl)
+  urlPushState(props.originUrl)
     emit("close", false)
 }
 

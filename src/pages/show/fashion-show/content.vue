@@ -133,7 +133,6 @@
         </div>
         <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
-    Scroll down to see the bottom-right button.
   <el-backtop :right="100" :bottom="100" />
 </template>
 <script setup lang="ts">
