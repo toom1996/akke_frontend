@@ -2,17 +2,15 @@
     <View :src="state.viewSrc" :originUrl="state.currentUrl" @close="close" ref="viewComponent" v-if="state.isView" />
     <div class="wrapper py-2 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
         <span class="text-4xl font-bold">Fear of God | 2024/25秋冬米兰男女装发布会</span>
-        <div>
+        <!-- <div>
             Fear of god
         </div>
         <div>
             Ermanno Scervino米兰
-        </div>
-        <el-check-tag :checked="checked3" type="info" @change="onChange3">
-      Tag 3
-    </el-check-tag>
-        <div class="flex flex-wrap content-between mt-4">
-            <div class="flex -space-x-2">
+        </div> -->
+        <div class="flex flex-wrap content-between">
+            <div class="flex -space-x-2 items-center">
+                <p class="pr-4 text-xs">主色调</p>
                 <div class="w-8 h-8 bg-red-600 rounded-full dark:border-gray-800 hover:z-10" src="../assets/images/users/avatar.png" alt=""></div>
                 <div class="w-8 h-8 bg-red-600 rounded-full dark:border-gray-800 hover:z-10 hover:bg-black" alt=""></div>
                 <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
@@ -78,15 +76,11 @@ const close = () => {
 }
 
 onMounted(() => {
-//     window.addEventListener('popstate', function(event) {
-//   // 检查存储的页面状态
-// //   var pageState = sessionStorage.getItem('pageState');
-// //   if (pageState === 'A') {
-// //     // 根据需要执行操作，例如更新页面内容
-// //     console.log('用户点击了后退按钮，但不重新加载页面');
-// //   }
-//     console.log(viewComponent.value.close())
-// });
+    window.addEventListener('popstate', function(event) {
+      // if (viewComponent?.value) {
+        {viewComponent?.value as any}close()
+      // }
+});
     console.log('init')
     view({}).then(e => {
         state.dataProvider = e.data
@@ -97,7 +91,6 @@ onMounted(() => {
 
 const pushState = (pushUrl:string) => {
     urlPushState(pushUrl)
-    // window.history.pushState({}, '', '/new-url');
 }
 
 const handleError = (index:number) => {
