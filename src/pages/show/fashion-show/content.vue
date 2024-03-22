@@ -133,6 +133,7 @@
         </div>
         <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
+    <Pagination></Pagination>
   <el-backtop :right="100" :bottom="100" />
 </template>
 <script setup lang="ts">
@@ -140,6 +141,7 @@ import { onMounted, reactive } from 'vue';
 import { fashionShow } from '@/api/v1';
 import BreadCrumb from '@/components/BreadCrumb.vue'
 import Drawer from '@/components/Drawer.vue';
+import Pagination from '@/components/Pagination.vue';
 
 interface DataProviderDataList{
     brand: string

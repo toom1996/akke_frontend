@@ -8,7 +8,7 @@
         <div>
             Ermanno Scervino米兰
         </div> -->
-        <div class="flex flex-wrap content-between">
+        <!-- <div class="flex flex-wrap content-between">
             <div class="flex -space-x-2 items-center">
                 <p class="pr-4 text-xs">主色调</p>
                 <div class="w-8 h-8 bg-red-600 rounded-full dark:border-gray-800 hover:z-10" src="../assets/images/users/avatar.png" alt=""></div>
@@ -18,7 +18,7 @@
                 <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
                 <div class="w-8 h-8 bg-red-600 hover:z-10 rounded-full dark:border-gray-800" src="../assets/images/users/avatar.png" alt=""></div>
             </div>
-         </div>
+         </div> -->
          <el-divider />
          <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <li v-for="(item, index) in state.dataProvider">
