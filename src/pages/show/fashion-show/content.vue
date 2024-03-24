@@ -108,8 +108,8 @@
         <BreadCrumb :path="state.path"></BreadCrumb>
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
             <div class="flex">
-                <div class="shop-filter flex justify-between align-items-center mb-4 flex-1	">
-                    <div class="shop-filter-default flex justify-content-between align-items-center">
+                <div class="shop-filter flex justify-between align-items-center flex-1	">
+                    <div v-show="state.isShowResCount" class="shop-filter-default flex justify-content-between align-items-center">
                         <div class="shop-filter-count d-none d-sm-block text-lg">为您找到了{{ state.dataProvider.total }}条结果</div>
                     </div>
                     <!-- <div class="shop-filter-sort-by"><div class="shop-filter-sort-by__label"><span>Sort by Default</span><i class="lastudioicon-down-arrow"></i></div><ul class="shop-filter-sort-by__dropdown"><li class="active"><a href="#">Sort by Default</a></li><li><a href="#">Sort by Popularity</a></li><li><a href="#">Sort by Rated</a></li><li><a href="#">Sort by Latest</a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-up"></i></a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-down"></i></a></li></ul></div> -->
@@ -118,6 +118,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
     </svg></button></div>
             </div>
+            <el-divider />
             <div class="updates__grid grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
                 <a target="_blank" v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" :href="`${'/v/' + item.hash}`">
                     <span class="updates__card-content">
@@ -133,7 +134,7 @@
         </div>
         <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
-    <Pagination></Pagination>
+    <Pagination v-show="state.isShowPagination" :total="state.dataProvider.total"></Pagination>
   <el-backtop :right="100" :bottom="100" />
 </template>
 <script setup lang="ts">
@@ -156,8 +157,10 @@ interface DataProvider {
 }
 
 interface State {
+    isShowPagination: boolean
     dataProvider: DataProvider
     isShowFilter: boolean
+    isShowResCount: boolean
     path: string[]
 }
 const state = reactive<State>({
@@ -166,6 +169,8 @@ const state = reactive<State>({
         total: 0
     },
     isShowFilter: false,
+    isShowResCount: false,
+    isShowPagination: false,
     path: ['秀场', '时装发布会']
 })
 
@@ -178,9 +183,12 @@ const closeFilter = () => {
     state.isShowFilter = false
 }
 const getIndex = () => {
+    state.isShowPagination = false
     fashionShow({}).then((e) => {
         state.dataProvider = e.data
         console.log(state.dataProvider)
+    }).finally(() => {
+        state.isShowPagination = state.isShowResCount = true
     })
 }
 </script>

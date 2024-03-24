@@ -1,6 +1,8 @@
 ---
+import { HEADER_COLUMNS } from '@/api/astroApi';
 import IconLogo from '@/assets/icons/IconLogo.vue'
-const dataProvider = await fetch('http://localhost:3000/headers').then((e) => {
+const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
+    console.log(HEADER_COLUMNS)
     return e.json()
 })
 ---
