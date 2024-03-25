@@ -131,10 +131,11 @@
                     <span aria-hidden="true" class="updates__card-gradient absolute bottom-0 left-0 w-full h-48"></span>
                 </a>
             </div>
+            <el-empty  description="description"/>
         </div>
         <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
-    <Pagination v-show="state.isShowPagination" :total="state.dataProvider.total"></Pagination>
+    <Pagination @changePage="changePage" v-show="state.isShowPagination" :currentPage="state.currentPage" :total="state.dataProvider.total"></Pagination>
   <el-backtop :right="100" :bottom="100" />
 </template>
 <script setup lang="ts">
@@ -157,10 +158,11 @@ interface DataProvider {
 }
 
 interface State {
-    isShowPagination: boolean
+    currentPage: number
     dataProvider: DataProvider
     isShowFilter: boolean
     isShowResCount: boolean
+    isShowPagination: boolean
     path: string[]
 }
 const state = reactive<State>({
@@ -168,6 +170,7 @@ const state = reactive<State>({
         list: [],
         total: 0
     },
+    currentPage: 1,
     isShowFilter: false,
     isShowResCount: false,
     isShowPagination: false,
@@ -191,4 +194,9 @@ const getIndex = () => {
         state.isShowPagination = state.isShowResCount = true
     })
 }
+
+const changePage = (val: number) => {
+    console.log('changePage', val)
+}
+
 </script>
