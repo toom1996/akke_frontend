@@ -10,7 +10,6 @@ declare module 'vue' {
     BreadCrumb: typeof import('./src/components/BreadCrumb.vue')['default']
     Drawer: typeof import('./src/components/Drawer.vue')['default']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElPagination: typeof import('element-plus/es')['ElPagination']

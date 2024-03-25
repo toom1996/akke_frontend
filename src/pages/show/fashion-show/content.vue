@@ -131,7 +131,7 @@
                     <span aria-hidden="true" class="updates__card-gradient absolute bottom-0 left-0 w-full h-48"></span>
                 </a>
             </div>
-            <el-empty  description="description"/>
+            <el-empty v-if="state.dataProvider.list.length == 0" description="没有找到结果呢~"/>
         </div>
         <Drawer :isShow="state.isShowFilter" @closeFilter="closeFilter()"></Drawer>
     </div>
