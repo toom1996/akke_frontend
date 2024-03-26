@@ -106,13 +106,15 @@
 <template>
     <div class="container px-0 m-auto">
         <BreadCrumb :path="state.path"></BreadCrumb>
+        <div class="searchToolbar flex justify-items-center items-center justify-center">
+            <el-input v-model="state.SearchDataProvider.searchStr" style="width: 240px" size="large" placeholder="Please Input" :prefix-icon="Search" />
+        </div>
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
             <div class="flex">
                 <div class="shop-filter flex justify-between align-items-center flex-1	">
                     <div v-show="state.isShowResCount" class="shop-filter-default flex justify-content-between align-items-center">
                         <div class="shop-filter-count d-none d-sm-block text-lg">为您找到了{{ state.dataProvider.total }}条结果</div>
                     </div>
-                    <!-- <div class="shop-filter-sort-by"><div class="shop-filter-sort-by__label"><span>Sort by Default</span><i class="lastudioicon-down-arrow"></i></div><ul class="shop-filter-sort-by__dropdown"><li class="active"><a href="#">Sort by Default</a></li><li><a href="#">Sort by Popularity</a></li><li><a href="#">Sort by Rated</a></li><li><a href="#">Sort by Latest</a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-up"></i></a></li><li><a href="#">Sort by Price:<i class="lastudioicon-arrow-down"></i></a></li></ul></div> -->
                 </div>
                 <div class="shop-filter-button"><button @click="state.isShowFilter = !state.isShowFilter" class="shop-filter-button__btn shop-filter-toggle flex items-center cursor-pointer"><span>筛选</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -139,7 +141,7 @@
   <el-backtop :right="100" :bottom="100" />
 </template>
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { fashionShow } from '@/api/v1';
 import BreadCrumb from '@/components/BreadCrumb.vue'
 import Drawer from '@/components/Drawer.vue';
@@ -152,14 +154,25 @@ interface DataProviderDataList{
     hash: string
 }
 
+interface SearchDataProviderDataList{
+    value: string
+    link: string
+}
+
 interface DataProvider {
     list: DataProviderDataList[]
     total: number
 }
 
+interface SearchDataProvider {
+    searchStr: string,
+    searchStrSuggestionList: SearchDataProviderDataList[]
+}
+
 interface State {
     currentPage: number
     dataProvider: DataProvider
+    SearchDataProvider: SearchDataProvider
     isShowFilter: boolean
     isShowResCount: boolean
     isShowPagination: boolean
@@ -169,6 +182,10 @@ const state = reactive<State>({
     dataProvider: {
         list: [],
         total: 0
+    },
+    SearchDataProvider: {
+        searchStr: '',
+        searchStrSuggestionList: []
     },
     currentPage: 1,
     isShowFilter: false,
@@ -185,9 +202,10 @@ const closeFilter = () => {
     console.log('closeFilter')
     state.isShowFilter = false
 }
-const getIndex = () => {
+const getIndex = (params: object = {}) => {
     state.isShowPagination = false
-    fashionShow({}).then((e) => {
+    state.dataProvider.list = []
+    fashionShow(params).then((e) => {
         state.dataProvider = e.data
         console.log(state.dataProvider)
     }).finally(() => {
@@ -196,7 +214,11 @@ const getIndex = () => {
 }
 
 const changePage = (val: number) => {
-    console.log('changePage', val)
+    state.currentPage = val
+    console.log('state.currentPage', val)
+    getIndex({
+        page: state.currentPage
+    })
 }
 
 </script>

@@ -19,9 +19,9 @@ export function buildIndex (params:object) {
 
 
 // --------------------------------------------------------
-export function fashionShow (params:object) {
+export function fashionShow (params:object = {}) {
     let url = isDevMode ? 'fashion-show' : '/api/v1/fashion-show'
-    return get(url)
+    return get(url, params)
 }
 
 export function view (params:object) {
