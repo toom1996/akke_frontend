@@ -9,7 +9,7 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
 
 <style>
     .main-nav {
-        @apply h-28 backdrop-blur-[2rem];
+        @apply h-14 bg-black text-white rounded-full max-w-3xl;
     }
 
     .drop-menu-container {
@@ -57,39 +57,42 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
       </astro-heart> -->
     <div id="dropOverlay" class="drop-mask"></div>
     <div id="dropBackground" class="drop-background absolute right-0 top-0 left-0 h-0 block w-full z-0 bg-white transition-all"></div>
-    <div class="main-nav flex px-6">
-        <ul class="flex h-full items-center mr-auto">
+    <div class="fixed top-4 z-50 inset-x-0">
+        <div class="main-nav flex px-6 justify-center mx-auto">
             <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
-            {
-                dataProvider.data.columns.map((item: { label: string, url: string, child: []}) => (
-                    <li class="m-4 text-lg">
-                        <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
-                            <span class="font-semibold line">{item.label}</span>
-                        </a>
-                        {
-                            item.child.length > 0 ?
-                            <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center" aria-expanded="false">
-                                {
-                                    item.child.map((itemChild: { label: string, url: string, items: []}) => (
-                                        <div role="group" class="mx-8">
-                                                <a class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
-                                                {
-                                                    itemChild.items.map((v: {url: string, label: string}) => (
-                                                        <div class="my-2">
-                                                            <a class="line" href={v.url}>{ v.label }</a>
-                                                        </div>
-                                                    ))
-                                                }
-                                        </div>
-                                    )) 
-                                }
-                            </div>
-                            : ''
-                        }
-                    </li>
-                ))
-            }
-        </ul>
+            <ul class="flex h-full items-center">
+                {
+                    dataProvider.data.columns.map((item: { label: string, url: string, child: []}) => (
+                        <li class="m-4 text-lg">
+                            <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
+                                <span class="font-semibold line">{item.label}</span>
+                            </a>
+                            {
+                                item.child.length > 0 ?
+                                <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center" aria-expanded="false">
+                                    {
+                                        item.child.map((itemChild: { label: string, url: string, items: []}) => (
+                                            <div role="group" class="mx-8">
+                                                    <a class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
+                                                    {
+                                                        itemChild.items.map((v: {url: string, label: string}) => (
+                                                            <div class="my-2">
+                                                                <a class="line" href={v.url}>{ v.label }</a>
+                                                            </div>
+                                                        ))
+                                                    }
+                                            </div>
+                                        )) 
+                                    }
+                                </div>
+                                : ''
+                            }
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
 </gogoex-header>
 <script>
     class Gogoex extends HTMLElement {
@@ -97,6 +100,26 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
       super();
       let count = 0;
 
+      let lastKnownScrollPosition = 0;
+let ticking = false;
+
+function doSomething(scrollPos) {
+    console.log(scrollPos)
+  // 利用滚动位置完成一些事情
+}
+
+document.addEventListener("scroll", (event) => {
+  lastKnownScrollPosition = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      doSomething(lastKnownScrollPosition);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
       // 遮罩
     var dropOverlayEl = document.getElementById('dropOverlay');
             
@@ -141,6 +164,7 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
                     // 当前菜单的下拉菜单
                     var dropMenuEl = document.getElementById(currentDropedMenuId);
         
+                    console.log(dropMenuEl)
                     if (dropMenuEl) {
                         if (dropMenuEl.getAttribute('aria-expanded') == 'false') {
                             dropMenuEl.setAttribute('aria-expanded', 'true');

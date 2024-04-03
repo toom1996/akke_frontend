@@ -10,7 +10,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://astro.build/config
 export default defineConfig({
   // redirects: {
-  //   '/v/[...slug]': '/detail?a=[...slug]'
+  //   '/v/[...slug]': '/v/'
   // },
   integrations: [tailwind(),vue({ 
     appEntrypoint: '/src/pages/_app'

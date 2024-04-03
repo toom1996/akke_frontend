@@ -106,9 +106,6 @@
 <template>
     <div class="container px-0 m-auto">
         <BreadCrumb :path="state.path"></BreadCrumb>
-        <div class="searchToolbar flex justify-items-center items-center justify-center">
-            <el-input v-model="state.SearchDataProvider.searchStr" style="width: 240px" size="large" placeholder="Please Input" :prefix-icon="Search" />
-        </div>
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
             <div class="flex">
                 <div class="shop-filter flex justify-between align-items-center flex-1	">
@@ -116,9 +113,14 @@
                         <div class="shop-filter-count d-none d-sm-block text-lg">为您找到了{{ state.dataProvider.total }}条结果</div>
                     </div>
                 </div>
-                <div class="shop-filter-button"><button @click="state.isShowFilter = !state.isShowFilter" class="shop-filter-button__btn shop-filter-toggle flex items-center cursor-pointer"><span>筛选</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-    </svg></button></div>
+                <div class="shop-filter-button">
+                    <button @click="state.isShowFilter = !state.isShowFilter" class="shop-filter-button__btn shop-filter-toggle flex items-center cursor-pointer">
+                        <span>筛选</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <el-divider />
             <div class="updates__grid grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">

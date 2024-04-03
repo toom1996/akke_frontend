@@ -76,18 +76,21 @@ const close = () => {
 }
 
 onMounted(() => {
+    // Fear of God | 2024/25秋冬米兰男女装发布会\
+    document.title = 'GogoEx - Fear of God | 2024/25秋冬米兰男女装发布会'
+
+    // 监听回退, 恢复url
     window.addEventListener('popstate', function(event) {
-      // if (viewComponent?.value) {
+        // if (viewComponent?.value) {
         {viewComponent?.value as any}close()
-      // }
-});
+        // }
+    });
     console.log('init')
     view({}).then(e => {
         state.dataProvider = e.data
     })
     state.currentUrl = window.location.pathname
 })
-
 
 const pushState = (pushUrl:string) => {
     urlPushState(pushUrl)

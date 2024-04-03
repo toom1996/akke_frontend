@@ -20,7 +20,7 @@ export function buildIndex (params:object) {
 
 // --------------------------------------------------------
 export function fashionShow (params:object = {}) {
-    let url = isDevMode ? 'fashion-show' : '/api/v1/fashion-show'
+    let url = isDevMode ? 'runway' : '/api/v1/runway'
     return get(url, params)
 }
 

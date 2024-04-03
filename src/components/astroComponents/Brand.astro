@@ -1,241 +1,72 @@
----
-import Gucci from "../../assets/logo/Gucci.astro";
-import LV from "../../assets/logo/LouisVuitton.astro";
-const loopBrand = [
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-    ['LV', 'GUCCI', 'Lining', 'Adidas', 'Nike', 'Supreme', 'Clot', 'MiuMiu', 'PRADA', 'Burberry', 'Hermes', 'Cartier', 'ZARA', 'H&M', 'The Notrh Face', "ARC'TERYX", 'ANTA', '361°', 'TOREAD', 'KALAS', 'Jack Wolfskin'],
-];
----
-
-<style>
-  ._graphic_3fli4_142 {
-    aspect-ratio: 700/550;
-    display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    margin: 0;
-    max-width: 700px;
-    width: 100%;
-  }
-
-  ._box_3fli4_158 {
-    align-items: center;
-    background-color: #fff;
-    border-radius: var(--border-radius-large);
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    /* opacity: 0; */
-    /* transform: scale(.75); */
-    transition: all 0.8s var(--ease);
-    width: 100%;
-  }
-
-.brand-logo-items {
-    @apply rounded-xl bg-white flex justify-center items-center;
-}
-
-.brand-logo-items:first-child {
-    background: linear-gradient(160deg,#fff0 2.55%,#ffffffbf)
-}
-
-.brand-logo-items:nth-child(2) {
-    background: linear-gradient(180deg,#fff0 2.55%,#ffffffd9);
-    box-shadow: 0 10px 10px #00000004
-}
-
-.brand-logo-items:nth-child(3) {
-    background: linear-gradient(230deg,#fff0 2.55%,#ffffff8c);
-}
-
-.brand-logo-items:nth-child(4),.brand-logo-items:nth-child(5),.brand-logo-items:nth-child(7),.brand-logo-items:nth-child(8) {
-    box-shadow: 0 0 20px #0000000a
-}
-
-.brand-logo-items:nth-child(6),.brand-logo-items:nth-child(9) {
-    background: linear-gradient(249.54deg,#fff0 2.55%,#ffffffd4);
-    box-shadow: -10px 0 10px #00000004
-}
-
-.brand-logo-items:nth-child(10) {
-    background: linear-gradient(30deg,#fff0 2.55%,#ffffffbf)
-}
-
-.brand-logo-items:nth-child(11) {
-    background: linear-gradient(0deg,#fff0 2.55%,#ffffffd9);
-    box-shadow: 0 -10px 10px #00000004
-}
-.brand-logo-items:nth-child(12) {
-    background: linear-gradient(300deg,#fff0 2.55%,#ffffff8c)
-}
-/* body {
-  // font-family: 'Titillium Web', sans-serif;
-  font-size: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  user-select: none;
-} */
-
-.menu--item {
-  white-space: nowrap;
-  display: flex;
-  flex-wrap: nowrap;
-  cursor: pointer;
-  text-shadow: 5px 5px rgb(255, 255, 255), 5px 5px rgba(0, 0, 0, .1), 10px 10px rgba(0, 0, 0, .1);
-}
-
-.loop-item {
-    @apply flex gap-5 font-bold whitespace-nowrap
-}
-</style>
-<script>
-import gsap from 'gsap'
-
-var element = document.getElementsByClassName("brand-loop-wrapper-item-right");
-console.log(element)
-// var width = element[0]?.offsetWidth;
-// console.log(width)
-gsap.fromTo('.brand-loop-wrapper-item-left', {
-  xPercent: 0
-}, {
-  xPercent: -90,
-//   stagger: 0.5,
-  duration: 120,
-  repeat: -1,
-  ease: 'none',
-})
-gsap.fromTo('.brand-loop-wrapper-item-right', {
-  xPercent: -90
-}, {
-  xPercent: 0,
-//   stagger: 0.5,
-  duration: 120,
-  repeat: -1,
-  ease: 'none',
-})
-</script>
-<figure class="wrapper rounded-lg p-0">
-  <div class="flex justify-center items-center">
-    <!-- <div class="description text-4xl">超过2000个品牌供您挑选。</div> -->
-    <h1 class="text-4xl">
-        超过2000个品牌 
-        <span class="block"></span>
-        供您挑选。
-        <div class="text-sm">
-            <span class="block"></span>
-          时尚潮流, 户外运动, 居家休闲, 朋克牛仔...... 总有一个类型是您喜欢的。
+<section>
+  <div class="px-8 py-12 mx-auto md:px-12 2xl:max-w-7xl lg:py-24">
+    <div class="grid grid-cols-1 gap-4 xl:grid-cols-2 items-start">
+      <div class="p-8 lg:p-20 bg-blue-700 rounded-4xl lg:rounded-5xl">
+        <div class="inline-flex items-center gap-4">
+          <div class="w-20 h-1 bg-white hidden md:block"></div>
+          <span class="text-xs font-semibold tracking-wide uppercase text-white"
+            >Unmatched Excellence.</span
+          >
         </div>
-    </h1>
-    <div
-      id="home-widget-platforms"
-      class="_graphic_3fli4_142"
-      aria-label="Grid of website builder logos"
-    >
-      <div class="brand-logo-items"></div>
-      <div class="brand-logo-items">
-        <Gucci width="100" />
+        <p
+          class="text-4xl mt-8 font-display lg:text-8xl font-semibold text-white"
+        >
+          Unmatched <span class="lg:block lg:text-lime-500">Excellence</span>
+        </p>
+        <p class="text-white text-base mt-8">
+          We are a collective of highly skilled digital product specialists,
+          each bringing a unique set of talents and expertise to the table.
+          <br />
+          <br />
+           Our team is composed of individuals hailing from diverse backgrounds
+          and cultures, uniting our strengths to create exceptional digital
+          experiences.
+          <br />
+          <br />
+           With members from all corners of the globe, we thrive on the synergy
+          of our international collaboration, drawing inspiration and innovation
+          from a multitude of perspectives.
+        </p>
       </div>
-      <div class="brand-logo-items"></div>
-      <div class="brand-logo-items">
-        <LV />
-      </div>
-      <div class="brand-logo-items">
-        <img
-          width="168"
-          height="18"
-          data-src="/_astro/squarespace.RXM5VO8_.svg"
-          alt="Squarespace"
-          src="/_astro/squarespace.RXM5VO8_.svg"
-          class="loaded"
-        />
-      </div>
-      <div class="brand-logo-items">
-        <img
-          width="94"
-          height="21"
-          data-src="/_astro/lightspeed.CPvOM9md.svg"
-          alt="lightspeed"
-          src="/_astro/lightspeed.CPvOM9md.svg"
-          class="loaded"
-        />
-      </div>
-      <div class="brand-logo-items">
-        <img
-          width="77"
-          height="22"
-          data-src="/_astro/shopify.26-n443P.svg"
-          alt="Shopify"
-          src="/_astro/shopify.26-n443P.svg"
-          class="loaded"
-        />
-      </div>
-      <div class="brand-logo-items">
-        <img
-          width="86"
-          height="22"
-          data-src="/_astro/drupal.pT3qceqq.svg"
-          alt="drupal"
-          src="/_astro/drupal.pT3qceqq.svg"
-          class="loaded"
-        />
-      </div>
-      <div class="brand-logo-items">
-        <img
-          width="69"
-          height="25"
-          data-src="/_astro/ghost.j5CV_yHK.svg"
-          alt="Ghost"
-          src="/_astro/ghost.j5CV_yHK.svg"
-          class="loaded"
-        />
-      </div>
-      <div class="brand-logo-items"></div>
-      <div class="brand-logo-items">
-        <img
-          width="40"
-          height="16"
-          data-src="/_astro/wix.tyOwew6g.svg"
-          alt="Wix"
-          src="/_astro/wix.tyOwew6g.svg"
-          class="loaded"
-        />
-      </div>
-      <div class="brand-logo-items"></div>
+      <ol
+        role="list"
+        class="grid grid-cols-1 xl:grid-cols-1 md:grid-cols-3 lg:text-center items-center rounded-4xl lg:rounded-5xl gap-4 h-full p-8 lg:p-20 lg:grid-cols-2 list-none bg-lime-500"
+      >
+        <li>
+          <h3
+            class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display"
+          >
+            Over 30 Years of Agency Experience
+          </h3>
+          <p class="mt-2 text-base text-black">
+            With over three years in operation, we've achieved a remarkable
+            track record, successfully launching projects worldwide.
+          </p>
+        </li>
+        <li>
+          <h3
+            class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display"
+          >
+            1000+ Content Clients
+          </h3>
+          <p class="mt-2 text-base text-black">
+            We gauge our triumph by clients who repeatedly choose to
+            collaborate. More than half of our clients entrust us beyond a
+            solitary project.
+          </p>
+        </li>
+        <li>
+          <h3
+            class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display"
+          >
+            Facilitated Fundraising of Over $20B
+          </h3>
+          <p class="mt-2 text-base text-black">
+            Our efforts have contributed to securing over $20 billion in funding
+            for pleny enterprises.
+          </p>
+        </li>
+      </ol>
     </div>
   </div>
-  <div class="brand-loop-wrapper text-5xl w-full text-slate-200 overflow-hidden">
-    {
-      loopBrand.map((e, index) => (
-          index % 2 == 0
-          ? 
-            <div class:list={['loop-item brand-loop-wrapper-item-left']}>
-              {
-                e.map(item => (
-                 <div class="loop-word">{ item }</div>
-                ))
-              }
-            </div> 
-          :
-             <div class:list={['loop-item brand-loop-wrapper-item-right', index === 5 ? 'text-black' : '']}>
-              {
-                e.map(item => (
-                 <div class="loop-word">{ item }</div>
-                ))
-              }
-            </div> 
-        ))
-    }
-  </div>
-</figure>
+</section>

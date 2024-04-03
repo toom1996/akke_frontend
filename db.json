@@ -1,5 +1,5 @@
 {
-	"fashion-show": {
+	"runway": {
 		"code": 0,
 		"data": {
 			"list": [{
@@ -60,7 +60,7 @@
 				"child": [
 					{
 						"label": "时装发布会",
-						"url": "/show/fashion-show",
+						"url": "/show/runway",
 						"items": [{"label": "法国时装周","url": "/show?a=1234"},{"label": "米兰时装周","url": "/show?a=1234"}]
 					},
 					{
