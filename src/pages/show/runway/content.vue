@@ -106,6 +106,7 @@
 <template>
     <div class="container px-0 m-auto">
         <BreadCrumb :path="state.path"></BreadCrumb>
+        
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
             <div class="flex">
                 <div class="shop-filter flex justify-between align-items-center flex-1	">
