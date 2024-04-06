@@ -9,7 +9,7 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
 
 <style>
     .main-nav {
-        @apply h-14 bg-black text-white rounded-full max-w-3xl;
+        @apply bg-black text-white rounded-full;
     }
 
     .drop-menu-container {
@@ -21,7 +21,7 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
         padding-block-start: 3rem;
         position: absolute;
         right: 0;
-        top: calc(7.25rem - 2.125rem);
+        top: calc(7.25rem - 3.125rem);
         transition: all .3s ease;
         z-index: 1;
     }
@@ -51,75 +51,109 @@ const dataProvider = await fetch(HEADER_COLUMNS).then((e) => {
     }
 
 </style>
-<gogoex-header class="z-50 fixed w-full top-0" transition:persist>
-    <!-- <astro-heart>
-        <button aria-label="Heart">💜</button> × <span>0</span>
-      </astro-heart> -->
+<gogoex-header class="z-50 fixed w-full top-0" transition:persist >
+    <!-- <astro-heart> -->
+      <!-- </astro-heart> -->
     <div id="dropOverlay" class="drop-mask"></div>
     <div id="dropBackground" class="drop-background absolute right-0 top-0 left-0 h-0 block w-full z-0 bg-white transition-all"></div>
-    <div class="fixed top-4 z-50 inset-x-0">
-        <div class="main-nav flex px-6 justify-center mx-auto">
-            <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg"><IconLogo />GogoEx</a>
-            <ul class="flex h-full items-center">
-                {
-                    dataProvider.data.columns.map((item: { label: string, url: string, child: []}) => (
-                        <li class="m-4 text-lg">
-                            <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
-                                <span class="font-semibold line">{item.label}</span>
-                            </a>
+    <div class="fixed top-4 z-50 inset-x-0" x-data="{ atTop: true }">
+        <div class="main-nav p-2 mx-auto ease-in-out transform transition-all duration-1000" id="header" :class="{ ' max-w-4xl ': !atTop, 'max-w-2xl': atTop }"  @scroll.window.throttle="handleScroll">
+            <div class="flex justify-center">
+                <div class="w-full mx-auto">
+                    <div x-data="{ open: false }" :class="{ ' p-4 ': !atTop, 'p-2': atTop }" class="relative flex flex-col w-full mx-auto ease-in-out transform transition-all duration-500 bg-black shadow-thick backdrop-blur-xl backdrop-filter rounded-2xl md:rounded-full md:items-center md:justify-between md:flex-row p-4">
+                        <a href="/" class="flex items-center justify-center font-bold cursor-pointer text-lg hover:text-lime-500"><IconLogo />GogoEx</a>
+                        <ul class="flex h-full items-center">
                             {
-                                item.child.length > 0 ?
-                                <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center" aria-expanded="false">
-                                    {
-                                        item.child.map((itemChild: { label: string, url: string, items: []}) => (
-                                            <div role="group" class="mx-8">
-                                                    <a class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
-                                                    {
-                                                        itemChild.items.map((v: {url: string, label: string}) => (
-                                                            <div class="my-2">
-                                                                <a class="line" href={v.url}>{ v.label }</a>
-                                                            </div>
-                                                        ))
-                                                    }
+                                dataProvider.data.columns.map((item: { label: string, url: string, child: []}) => (
+                                    <li class="mx-2 text-lg">
+                                        <a id={item.child.length > 0 ? 'drop-' + item.url : ''} href={item.child.length > 0 ? 'javascript:void(0);' : item.url}>
+                                            <span class="font-semibold line">{item.label}</span>
+                                        </a>
+                                        {
+                                            item.child.length > 0 ?
+                                            <div id={item.child.length > 0 ? 'dropMenuContainer__drop-' + item.url : ''} class="drop-menu-container flex justify-center text-black" aria-expanded="false">
+                                                {
+                                                    item.child.map((itemChild: { label: string, url: string, items: []}) => (
+                                                        <div role="group" class="mx-8">
+                                                                <a class="mb-4 text-xl font-bold line" href={itemChild.url}>{itemChild.label}</a>
+                                                                {
+                                                                    itemChild.items.map((v: {url: string, label: string}) => (
+                                                                        <div class="my-2">
+                                                                            <a class="line" href={v.url}>{ v.label }</a>
+                                                                        </div>
+                                                                    ))
+                                                                }
+                                                        </div>
+                                                    )) 
+                                                }
                                             </div>
-                                        )) 
-                                    }
-                                </div>
-                                : ''
+                                            : ''
+                                        }
+                                    </li>
+                                ))
                             }
-                        </li>
-                    ))
-                }
-            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </gogoex-header>
 <script>
+
     class Gogoex extends HTMLElement {
     constructor() {
       super();
       let count = 0;
 
+      var scrollTimer = false;
       let lastKnownScrollPosition = 0;
 let ticking = false;
 
-function doSomething(scrollPos) {
-    console.log(scrollPos)
-  // 利用滚动位置完成一些事情
-}
+    window.handleScroll = function() {
+        this.atTop = (window.scrollY  > 50 ? false : true)
+      console.log(window.scrollY );
+      if (scrollTimer === false && this.atTop === false) {
+        scrollTimer = true
+        setTimeout(() => {
+            this.atTop = (window.scrollY  > 50 ? false : true)
+            scrollTimer = false
+            console.log(window.scrollY );
+        }, 500)
+      }
+      // 处理滚动事件的逻辑，例如更新 Alpine.js 数据
+    }
 
-document.addEventListener("scroll", (event) => {
-  lastKnownScrollPosition = window.scrollY;
+// function doSomething(scrollPos) {
+//     console.log(scrollPos)
+//     var el = document.getElementById('header');
+//     if (scrollPos <= 50) {
+        
+//         console.log(el)
+//         document.querySelector('#header').classList.add('p-2')
+//         // console.log(headerEl)
+//         // el.style.height = '100px';
+//     } else {
+//         document.querySelector('#header').classList.add('p-4')
+//     }
+    
+//   // 利用滚动位置完成一些事情
+// }
 
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      doSomething(lastKnownScrollPosition);
-      ticking = false;
-    });
+// document.addEventListener("scroll", (event) => {
+//   lastKnownScrollPosition = window.scrollY;
 
-    ticking = true;
-  }
-});
+//   if (!ticking) {
+//     window.requestAnimationFrame(() => {
+//     //   doSomething(lastKnownScrollPosition);
+//       ticking = false;
+//       isScrollTop = lastKnownScrollPosition <= 50
+//     //   return lastKnownScrollPosition <= 50 ? true : false;
+//     });
+
+//     ticking = true;
+//   }
+// });
       // 遮罩
     var dropOverlayEl = document.getElementById('dropOverlay');
             

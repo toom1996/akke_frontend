@@ -22,8 +22,13 @@ position: relative;
 
 .text-lime-500 {
     --tw-text-opacity: 1;
-    color: hsl(72 99% 49% / var(--tw-text-opacity))
+    color: hsl(72 99% 49% / var(--tw-text-opacity));
 }
+
+.hover\:text-lime-500:hover {
+    --tw-text-opacity: 1;
+    color: hsl(72 99% 49% / var(--tw-text-opacity));
+  }
 
 @font-face {
     font-family: 'Bebas Neue';

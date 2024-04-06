@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.54.3",
+    "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.3.3",
     "@astrojs/tailwind": "^5.0.3",
     "@astrojs/vue": "^4.0.5",
+    "@types/alpinejs": "^3.13.10",
+    "alpinejs": "^3.13.8",
     "astro": "latest",
     "astro-icon": "^0.8.2",
     "axios": "^1.6.4",

@@ -5,6 +5,7 @@ import vue from '@astrojs/vue';
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import alpine from '@astrojs/alpinejs';
 
 
 // https://astro.build/config
@@ -12,7 +13,7 @@ export default defineConfig({
   // redirects: {
   //   '/v/[...slug]': '/v/'
   // },
-  integrations: [tailwind(),vue({ 
+  integrations: [alpine(),tailwind(),vue({ 
     appEntrypoint: '/src/pages/_app'
  })],
   vite: {
