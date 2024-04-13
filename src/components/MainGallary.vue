@@ -1,7 +1,9 @@
 <template>
     <View :src="state.viewSrc" :originUrl="state.currentUrl" @close="close" ref="viewComponent" v-if="state.isView" />
     <div class="wrapper py-2 px-2 md:px-4 lg:px-6 xl:px-8 2xl:mx-auto">
-        <span class="text-4xl font-bold">Fear of God | 2024/25秋冬米兰男女装发布会</span>
+        <div class="text-center"> <div class="inline-flex items-center gap-4"> <div class="w-20 h-1 bg-black hidden md:block"></div> <span class="text-xs font-semibold tracking-wide uppercase text-black">Written by: Giovanni Russo on
+Wed Jul 12 </span> </div> <p class="mt-8 text-4xl font-display font-semibold md:text-6xl lg:text-7xl text-black"> Fear of God | 2024/25秋冬米兰男女装发布会 </p> <p class="text-slate-500 text-base mt-8 max-w-2xl mx-auto"> <em>A mysterious notebook falls into the hands of a young woman, leading her on a journey through time as she learns about the lives of those who came before her.</em> </p> </div>
+        <!-- <span class="text-4xl font-semibold font-display">Fear of God | 2024/25秋冬米兰男女装发布会</span> -->
         <!-- <div>
             Fear of god
         </div>

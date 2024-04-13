@@ -34,11 +34,17 @@
       </ul>
     </div>
   </div> -->
-  <div class="border-b pb-5">
-    <p class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display">
-      <span class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display" >Typography</span>
-      / <span class="text-slate-500">Bebas Neue &amp; Inter</span>
+  <div class="border-b pb-3">
+    <div>
+      <p class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display">
+      <span class="text-lg lg:text-3xl tracking-wide font-semibold text-black md:mt-0 font-display" >首页</span>
+      / <span>秀场</span>
+      / <span>时装发布会</span>
     </p>
+    </div>
+    <div>
+      <slot />
+    </div>
   </div>
 </template>
 <script setup>

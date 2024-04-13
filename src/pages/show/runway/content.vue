@@ -105,10 +105,9 @@
 </style>
 <template>
     <div class="container px-0 m-auto">
-        <BreadCrumb :path="state.path"></BreadCrumb>
-        
         <div class="px-2 md:px-4 lg:px-6 xl:px-8">
-            <div class="flex">
+            <BreadCrumb :path="state.path"></BreadCrumb>
+            <!-- <div class="flex">
                 <div class="shop-filter flex justify-between align-items-center flex-1	">
                     <div v-show="state.isShowResCount" class="shop-filter-default flex justify-content-between align-items-center">
                         <div class="shop-filter-count d-none d-sm-block text-lg">为您找到了{{ state.dataProvider.total }}条结果</div>
@@ -122,13 +121,12 @@
                         </svg>
                     </button>
                 </div>
-            </div>
-            <el-divider />
-            <div class="updates__grid grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
+            </div> -->
+            <div class="pt-6 grid auto-rows-[32rem] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-auto">
                 <a target="_blank" v-for="item, index in state.dataProvider.list" class="tile tile--padding-relaxed updates__card bg-cover border-solid" :style="{ 'background-image': 'url(' + item.cover + ')' }" :href="`${'/v/' + item.hash}`">
                     <span class="updates__card-content">
-                        <p class="text-2xl font-bold mt0 mb4">{{ item.brand }}</p>
-                        <div class="text-sm font-semibold mt0 mb4 updates__card-description">
+                        <p class="text-2xl mt0 mb4 font-display">{{ item.brand }}</p>
+                        <div class="text-sm mt0 mb4 updates__card-description font-display">
                             {{ item.title }}
                         </div>
                         <div class="text--body-2 text__color--action mt0 updates__card-link">查看更多 →</div>

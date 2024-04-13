@@ -12,7 +12,6 @@ declare module 'vue' {
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
-    ElInput: typeof import('element-plus/es')['ElInput']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     GallaryView: typeof import('./src/components/GallaryView.vue')['default']
     MainFooter: typeof import('./src/components/common/MainFooter.vue')['default']
